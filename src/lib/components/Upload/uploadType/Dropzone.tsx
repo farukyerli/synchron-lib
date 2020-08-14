@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export default (props: IProps) => {
-    const [hightlight, setHighlight] = useState(false)
+    const [hightlight, setHighlight] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const openFileDialog = () => {
@@ -23,7 +23,7 @@ export default (props: IProps) => {
     const onFilesAdded = (evt: any) => {
         if (props.disabled) return;
         const files = evt.target.files;
-        const array = fileListToArray(files);
+        const array = files;
         props.onChange(array);
     };
 
@@ -46,30 +46,33 @@ export default (props: IProps) => {
         setHighlight(false);
     };
 
-    const fileListToArray = (list: any) => {
-        const array = [];
-        for (var i = 0; i < list.length; i++) {
-            array.push(list.item(i));
-        }
+    const fileListToArray = (list: any[]) => {
+        const array: any[] = [];
+        Object.keys(list).map((key) => {
+            array.push(list[key]);
+            return null;
+        });
         return array;
-    }
+    };
 
     return (
-            <div className="row">
-                <div className="col">
-                    <div className="upload-area-modal">
-                        <div className={`upload-box ${hightlight && 'OnDragOver'}`}
-                            onDragOver={onDragOver}
-                            onDragLeave={onDragLeave}
-                            onDrop={onDrop}
-                            onClick={openFileDialog}
-                            onMouseOver={() => setHighlight(true)}
-                            onMouseOut={() => setHighlight(false)}
-                        >
-                            <i className="fas fa-upload"></i>
-                            <div className="upload-text">{props.dragBoxText || 'Drag here to upload'}</div>
-                        </div>
-                        {props.buttonVisible && <>
+        <div className="row">
+            <div className="col">
+                <div className="upload-area-modal">
+                    <div
+                        className={`upload-box ${hightlight && 'OnDragOver'}`}
+                        onDragOver={onDragOver}
+                        onDragLeave={onDragLeave}
+                        onDrop={onDrop}
+                        onClick={openFileDialog}
+                        onMouseOver={() => setHighlight(true)}
+                        onMouseOut={() => setHighlight(false)}
+                    >
+                        <i className="fas fa-upload"></i>
+                        <div className="upload-text">{props.dragBoxText || 'Drag here to upload'}</div>
+                    </div>
+                    {props.buttonVisible && (
+                        <>
                             <div className="upload-division">
                                 <div className="upload-division-line"></div>
                                 <div className="upload-division-text">OR</div>
@@ -77,19 +80,12 @@ export default (props: IProps) => {
                             </div>
                             <div className="actions">
                                 <button onClick={openFileDialog}>{props.buttonTitle || 'BROWSE COMPUTER'}</button>
-
                             </div>
-                        </>}
-                        <input
-                            ref={fileInputRef}
-                            className="FileInput"
-                            type="file"
-                            multiple
-                            onChange={onFilesAdded}
-
-                        />
-                    </div>
+                        </>
+                    )}
+                    <input ref={fileInputRef} className="FileInput" type="file" multiple onChange={onFilesAdded} />
                 </div>
             </div>
-    )
-}
+        </div>
+    );
+};

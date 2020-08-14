@@ -21,9 +21,8 @@ interface IState {
     isUploading: boolean;
     requestCancel: boolean;
     aborted: boolean;
+    errorMessage: string;
 }
-
-// ({ file, url, headers, progressBarSteps, onError, onSuccess, onDelete }: IProps) 
 
 class Upload extends Component<IProps, IState> {
     constructor(props: IProps) {
@@ -33,16 +32,17 @@ class Upload extends Component<IProps, IState> {
             isUploading: false,
             requestCancel: false,
             aborted: false,
+            errorMessage: '',
         };
     }
     request = new XMLHttpRequest();
     onUploadProgress = (e: any) => {
         this.setState({ ratio: e.loaded / e.total });
         this.props.onChange(1, 'Uploading Start');
-
-    }
+    };
 
     uploadFileWithFetch = async () => {
+        this.setState({ errorMessage: '' });
         this.setState({ isUploading: true });
         const formData = new FormData();
         formData.append(this.props.file.name, this.props.file);
@@ -50,38 +50,59 @@ class Upload extends Component<IProps, IState> {
         Object.keys(this.props.connection.headers).map((key) => {
             this.request.setRequestHeader(key, this.props.connection.headers[key]);
             return null;
-        })
+        });
 
         this.request.upload.addEventListener('progress', this.onUploadProgress);
 
         this.request.onload = (e) => {
             // console.log('Upload Status : ', this.request.status, this.request.response);
-            this.props.onSuccess && this.props.onSuccess(this.request.response)
+            if (this.request.status < 300) {
+                const response = { ...JSON.parse(this.request.response), filename: this.props.file.name };
+                // response.filename = this.props.file.name;
+                this.props.onSuccess && this.props.onSuccess(response);
+            } else {
+                this.onError(this.request.status, this.request.readyState);
+            }
             this.setState({ isUploading: false });
-
         };
         this.request.onerror = (e) => {
             // console.log('Error Status : ', this.request.status, this.request.response);
-            this.props.onError && this.props.onError(this.request, this.request.status);
+            this.onError(this.request.status, this.request);
             this.setState({ isUploading: false });
-        }
+        };
         this.request.onabort = () => {
             // console.log('** The request was aborted');
+            this.setState({ errorMessage: 'Aborted' });
             this.setState({ isUploading: false });
             this.setState({ aborted: true });
             this.props.onAbort && this.props.onAbort();
-
         };
         // send POST request to server
         this.request.send(formData);
+    };
+
+    onError = (status: number, data: any) => {
+        let message = '';
+        switch (status) {
+            case 401:
+                message = 'Unauthorized Access';
+                break;
+            case 422:
+                message = 'File too larga';
+                break;
+            default:
+                message = 'Upload Problem';
+        }
+        this.setState({ errorMessage: message });
+        this.setState({ aborted: true });
+        this.props.onError && this.props.onError(message, status);
     };
 
     componentDidMount = () => {
         // console.log('<><><><>', this.props.file);
         this.props.onChange(0, 'Mounted');
         this.uploadFileWithFetch();
-
-    }
+    };
 
     render() {
         const itemProps = {
@@ -92,19 +113,19 @@ class Upload extends Component<IProps, IState> {
             file: this.props.file,
             aborted: this.state.aborted,
             onReload: () => {
-                this.setState({ aborted: false })
+                this.setState({ aborted: false });
                 this.uploadFileWithFetch();
             },
-        }
+            errorMessage: this.state.errorMessage,
+        };
         return (
             <div className="row">
                 <div className="col">
                     {this.props.progressBarType === 'Horizontal-1' && <Horizontal1 {...itemProps} />}
                 </div>
             </div>
-        )
+        );
     }
 }
-
 
 export default Upload;

@@ -17,18 +17,19 @@ export default (props: IProps) => {
 
     const onFilesAdded = (evt: any) => {
         if (props.disabled) return;
-        const files = evt.target.files;
-        const array = fileListToArray(files);
+        const files: any[] = evt.target.files;
+        const array = fileListToArray(files || []);
         props.onChange(array);
     };
 
-    const fileListToArray = (list: any) => {
-        const array = [];
-        for (var i = 0; i < list.length; i++) {
-            array.push(list.item(i));
-        }
+    const fileListToArray = (list: any[]) => {
+        const array: any[] = [];
+        Object.keys(list).map((key) => {
+            array.push(list[key]);
+            return null;
+        });
         return array;
-    }
+    };
 
     return (
         <div className="row">
@@ -38,19 +39,16 @@ export default (props: IProps) => {
                     <div className="actions">
                         <button onClick={openFileDialog}>{props.buttonTitle || 'BROWSE'}</button>
                     </div>
-
                 </div>
                 <input
                     ref={fileInputRef}
                     // className="FileInput"
-                    style={{ display: "none" }}
+                    style={{ display: 'none' }}
                     type="file"
                     multiple
                     onChange={onFilesAdded}
-
                 />
             </div>
         </div>
-
-    )
-}
+    );
+};
