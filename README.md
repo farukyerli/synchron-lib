@@ -1,2 +1,3 @@
-Zozengo Upload Component
+Synchron React Component Packages
+
 ## Upload component

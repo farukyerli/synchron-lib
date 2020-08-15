@@ -46,7 +46,7 @@ export default (props: IProps) => {
         setHighlight(false);
     };
 
-    const fileListToArray = (list: any[]) => {
+    const fileListToArray = (list: any) => {
         const array: any[] = [];
         Object.keys(list).map((key) => {
             array.push(list[key]);

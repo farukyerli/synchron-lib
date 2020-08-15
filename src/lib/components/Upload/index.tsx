@@ -2,23 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Dropzone from './uploadType/Dropzone';
 import ButtonChoice from './uploadType/ButtonChoice';
 import UploadItem from './UploadItem';
-import { IConnections } from './type';
+import {IUploadFilesProps, IConnections } from './type';
 
-interface IProps {
-    value?: string;
-    onAbort?: () => void;
-    onError?: (data: string, status: number) => void;
-    onSuccess?: (data?: any) => void;
-    onDelete?: (fileName?: any) => void;
-    progressBarSteps?: number;
-    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+interface IProps extends IUploadFilesProps {
     connection: IConnections;
-    multiUpload?: boolean;
-    dropzone?: boolean;
-    dropzoneButton?: boolean;
 }
 
-export default (props: IProps) => {
+export const UploadFiles = (props: IProps) => {
     const [files, setFiles] = useState<any[]>([]);
     const [dropzoneVisible, setDropzoneVisible] = useState(props.dropzone || false);
 
@@ -30,7 +20,7 @@ export default (props: IProps) => {
         // console.log('Files Added : ', files);
     }, [files]);
 
-    const noneVoid = () => {};
+    const noneVoid = () => { };
 
     const onSuccess = (data: any) => {
         if (props.multiUpload) {

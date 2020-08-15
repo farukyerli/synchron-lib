@@ -27,8 +27,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "rootDirs": [
-      "src",
-      "stories"
+      "src"
     ],
     "declaration": true,
     "experimentalDecorators": true,

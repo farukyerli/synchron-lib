@@ -1,2 +1,5 @@
+import { IUploadFilesProps } from './components/Upload/type';
+
 //Components
-export { default as UploadComponent } from './components/Upload';
+export { UploadFiles } from './components/Upload';
+export type IUploadFiles = IUploadFilesProps;

@@ -1,6 +1,6 @@
 {
-  "short_name": "zozengo-upload",
-  "name": "Zozengo Upload",
+  "short_name": "synchron-libs",
+  "name": "Synchron React Component Packages",
   "icons": [
     {
       "src": "favicon.png",

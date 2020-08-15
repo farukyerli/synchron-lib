@@ -22,7 +22,7 @@ export default (props: IProps) => {
         props.onChange(array);
     };
 
-    const fileListToArray = (list: any[]) => {
+    const fileListToArray = (list: any) => {
         const array: any[] = [];
         Object.keys(list).map((key) => {
             array.push(list[key]);
