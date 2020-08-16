@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { Horizontal1 } from './progressBars';
-import { IConnections } from './type';
+import { IConnections, IUploadFilesProps } from './type';
+import { FullScreen, Modal1 } from './preview';
 
-interface IProps {
+interface IProps extends IUploadFilesProps {
     file: any;
     url: string;
     headers: any;
-    progressBarSteps: number;
-    progressBarType: 'Horizontal-1' | 'Horizontal-2';
-    onDelete: (error: any) => void;
-    onAbort: () => void;
-    onError: (e: any, status: number) => void;
-    onSuccess: (data: any) => void;
     onChange: (key: number, value: string) => void;
     connection: IConnections;
+    filename?: string;
+    viewMode?: boolean;
 }
 
 interface IState {
@@ -22,6 +19,7 @@ interface IState {
     requestCancel: boolean;
     aborted: boolean;
     errorMessage: string;
+    isModalOpen: boolean;
 }
 
 class Upload extends Component<IProps, IState> {
@@ -33,6 +31,7 @@ class Upload extends Component<IProps, IState> {
             requestCancel: false,
             aborted: false,
             errorMessage: '',
+            isModalOpen: false,
         };
     }
     request = new XMLHttpRequest();
@@ -101,14 +100,24 @@ class Upload extends Component<IProps, IState> {
     componentDidMount = () => {
         // console.log('<><><><>', this.props.file);
         this.props.onChange(0, 'Mounted');
-        this.uploadFileWithFetch();
+        this.props.file && this.props.file.name && this.uploadFileWithFetch();
     };
+
+    onDelete = () => {
+        const deletedName = this.props.file.name ? this.props.file.name : this.props.file;
+        this.props.onDelete && this.props.onDelete(deletedName);
+    };
+
+    onClose = () => {
+        this.setState({ isModalOpen: false });
+    }
 
     render() {
         const itemProps = {
+            ...this.props,
             ratio: this.state.ratio,
             onAbort: () => this.request.abort(),
-            onDelete: () => this.props.onDelete(this.props.file.name),
+            onDelete: this.onDelete,
             isUploading: this.state.isUploading,
             file: this.props.file,
             aborted: this.state.aborted,
@@ -117,12 +126,28 @@ class Upload extends Component<IProps, IState> {
                 this.uploadFileWithFetch();
             },
             errorMessage: this.state.errorMessage,
+            onPreview: () => { this.setState({ isModalOpen: true }) },
         };
+        console.log('File Type : ', typeof (this.props.file))
+
         return (
             <div className="row">
                 <div className="col">
                     {this.props.progressBarType === 'Horizontal-1' && <Horizontal1 {...itemProps} />}
                 </div>
+                {this.state.isModalOpen && this.props.previewType === 'FullScreen' &&
+                    <FullScreen {...itemProps} onClose={this.onClose} image={this.props.file || ''} />
+                }
+
+                {this.state.isModalOpen && this.props.previewType === 'Modal-Type-1' &&
+                    <Modal1
+                        {...this.props}
+                        onClose={this.onClose}
+                        image={typeof (this.props.file) === "string"
+                            ? this.props.file
+                            : URL.createObjectURL(new Blob([this.props.file]))
+                        } />
+                }
             </div>
         );
     }

@@ -4,7 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import './_assets/styles/main.scss';
 
 const app = <App />;
 const documentContainer = document.getElementById('root');

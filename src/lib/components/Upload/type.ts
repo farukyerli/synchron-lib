@@ -1,16 +1,14 @@
-export type IFiles = {
-    laslastModified: number | null;
-    lastModifiedDate: Date | null;
-    name: string | null;
-    size: number | null;
-    type: string | null;
-}
 export type IConnections = {
     url: string;
     headers?: any;
 }
 
-export interface IUploadFilesProps  {
+export interface IFiles {
+    download: any;
+    upload: any;
+}
+
+export interface IUploadFilesProps {
     value?: string;
     onAbort?: () => void;
     onError?: (data: string, status: number) => void;
@@ -21,4 +19,9 @@ export interface IUploadFilesProps  {
     multiUpload?: boolean;
     dropzone?: boolean;
     dropzoneButton?: boolean;
+    title?: string;
+    upLoadText?: string;
+    buttonTitle?: string;
+    files?: string[];
+    previewType?: 'FullScreen' | 'Modal-Type-1';
 }

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+// import uploadIcon from '../images/fa-upload.svg';
 
 interface IProps {
     disabled?: boolean;
@@ -83,9 +84,39 @@ export default (props: IProps) => {
                             </div>
                         </>
                     )}
-                    <input ref={fileInputRef} className="FileInput" type="file" multiple onChange={onFilesAdded} />
                 </div>
+                <input ref={fileInputRef} style={{ display: "none" }} className="FileInput" type="file" multiple onChange={onFilesAdded} />
             </div>
-        </div>
+            </div>
+
+
+
+
+
+        // <div className="modal-content">
+        //     <div
+        //         className={`modal-body ${hightlight && 'OnDragOver'}`}
+        //         onDragOver={onDragOver}
+        //         onDragLeave={onDragLeave}
+        //         onDrop={onDrop}
+        //         onClick={openFileDialog}
+        //         onMouseOver={() => setHighlight(true)}
+        //         onMouseOut={() => setHighlight(false)}
+        //     >
+        //         <img src={uploadIcon} className="modal-img" alt="upload-icon" />
+        //         <p className="modal-body-text">Drag files here to upload or 
+        //         {/* // eslint-disable-next-line */}
+        //         <a href="" onClick={openFileDialog} className="modal-body-link">
+        //             {props.buttonTitle || ' BROWSE COMPUTER'}</a></p>
+        //         <input ref={fileInputRef} style={{ display: "none" }} className="FileInput" type="file" multiple onChange={onFilesAdded} />
+        //     </div>
+        // </div>
+
+
+
+
+
+
+
     );
 };

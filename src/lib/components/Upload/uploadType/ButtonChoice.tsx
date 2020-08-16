@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
+import { IUploadFilesProps } from '../type';
 
-interface IProps {
+interface IProps extends IUploadFilesProps {
     disabled?: boolean;
-    upLoadText?: string;
     onChange: (files: any) => void;
-    buttonTitle?: string;
+
 }
 
 export default (props: IProps) => {

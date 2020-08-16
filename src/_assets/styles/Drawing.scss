@@ -1,0 +1,306 @@
+// Thumbnails Bengins
+
+.modal-frame-thumbnails {
+    width: 1000px;
+    // height: 100%;
+    background: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 20px 20px 40px 20px;
+
+    .modal-content {
+        background: #ffffff;
+        border: 1px solid #dadada;
+        box-sizing: border-box;
+        box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.03);
+        border-radius: 4px;
+        padding: 32px;
+
+        .modal-header {
+            border: none;
+            display: inline-block;
+            text-align: left;
+            padding-left: 0;
+
+            .modal-title {
+                font-family: "Public Sans";
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 26px;
+                color: #222222;
+                padding-bottom: 12px;
+            }
+            .modal-subtext {
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 25px;
+                color: #222222;
+                padding-bottom: 20px;
+            }
+        }
+
+        .modal-body {
+            background: #f6f6f6;
+            border: 2px dashed #d2d2d2;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            padding-top: 35px;
+            padding-bottom: 34px;
+
+            .modal-image {
+                width: 80px;
+                height: 80px;
+            }
+            &-text {
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 21px;
+                color: #7c7c7c;
+                padding-left: 20px;
+                padding-top: 30px;
+            }
+            &-link {
+                color: #2ba0c4;
+            }
+        }
+
+        // Loaded Steps Begins
+
+        .modal-body-loading {
+            display: flex;
+            justify-content: space-between;
+
+            &-figure {
+                width: 160px;
+                height: 100%;
+                position: relative;
+                border: 1px solid #dadada;
+                border-radius: 4px 4px 4px 4px;
+                // Loaded Css
+                .remove-icon {
+                    position: absolute;
+                    right: 8px;
+                    top: 8px;
+                    cursor: pointer;
+                }
+                .truck-icon {
+                    height: 110px;
+                    width: 50px;
+                }
+                .fig-caption {
+                    background: lighten($color: #36b2ae, $amount: 40%);
+                    border-top: 1px solid #dadada;
+                    padding-left: 9px;
+                    padding-bottom: 5px;
+                    padding-top: 5px;
+                    position: relative;
+                    display: block;
+                    height: 40px;
+                    text-align: left;
+                    img {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 10px;
+                    }
+                    strong {
+                        display: block;
+                        font-weight: 500;
+                        font-size: 12px;
+                        line-height: 14px;
+                        color: #1a908d;
+                        width: 100%;
+                    }
+                    small {
+                        display: block;
+                        font-weight: normal;
+                        font-size: 10px;
+                        line-height: 12px;
+                        color: #7c7c7c;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        width: 100%;
+                    }
+                }
+
+                // Loading Waiting Begins
+
+                .fig-caption.waiting {
+                    background: none;
+                }
+
+                // Loading Begins
+
+                .fig-caption.percentage {
+                    width: 30%;
+                    position: unset;
+                    span {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 10px;
+                        color: #18a1cb;
+                    }
+                }
+            }
+        }
+
+        // Loading Steps Ends
+    }
+
+    .modal-footer {
+        padding-top: 40px;
+        padding-bottom: 0px;
+
+        button {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 1.25px;
+            width: 160px;
+            height: 44px;
+            border-radius: 4px;
+            outline: none;
+        }
+        &-btn-outline {
+            color: #1a908d;
+            border: 1px solid #1a908d;
+            background: #ffffff;
+            margin-right: 30px;
+        }
+        &-btn-primary {
+            color: #ffffff;
+            border: 1px solid #1a908d;
+            background: #1a908d;
+            margin-right: 20px;
+        }
+    }
+}
+
+.frame-cover {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    padding-top: 120px;
+    .modal-frame-thumbnails.big-img-loading {
+        width: 1100px;
+        padding: 10px 10px 0 10px;
+        margin: auto;
+        .modal-body-loading-figure {
+            width: 100%;
+            position: relative;
+            .remove-icon {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                cursor: pointer;
+            }
+            .fig-caption {
+                display: flex;
+                justify-content: space-between;
+                padding: 14px 20px 16px 20px;
+                small {
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: -0.01em;
+                    color: #7c7c7c;
+                    padding-top: 6px;
+                }
+                .big-img-btn-primary {
+                    color: #ffffff;
+                    border: 1px solid #1a908d;
+                    border-radius: 4px;
+                    background: #1a908d;
+                    padding: 7px 10px;
+                    .down-icon {
+                        padding-right: 7px;
+                        height: 50px;
+                    }
+                    span {
+                        font-weight: 500;
+                        font-size: 15px;
+                        line-height: 18px;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+    .large {
+        width: fit-content;
+        position: relative;
+        margin: auto;
+        &-truck {
+            border-radius: 4px;
+        }
+        .remove-icon {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+        &-caption {
+            width: 100%;
+            position: absolute;
+            bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 30px;
+            padding-right: 30px;
+            span {
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 21px;
+                color: #ffffff;
+            }
+            &-button {
+                color: #ffffff;
+                border: 1px solid #ffffff;
+                border-radius: 4px;
+                background: none;
+                padding: 6px 10px;
+                .down-icon {
+                    padding-right: 7px;
+                    height: 30px;
+                }
+                span {
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 18px;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+// Thumbnails Ends
+.frame-cover.modal-photo-view {
+    position: absolute;
+    // border: 4px dashed red;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // backdrop-filter: opacity(.5);
+    background: rgba(0, 0, 0, 0.2);
+}
+.frame-cover.full-screen-preview {
+    position: absolute;
+    // border: 4px dashed red;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // backdrop-filter: opacity(.5);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+// body.modal-photo-view{
+//     overflow: hidden;
+// }
+
+// body.full-screen-preview{
+//     overflow: hidden;
+// }
