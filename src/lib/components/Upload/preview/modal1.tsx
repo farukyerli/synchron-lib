@@ -1,6 +1,6 @@
 import React from 'react';
-import downloadIcon from '../images/fa-upload.svg';
-import removeIcon from '../images/remove2.svg';
+import downloadIcon from 'images/UploadFiles/fa-upload.svg';
+import removeIcon from 'images/UploadFiles/remove2.svg';
 
 interface IProps {
     onClose: () => void;
