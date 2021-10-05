@@ -10,6 +10,8 @@ export interface IFile {
     url: string;
     type?: string;
     data?: any;
+    // custom: any;
+    status?: number;
 }
 export interface IUploadFileType {
     lastModified: number; // Timestamp
@@ -56,6 +58,7 @@ export interface IRowTexts {
     DeleteButton?: string;
     CloseButton?: string;
     LoadingError?: string;
+    UploadText?: string;
 
 }
 export const imageState = {
