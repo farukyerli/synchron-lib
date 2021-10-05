@@ -28,9 +28,15 @@ export default (props: IProps) => {
 
     const startDownload = async (value: any) => {
         const result: any = await getDataFromAPI(value);
+        let contentType = 'application/pdf'
+        try {
+            contentType = result.headers['content-type']
+        } catch {
+
+        }
         if (result && result.status === 200) {
-            const data = new Blob([result.data], { type: 'application/pdf' });
-            const ext = data.type.split('/')[1];
+            const data = new Blob([result.data], { type: contentType });
+            const ext = contentType.split('/')[1];
             const docURL = window.URL.createObjectURL(data);
             const tempLink = document.createElement('a');
             tempLink.href = docURL;

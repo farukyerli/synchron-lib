@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IConnections, IUploadFilesProps, } from '../type';
 import './styles/RowUpload.scss'
 import Preview from '../Previews'
 import IconButton from '../Utils/Button'
+import DownloadFile from '../Utils/DownloadFile';
+import { loadingIcon } from '../images'
 
 interface IProps extends IUploadFilesProps {
     connection: IConnections;
@@ -11,6 +13,19 @@ interface IProps extends IUploadFilesProps {
 const RowUploadForm = (props: IProps) => {
     const { classes, rowItems, actionButtons, text, connection, files } = props;
     const [showPreview, setShowPreview] = useState<string | null>(null)
+    const [fileUrl, setFileUrl] = useState<string>('')
+    const [fileName, setFileName] = useState<string>('')
+    const [downloadImage, setDownloadImage] = useState<any>(null)
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (files && files.length) {
+            setFileUrl(props.files[0])
+            setFileName(props.files[0])
+
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [files])
 
 
 
@@ -19,9 +34,14 @@ const RowUploadForm = (props: IProps) => {
         <>
             <div className={`component-container ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
-                    <div className="columns">{rowItems?.Column1 ||
+                    <div className="columns">{loading
+                        ? <img src={loadingIcon} alt={''} />
+                        : rowItems?.Column1 ||
                         <IconButton
-                            action={() => actionButtons?.Download && actionButtons.Download('')}
+                            action={() => {
+                                actionButtons?.Download && actionButtons.Download(fileUrl);
+                                setDownloadImage(fileUrl)
+                            }}
                             className={`fas fa-download column1 ${classes?.Column1}`}
                             title={text?.DownloadButton} />
 
@@ -58,11 +78,19 @@ const RowUploadForm = (props: IProps) => {
             </div>
             {showPreview && <Preview onClose={() => setShowPreview(null)} image={showPreview} connection={connection}
                 file={{
-                    name: files[0],
-                    url: files[0],
+                    name: fileName,
+                    url: fileUrl,
                 }}
                 text={text}
             />}
+            {
+                downloadImage && <DownloadFile
+                    headers={props.connection.headers}
+                    url={fileUrl}
+                    setLoading={setLoading}
+                    filename={fileName || `zz-downloadfile`}
+                />
+            }
         </>
 
     )
