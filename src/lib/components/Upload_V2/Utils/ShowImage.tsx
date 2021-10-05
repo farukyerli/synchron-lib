@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { IConnections, IFile } from '../type';
-import { pdfIcon, docIcon, pptIcon, truckIcon, txtIcon, xlsIcon, loadingIcon } from '../images';
+import { IConnections, IFile, imageState, IRowTexts } from '../type';
+import { pdfIcon, docIcon, pptIcon, txtIcon, xlsIcon, loadingIcon } from '../images';
+import './ShowImage.scss'
 
 
 interface IProps {
@@ -10,15 +11,12 @@ interface IProps {
     setType?: (value: string) => void;
     setError?: (value: any) => void;
     onClick?: () => void;
+    imageStatus?: (value: number) => void;
     isAborted?: boolean;
+    text?: IRowTexts;
 }
 
-const imageState = {
-    None: 0,
-    Loading: 1,
-    Done: 2,
-    Problem: 3
-}
+
 interface IState {
     file: any;
     status: number;
@@ -92,30 +90,23 @@ class DownloadImage extends Component<IProps, IState> {
 
                 case 406: {
                     this.setState({ file: null });
-                    this.setState({ status: imageState.Problem });
                     // console.log('Download error: ', this.request.status, this.request.statusText);
-
+                    this.setState({ status: imageState.Problem });
                     break;
                 }
 
                 default: {
-                    this.setState({ file: null });
-                    const response = { ...JSON.parse(this.request.response), filename: this.props.file.name };
-                    let ErrorMessage: any = '';
-                    try {
-                        // console.log(response);
-                        ErrorMessage = response.Items[0].Message;
-                    } catch {
-                        ErrorMessage = 'Some download error : ';
-                        // console.log(ErrorMessage, this.request.status, response);
-                    }
-                    ErrorMessage && console.log(ErrorMessage);
+                    const ErrorMessage: any = this.request.response;
+                    ErrorMessage && console.log('ERROR RESPONSE : ', ErrorMessage);
                     ErrorMessage && this.props.setError && this.props.setError(ErrorMessage);
+                    this.setState({ file: null });
                     this.setState({ status: imageState.Problem });
                 }
             }
 
         };
+        // this.state.status !== imageState.Done && this.setState({ status: imageState.Problem });
+
         this.request.send(null);
     };
 
@@ -129,24 +120,34 @@ class DownloadImage extends Component<IProps, IState> {
 
     componentDidUpdate = () => {
         this.props.isAborted && this.request.abort();
+        if (this.state.status === imageState.Done || this.state.status === imageState.Problem)
+            this.props.imageStatus && this.props.imageStatus(this.state.status)
     }
 
     render() {
         return (
             <>
                 {!this.props.isAborted && (
-                    <img
-                        src={
-                            this.state.status === imageState.None || this.state.status === imageState.Loading
-                                ? loadingIcon
-                                : this.state.status === imageState.Done
-                                    ? this.state.file
-                                    : truckIcon
+                    <>
+                        {this.state.status === imageState.Problem
+                            ? (
+                                <div className="error-picture">
+                                    <i className="fas fa-exclamation-square " />
+                                    <span>{this.props.text?.LoadingError || "Picture couldn't loaded"}</span>
+                                </div>
+                            )
+                            : <img
+                                src={
+                                    this.state.status === imageState.None || this.state.status === imageState.Loading
+                                        ? loadingIcon
+                                        : this.state.file
+                                }
+                                className={`truck-icon ${this.props.isAborted && 'fail'}`}
+                                alt="truck-icon"
+                                onClick={this.props.onClick}
+                            />
                         }
-                        className={`truck-icon ${this.props.isAborted && 'fail'}`}
-                        alt="truck-icon"
-                        onClick={this.props.onClick}
-                    />
+                    </>
                 )}
             </>
         );

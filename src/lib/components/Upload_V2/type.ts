@@ -55,7 +55,14 @@ export interface IRowTexts {
     EditButton?: string;
     DeleteButton?: string;
     CloseButton?: string;
+    LoadingError?: string;
 
+}
+export const imageState = {
+    None: 0,
+    Loading: 1,
+    Done: 2,
+    Problem: 3
 }
 export interface IUploadFilesProps {
     value?: string;
