@@ -22,7 +22,7 @@ interface IState {
     isModalOpen: boolean;
 }
 
-class Upload extends Component<IProps, IState> {
+class UploadFile extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
@@ -153,4 +153,4 @@ class Upload extends Component<IProps, IState> {
     }
 }
 
-export default Upload;
+export default UploadFile;
