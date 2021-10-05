@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import UploadFiles from './lib/components/Upload_V2';
 import './_assets/styles/main.scss';
 
-const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ3Yzg2OC03YjJkLTQ2NDgtODJkMi1lOGVkYjY4YTY0YjMiLCJlbWFpbCI6InRvQHpvemVuZ28uY29tIiwiY29tcGFueUlkIjoiMDhkN2M4NjgtN2IwZS00ODdiLTgwNmMtY2RlMjNkMWFlMzljIiwiY29tcGFueU5hbWUiOiJUTyBDb21wYW55IiwiZnVsbE5hbWUiOiJUcnVjayBDb21wYW55IC0iLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiIyNTA1ODVmMy0wMTE0LTQyMjMtOTU4Yi1hOWVmNWFhNWEzODEiLCJpYXQiOiIwOC8xNy8yMDIwIDIxOjA0OjQxICswMDowMCIsIm5iZiI6MTU5NzY5ODI4MSwiZXhwIjoxNTk3NzEyNjgxLCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.BpHP6sVOx5kx-eAr10JeraZELCM1pcogKPbIfQoo2h8'
+const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiIxNjgyNTEyNC1mOTU0LTQ4NmEtYmY4Yi1lYzFiMTcwNzgxMmUiLCJpYXQiOiIxMC8wNS8yMDIxIDEyOjI3OjA5ICswMDowMCIsIm5iZiI6MTYzMzQzNjgyOSwiZXhwIjoxNjMzNDUxMjI5LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.b7RcpQu-KcScUSkKtB7pwXxhKUP-V1A0EJ3FYNiylxw'
 const APP_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d7c868-7b0e-487b-806c-cde23d1ae39c';
 const headers = {
     authorization: ApiKey,
 }
-const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png';
-
+const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
+// const img = 'https://cloud.zozengo.com/index.php/s/RxT8XFPRsKDHGHB/download'
 // const img='data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7';
 
 const App = () => {
@@ -47,12 +47,18 @@ const App = () => {
                     files={[img]}
                     previewType="FullScreen"
 
-
+                    text={{
+                        DeleteButton: "Sil",
+                        DownloadButton: "Indir",
+                        UploadButton: "Yukle",
+                        EditButton: "Degistir",
+                        ViewButton: "Goster"
+                    }}
                     skintype="row"
                     rowItems={{
                         // Column3: <>Deneme</>,
                         // Column4: '4.',
-                        // Column6: '6.'
+                        // Column6: ''
                     }}
                     actionButtons={{
                         View: (data) => console.log('View Pressed : ', data),

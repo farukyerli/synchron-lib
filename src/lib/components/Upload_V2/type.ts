@@ -5,11 +5,12 @@ export type IConnections = {
     headers?: any;
 }
 
-export interface IFiles {
-    download: any;
-    upload: any;
+export interface IFile {
+    name: string;
+    url: string;
+    type?: string;
+    data?: any;
 }
-
 export interface IUploadFileType {
     lastModified: number; // Timestamp
     name: string;
@@ -62,6 +63,7 @@ export interface IUploadFilesProps {
     rowItems?: IRowItems;
     actionButtons?: IUploadActions;
     text?: IRowTexts;
+    files: string[];
 
 
 
@@ -78,7 +80,6 @@ export interface IUploadFilesProps {
     title?: string;
     upLoadText?: string;
     buttonTitle?: string;
-    files?: string[];
     previewType?: 'FullScreen' | 'Modal-Type-1';
 
 }

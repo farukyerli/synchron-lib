@@ -2,6 +2,7 @@ import React from 'react';
 import { IUploadFilesProps, IConnections } from './type';
 import Dropzone from './skins/Dropzone';
 import RowUpload from './skins/RowUpload';
+import ModalUpload from './skins/ModalUpload';
 import '../../styles/fontawesome/scss/fontawesome.scss';
 import '../../styles/fontawesome/scss/light.scss';
 import '../../styles/fontawesome/scss/regular.scss';
@@ -18,23 +19,12 @@ const UploadComponentForm = (props: IProps) => {
 
 
     if (skintype === 'row')
-        return (
-            <RowUpload
-                {...props}
+        return <RowUpload {...props} />
 
-            // onChange={(data) => console.log(data[0].name)}
-            />
+    if (skintype === 'modal')
+        return <ModalUpload {...props} />
+    return <Dropzone {...props} />
 
-        )
-
-    return (
-        <Dropzone
-            {...props}
-
-            onChange={(data) => console.log(data[0].name)}
-        />
-
-    )
 };
 
 
