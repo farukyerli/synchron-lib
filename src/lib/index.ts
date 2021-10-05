@@ -1,5 +1,9 @@
-import { IUploadFilesProps } from './components/Upload/type';
+import { IUploadFilesProps, IRowItems, IRowTexts, IUploadActions as MyUploadActions } from './components/Upload_V2/type';
+import UploadFiles from './components/Upload_V2';
 
-//Components
-export { UploadFiles } from './components/Upload';
+
+export { UploadFiles }
 export type IUploadFiles = IUploadFilesProps;
+export type IUploadItems = IRowItems
+export type IUploadTexts = IRowTexts
+export type IUploadActions = MyUploadActions

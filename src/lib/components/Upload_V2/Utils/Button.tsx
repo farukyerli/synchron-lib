@@ -6,13 +6,19 @@ interface IButton {
     className: string;
     title?: string;
     position?: 'bottom' | 'left' | 'right' | 'top'
+    visible?: boolean;
 }
 
 const IconButton = (props: IButton) => {
-    const { action, className, title } = props;
-    return <Tooltip title={title || ''} placement={props.position || 'bottom'}>
-        <i className={`${className}`} onClick={action} />
-    </Tooltip>
+    const { action, className, title, visible = true } = props;
+    return visible
+        ? <div onClick={action}>
+            <Tooltip title={title || ''} placement={props.position || 'bottom'}>
+                <i className={`${className}`} />
+            </Tooltip>
+        </div>
+        : <></>
+
 }
 
 export default IconButton

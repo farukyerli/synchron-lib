@@ -12,7 +12,7 @@ export default (props: IProps) => {
     const [{ loading, error }, getDataFromAPI] = useAxios({ responseType: 'blob' }, { manual: true });
 
     useEffect(() => {
-        // console.log('props.url : ', props.url)
+        console.log('props.url : ', props.url)
         props.url && startDownload({ url: props.url, headers: props.headers });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.url]);
@@ -28,9 +28,15 @@ export default (props: IProps) => {
 
     const startDownload = async (value: any) => {
         const result: any = await getDataFromAPI(value);
+        let contentType = 'application/pdf'
+        try {
+            contentType = result.headers['content-type']
+        } catch {
+
+        }
         if (result && result.status === 200) {
-            const data = new Blob([result.data], { type: 'application/pdf' });
-            const ext = data.type.split('/')[1];
+            const data = new Blob([result.data], { type: contentType });
+            const ext = contentType.split('/')[1];
             const docURL = window.URL.createObjectURL(data);
             const tempLink = document.createElement('a');
             tempLink.href = docURL;

@@ -15,7 +15,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    // "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,14 +23,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "sourceMap": true,
     "rootDirs": [
       "src"
     ],
     "declaration": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src/**/*"

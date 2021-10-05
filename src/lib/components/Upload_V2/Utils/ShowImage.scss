@@ -1,0 +1,11 @@
+.error-picture {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	color: red;
+	border-radius: 10px;
+	font-size: 30px;
+	i {
+		font-size: 190px;
+	}
+}
