@@ -7,7 +7,7 @@ const APP_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d7c868-7b0e-487
 const headers = {
     authorization: ApiKey,
 }
-const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
+// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
 // const img = 'https://cloud.zozengo.com/index.php/s/RxT8XFPRsKDHGHB/download'
 // const img='data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7';
 
@@ -21,20 +21,6 @@ const App = () => {
     return (
         <div className="App">
             <div className="container" style={{ padding: 100 }}>
-                {/* <UploadFiles
-                    connection={{ url: APP_URL, headers }}
-                    dropzone
-                    multiUpload
-                    onSuccess={((data) => { console.log('Success : ', data) })}
-                    onAbort={(() => { console.log('Aborted') })}
-                    onDelete={((error) => { console.log('Deleted :', error) })}
-                    onError={(e, s) => console.log('error:', e, s)}
-                    // title="Test Title"
-                    upLoadText="Upload Document"
-                    files={[img]}
-                    previewType="FullScreen"
-                // dropzoneButton
-                /> */}
 
                 <UploadFiles
                     connection={{ url: APP_URL, headers }}
@@ -44,7 +30,8 @@ const App = () => {
                     onError={(e, s) => console.log('error:', e, s)}
                     // title="Test Title"
                     upLoadText="Upload Document"
-                    files={[img]}
+                    // files={[img]}
+                    files={[]}
                     previewType="FullScreen"
 
                     text={{

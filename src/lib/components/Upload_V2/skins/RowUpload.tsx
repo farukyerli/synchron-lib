@@ -16,6 +16,7 @@ const RowUploadForm = (props: IProps) => {
     const [fileUrl, setFileUrl] = useState<string>('')
     const [fileName, setFileName] = useState<string>('')
     const [downloadImage, setDownloadImage] = useState<any>(null)
+    const [uploadImage, setUploadImage] = useState<any>(null)
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -28,24 +29,39 @@ const RowUploadForm = (props: IProps) => {
     }, [files])
 
 
+    const DownloadSection = () => {
+        if (loading)
+            return <img src={loadingIcon} alt={''} />
 
+        return rowItems?.Column1 ||
+            <IconButton
+                action={() => {
+                    actionButtons?.Download && actionButtons.Download(fileUrl);
+                    setDownloadImage(fileUrl)
+                }}
+                className={`fas fa-download column1 ${classes?.Column1}`}
+                title={text?.DownloadButton} />
+    }
+
+    const UploadSection = () => {
+        if (loading)
+            return <img src={loadingIcon} alt={''} />
+
+        return rowItems?.Column1 ||
+            <IconButton
+                action={() => {
+                    actionButtons?.Upload && actionButtons.Upload(fileUrl);
+                    setUploadImage(fileUrl)
+                }}
+                className={`fas fa-upload column1 ${classes?.Column1}`}
+                title={text?.UploadButton} />
+    }
 
     return (
         <>
             <div className={`component-container ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
-                    <div className="columns">{loading
-                        ? <img src={loadingIcon} alt={''} />
-                        : rowItems?.Column1 ||
-                        <IconButton
-                            action={() => {
-                                actionButtons?.Download && actionButtons.Download(fileUrl);
-                                setDownloadImage(fileUrl)
-                            }}
-                            className={`fas fa-download column1 ${classes?.Column1}`}
-                            title={text?.DownloadButton} />
-
-                    }</div>
+                    <div className="columns">{fileName ? DownloadSection() : UploadSection()}</div>
                     <div className="columns column2">{rowItems?.Column2 || 'Please define description of task '}</div>
                     {rowItems?.Column3 && <div className="columns">{rowItems?.Column3 || 'Free Usage Place 1'}</div>}
                     {rowItems?.Column4 && <div className="columns">{rowItems?.Column4 || 'Free Usage Place 2'}</div>}
