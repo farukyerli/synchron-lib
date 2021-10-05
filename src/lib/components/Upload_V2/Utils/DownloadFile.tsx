@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import useAxios from 'axios-hooks';
 interface IProps {
     url: string;
     headers: any;
@@ -8,20 +9,7 @@ interface IProps {
 }
 
 export default (props: IProps) => {
-    // const [{ loading, error }, getDataFromAPI] = useAxios({ responseType: 'blob' }, { manual: true });
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState()
-
-
-    const getDataFromAPI = async (value: any) => {
-        setLoading(true)
-        const response = await fetch(new Request(value.url))
-            .then(response => response.blob())
-            .catch(err => setError(err))
-        setLoading(false)
-        return response
-
-    }
+    const [{ loading, error }, getDataFromAPI] = useAxios({ responseType: 'blob' }, { manual: true });
 
     useEffect(() => {
         // console.log('props.url : ', props.url)
@@ -38,10 +26,10 @@ export default (props: IProps) => {
         error && console.log('download error : ', error);
     }, [error]);
 
-    const startDownload = async (value: any, type?: string) => {
+    const startDownload = async (value: any) => {
         const result: any = await getDataFromAPI(value);
         if (result && result.status === 200) {
-            const data = new Blob([result.data], { type: type || 'application/pdf' });
+            const data = new Blob([result.data], { type: 'application/pdf' });
             const ext = data.type.split('/')[1];
             const docURL = window.URL.createObjectURL(data);
             const tempLink = document.createElement('a');

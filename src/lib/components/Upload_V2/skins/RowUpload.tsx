@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { IConnections, IUploadFilesProps, } from '../type';
-import { Tooltip } from '@material-ui/core';
 import './styles/RowUpload.scss'
 import Preview from '../Previews'
-
+import IconButton from '../Utils/Button'
 
 interface IProps extends IUploadFilesProps {
     connection: IConnections;
@@ -21,7 +20,7 @@ const RowUploadForm = (props: IProps) => {
             <div className={`component-container ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
                     <div className="columns">{rowItems?.Column1 ||
-                        <Button
+                        <IconButton
                             action={() => actionButtons?.Download && actionButtons.Download('')}
                             className={`fas fa-download column1 ${classes?.Column1}`}
                             title={text?.DownloadButton} />
@@ -34,18 +33,18 @@ const RowUploadForm = (props: IProps) => {
                         <div className="columns column5">
                             {rowItems?.Column5 || (
                                 <>
-                                    <Button
+                                    <IconButton
                                         action={() => {
                                             actionButtons?.View && actionButtons.View('')
                                             setShowPreview('sss')
                                         }}
                                         className="fas fa-eye"
                                         title={text?.ViewButton} />
-                                    <Button
+                                    <IconButton
                                         action={() => actionButtons?.Edit && actionButtons.Edit('')}
                                         className="fas fa-pencil-alt"
                                         title={text?.EditButton} />
-                                    <Button
+                                    <IconButton
                                         action={() => actionButtons?.Delete && actionButtons.Delete('')}
                                         className="fas fa-trash"
                                         title={text?.DeleteButton} />
@@ -61,23 +60,13 @@ const RowUploadForm = (props: IProps) => {
                 file={{
                     name: files[0],
                     url: files[0],
-                }} />}
+                }}
+                text={text}
+            />}
         </>
 
     )
 };
 
-interface IButton {
-    action: () => void
-    className: string;
-    title?: string;
-}
-
-const Button = (props: IButton) => {
-    const { action, className, title } = props;
-    return <Tooltip title={title || ''}>
-        <i className={`${className}`} onClick={action} />
-    </Tooltip>
-}
 
 export default RowUploadForm

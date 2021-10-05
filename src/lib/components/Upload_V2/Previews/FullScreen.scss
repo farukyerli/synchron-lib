@@ -26,55 +26,37 @@
 			font-size: large;
 			color: #ffffff;
 		}
+		.download-icon {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			cursor: pointer;
+			font-size: large;
+			color: #ffffff;
+		}
+
+		.download-container {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			border: #ffffff 1px solid;
+			border-radius: 8px;
+			padding: 10px;
+			color: #ffffff;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 21px;
+			&:hover {
+				background-color: #c5b0b0;
+				cursor: pointer;
+			}
+		}
+
 		.large {
 			// border: #ffffff 1px solid;
 			&-truck {
 				border-radius: 4px;
 			}
-
-			&-caption {
-				width: 100%;
-				position: absolute;
-				bottom: 30px;
-				display: flex;
-				justify-content: space-between;
-				padding-left: 30px;
-				padding-right: 30px;
-				span {
-					font-weight: 500;
-					font-size: 18px;
-					line-height: 21px;
-					color: #ffffff;
-				}
-				&-button {
-					color: #ffffff;
-					border: 1px solid #ffffff;
-					border-radius: 4px;
-					background: none;
-					padding: 6px 10px;
-					.down-icon {
-						padding-right: 7px;
-						height: 30px;
-					}
-					span {
-						font-weight: 500;
-						font-size: 15px;
-						line-height: 18px;
-						align-items: center;
-					}
-				}
-			}
 		}
 	}
-}
-
-.frame-cover.full-screen-preview {
-	position: absolute;
-	// border: 4px dashed red;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	// backdrop-filter: opacity(.5);
-	background: rgba(0, 0, 0, 0.8);
 }

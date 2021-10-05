@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import downloader from '../Utils/Dowloader';
-import { IConnections, IFile } from '../type';
-import { truckIcon, loadingIcon } from '../images';
+import { IConnections, IFile, IRowTexts } from '../type';
+import { truckIcon } from '../images';
 import ShowImage from '../Utils/ShowImage';
 import './FullScreen.scss'
+import IconButton from '../Utils/Button';
 
 interface IProps {
     connection: IConnections;
     file: IFile;
     onClose: () => void;
     image?: any;
+    text?: IRowTexts;
 }
 
 export default (props: IProps) => {
@@ -78,33 +79,42 @@ export default (props: IProps) => {
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [image]);
     return (
+        <>
+            <div className="upload-component-full-screen-frame-cover  full-screen-preview" onClick={() => props.onClose()}>
+                <div className="large-cover">
+                    <IconButton
+                        action={() => {
+                            setAbort(true);
+                            props.onClose();
+                        }}
+                        className="fas fa-times remove-icon"
+                        title={props.text?.CloseButton || 'Close'} position='left' />
 
-        <div className="upload-component-full-screen-frame-cover  full-screen-preview" onClick={() => props.onClose()}>
-            <div className="large-cover">
-                <i className={`fas fa-times remove-icon`} onClick={() => {
-                    setAbort(true);
-                    props.onClose();
-                }} />
-                <div className="large">
-                    <ShowImage
-                        connection={props.connection}
-                        file={props.file}
-                        // onClick={() => console.log('Clicked')}
-                        // setImage={(data: any) => console.log('Image:', data)}
-                        // setType={(data) => console.log('Type :', data)}
-                        isAborted={abort}
-                    />
-                    {/* <div className="large-caption">
-                    <small>{` `}</small>
-                    <button type="button" className="large-caption-button" onClick={() => window.open(props.image)}>
-                        <i className={`fas fa-download down-icon`} onClick={props.onClose} />
-                        <span>{props.downloadButtonTitle || `DOWNLOAD`}</span>
-                    </button>
+                    <IconButton
+                        action={() => window.open(props.image)}
+                        className="download-container fas fa-download "
+                        title={props.text?.DownloadButton} position='right' />
 
-                </div> */}
+                    <div className="large">
+                        <ShowImage
+                            connection={props.connection}
+                            file={props.file}
+                            // onClick={() => console.log('Clicked')}
+                            setImage={(data: any) => setImage(data)}
+                            // setType={(data) => console.log('Type :', data)}
+                            isAborted={abort}
+                        />
+                    </div>
+
                 </div>
             </div>
-        </div>
+            <DownloadFile
+                headers={headers}
+                url={`${downloadURL}/${props.imageId}`}
+                setLoading={props.setLoading}
+                filename={props.filename || `zz-downloadfile`}
+            />
+        </>
     )
 
 };

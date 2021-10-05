@@ -1,5 +1,5 @@
 import React from 'react';
-import { IConnections, IFile } from '../type';
+import { IConnections, IFile, IRowTexts } from '../type';
 import FullScreen from './FullScreen'
 
 interface IProps {
@@ -7,6 +7,7 @@ interface IProps {
     connection: IConnections;
     file: IFile;
     image?: any;
+    text?: IRowTexts
 
 }
 

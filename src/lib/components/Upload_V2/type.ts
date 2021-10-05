@@ -54,6 +54,7 @@ export interface IRowTexts {
     ViewButton?: string;
     EditButton?: string;
     DeleteButton?: string;
+    CloseButton?: string;
 
 }
 export interface IUploadFilesProps {
