@@ -1,5 +1,5 @@
-import { IUploadFilesProps, IRowItems, IRowTexts, IUploadActions as MyUploadActions } from './components/Upload_V2/type';
-import RowUpload from './components/Upload_V2/skins/RowUpload';
+import { IUploadFilesProps, IRowItems, IRowTexts, IUploadActions as MyUploadActions } from './components/Upload/type';
+import RowUpload from './components/Upload/skins/RowUpload';
 
 
 export { RowUpload }
