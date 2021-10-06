@@ -3,7 +3,7 @@ import { IConnections, IFile, IUploadFilesProps, } from '../type';
 import '../../_styles/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 import { FullScreen } from '../Previews'
-import { loadingIcon } from '../../_images'
+import { LoadingIcon } from '../../_images'
 
 interface IProps extends IUploadFilesProps {
     connection: IConnections;
@@ -34,7 +34,7 @@ const RowUploadForm = (props: IProps) => {
 
     const DownloadSection = () => {
         if (downloading)
-            return <img src={loadingIcon} alt={''} />
+            return <LoadingIcon />
 
         return rowItems?.Column1 ||
             <IconButton

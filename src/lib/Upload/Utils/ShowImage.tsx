@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { IConnections, imageState, IRowTexts } from '../type';
-import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, loadingIcon } from '../../_images';
+import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 
 interface IProps {
@@ -137,16 +137,14 @@ class DownloadImage extends Component<IProps, IState> {
                                     <span>{this.props.text?.LoadingError || "Picture couldn't loaded"}</span>
                                 </div>
                             )
-                            : <img
-                                src={
-                                    this.state.status === imageState.None || this.state.status === imageState.Loading
-                                        ? loadingIcon
-                                        : this.state.file
-                                }
-                                className={`truck-icon ${this.props.isAborted && 'fail'}`}
-                                alt="truck-icon"
-                                onClick={this.props.onClick}
-                            />
+                            : this.state.status === imageState.None || this.state.status === imageState.Loading
+                                ? <LoadingIcon />
+                                : <img
+                                    src={this.state.file}
+                                    className={`truck-icon ${this.props.isAborted && 'fail'}`}
+                                    alt="truck-icon"
+                                    onClick={this.props.onClick}
+                                />
                         }
                     </>
                 )}

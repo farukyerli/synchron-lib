@@ -1,6 +1,6 @@
 {
   "name": "synchron-lib",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "",
   "contributors": [
     {
@@ -26,7 +26,7 @@
     "copy-system-files": "cp package.json dist/ && cp README.md dist/",
     "copy-images": "cp -pr src/lib/_images dist/_images",
     "ybuild": "npm run prepare-build && npm run copy",
-    "fix-css": "find dist/**/*.js -type f -exec sed -i -e 's/.scss/.css/g' *.js {} \\;",
+    "fix-css": "find dist/**/*.js -type f -exec sed -i -e 's/.scss/.css/g' dist/**/*.js {} \\;",
     "build": "npm run prepare-build && npm run bundle-css && npm run copy-images && npm run copy-system-files && npm run fix-css"
   },
   "peerDependencies": {
@@ -112,6 +112,6 @@
     ]
   },
   "dependencies": {
-    "synchron-lib": "^0.1.17"
+    "synchron-lib": "^0.1.19"
   }
 }

@@ -11,6 +11,6 @@ import PptIcon from './ppt';
 // @ts-ignore
 import TruckIcon from './fa-truck-duo';
 // @ts-ignore
-import loadingIcon from './loading.gif';
+import LoadingIcon from './LoadingIcon';
 
-export { PdfIcon, DocIcon, PptIcon, TruckIcon, TxtIcon, XlsIcon, loadingIcon }
+export { PdfIcon, DocIcon, PptIcon, TruckIcon, TxtIcon, XlsIcon, LoadingIcon }
