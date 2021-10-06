@@ -8,7 +8,7 @@ const APP_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d8def1-dc4b-42c
 const headers = {
     authorization: ApiKey,
 }
-// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/da6c5ee9-625b-4719-865f-59c037961d6e';
+const img = 'https://zz-web-dev.zozengo.com/api/web/Download/da6c5ee9-625b-4719-865f-59c037961d6e';
 // const img = 'https://cloud.zozengo.com/index.php/s/RxT8XFPRsKDHGHB/download'
 // const img='data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7';
 
@@ -28,8 +28,8 @@ const App = () => {
 
                     // title="Test Title"
                     upLoadText="Upload Document"
-                    // files={[img]}
-                    files={[]}
+                    files={[img]}
+                    // files={[]}
                     previewType="FullScreen"
 
 

@@ -12,7 +12,7 @@ export default (props: IProps) => {
     const [{ loading, error }, getDataFromAPI] = useAxios({ responseType: 'blob' }, { manual: true });
 
     useEffect(() => {
-        console.log('props.url : ', props.url)
+        // console.log('props.url : ', props.url)
         props.url && startDownload({ url: props.url, headers: props.headers });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.url]);

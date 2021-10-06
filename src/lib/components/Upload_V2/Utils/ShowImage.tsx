@@ -31,7 +31,6 @@ class DownloadImage extends Component<IProps, IState> {
             file: null,
             status: imageState.None,
         };
-        // console.log('DownloadImage props', props);
     }
 
     request = new XMLHttpRequest();

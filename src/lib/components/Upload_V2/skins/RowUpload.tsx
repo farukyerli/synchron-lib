@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IConnections, IFile, IUploadFilesProps, } from '../type';
 import './styles/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
-import Preview from '../Previews'
+import { FullScreen } from '../Previews'
 import { loadingIcon } from '../images'
 
 interface IProps extends IUploadFilesProps {
@@ -26,15 +26,10 @@ const RowUploadForm = (props: IProps) => {
         if (files && files.length) {
             setFileUrl(props.files[0])
             setFileName(props.files[0])
-
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [files])
 
-    useEffect(() => {
-        console.log('Selected File', file)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [file])
 
 
     const DownloadSection = () => {
@@ -117,7 +112,7 @@ const RowUploadForm = (props: IProps) => {
                     </div>}
                 </section>
             </div>
-            {showPreview && <Preview
+            {showPreview && <FullScreen
                 onClose={() => setShowPreview(null)}
                 image={showPreview}
                 connection={connection}
