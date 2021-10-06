@@ -6,7 +6,7 @@ var routeSources = {
     app: './src/',
     html_views: {
         // path: 'src/lib/**/*.css',
-        path: 'src/lib/**/*.scss',
+        path: 'src/lib/**/*.css',
         dist: 'dist',
     },
 };

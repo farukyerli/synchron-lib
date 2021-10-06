@@ -8,13 +8,8 @@
       "esnext"
     ],
     "allowJs": true,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "strictNullChecks": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,6 +19,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
     "sourceMap": true,
     "rootDirs": [
       "src"
@@ -34,11 +34,14 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "lib"
   ],
   "exclude": [
     "node_modules",
     "build",
-    "**/*.spec.ts"
+    "dist",
+    "**/*.spec.ts",
+    "src/dist"
   ]
 }
