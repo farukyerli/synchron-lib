@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "xbuild": "react-scripts build",
     "bundle-scripts": "tsc -b ./src/lib",
     "bundle-css": "gulp",
     "bundle": "npm-run-all clean-bundle bundle-scripts bundle-css",
@@ -32,7 +32,7 @@
     "clean": "rm -rf dist",
     "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx\" ",
     "copy": "cp package.json dist/ && cp README.md dist/",
-    "xbuild": "npm run prepare-build && npm run copy"
+    "build": "npm run prepare-build && npm run copy"
   },
   "peerDependencies": {
     "react": ">= 16.10.0",

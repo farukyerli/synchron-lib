@@ -9,3 +9,6 @@ npm build
 cd dist
 
 npm publish
+
+type script to js
+ npx tsc --jsx preserve -t es2020 --outDir ../build --noEmit false   
