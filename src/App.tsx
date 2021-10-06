@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { RowUpload } from './lib';
-import './lib/styles/fontawesome/scss/fontawesome.scss';
-import './lib/styles/fontawesome/scss/light.scss';
-import './lib/styles/fontawesome/scss/regular.scss';
-import './lib/styles/fontawesome/scss/brands.scss';
-import './lib/styles/fontawesome/scss/solid.scss';
-import './lib/styles/fontawesome/scss/duotone.scss';
+import './_assests/fontawesome/scss/fontawesome.scss';
+import './_assests/fontawesome/scss/light.scss';
+import './_assests/fontawesome/scss/regular.scss';
+import './_assests/fontawesome/scss/brands.scss';
+import './_assests/fontawesome/scss/solid.scss';
+import './_assests/fontawesome/scss/duotone.scss';
 
 const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiJjNWZjY2U3OC05ZTY3LTRjNTItYTU1NC02MTVjMDdmM2MxZTUiLCJpYXQiOiIxMC8wNi8yMDIxIDEwOjU2OjUxICswMDowMCIsIm5iZiI6MTYzMzUxNzgxMSwiZXhwIjoxNjMzNTMyMjExLCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.saDmet6veBS4thlJA6xFzQqgDjmkcO_8KqDL2SWzagk'
 const APP_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642';
