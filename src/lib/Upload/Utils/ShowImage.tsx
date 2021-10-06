@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { IConnections, imageState, IRowTexts } from '../type';
-import { pdfIcon, docIcon, pptIcon, txtIcon, xlsIcon, loadingIcon } from '../../_images';
+import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, loadingIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 
 interface IProps {
@@ -54,28 +54,28 @@ class DownloadImage extends Component<IProps, IState> {
                     type === 'msword' && (type = 'doc');
                     type === 'vnd.openxmlformats-officedocument.wordprocessingml.document' && (type = 'docx');
                     // type.indexOf('word') !== -1 && (type = 'docx');
-                    let file = '';
+                    let file: any = '';
                     switch (type) {
                         case 'pdf':
-                            file = pdfIcon;
+                            file = <PdfIcon />;
                             break;
                         case 'doc':
-                            file = docIcon;
+                            file = <DocIcon />;
                             break;
                         case 'docx':
-                            file = docIcon;
+                            file = <DocIcon />;
                             break;
                         case 'xls':
-                            file = xlsIcon;
+                            file = <XlsIcon />;
                             break;
                         case 'xlsx':
-                            file = xlsIcon;
+                            file = <XlsIcon />;
                             break;
                         case 'txt':
-                            file = txtIcon;
+                            file = <TxtIcon />;
                             break;
                         case 'ppt':
-                            file = pptIcon;
+                            file = <PptIcon />;
                             break;
                         default:
                             file = url;

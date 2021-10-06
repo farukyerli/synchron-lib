@@ -1,16 +1,16 @@
 // @ts-ignore
-import pdfIcon from './pdf.svg';
+import PdfIcon from './pdf';
 // @ts-ignore
-import txtIcon from './txt.svg';
+import TxtIcon from './txt';
 // @ts-ignore
-import docIcon from './doc.svg';
+import DocIcon from './doc';
 // @ts-ignore
-import xlsIcon from './xls.svg';
+import XlsIcon from './xls';
 // @ts-ignore
-import pptIcon from './ppt.svg';
+import PptIcon from './ppt';
 // @ts-ignore
-import truckIcon from './fa-truck-duo.svg';
+import TruckIcon from './fa-truck-duo';
 // @ts-ignore
 import loadingIcon from './loading.gif';
 
-export { pdfIcon, docIcon, pptIcon, truckIcon, txtIcon, xlsIcon, loadingIcon }
+export { PdfIcon, DocIcon, PptIcon, TruckIcon, TxtIcon, XlsIcon, loadingIcon }

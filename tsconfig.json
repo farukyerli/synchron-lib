@@ -41,6 +41,7 @@
     "node_modules",
     "build",
     "dist",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "src/dist"
   ]
 }
