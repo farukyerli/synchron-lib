@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IConnections, IFile, imageState, IRowTexts } from '../type';
+import { IConnections, imageState, IRowTexts } from '../type';
 import ShowImage from '../Utils/ShowImage';
 import './FullScreen.scss'
 import IconButton from '../Utils/Button';
@@ -7,7 +7,10 @@ import DownloadFile from '../Utils/DownloadFile';
 
 interface IProps {
     connection: IConnections;
-    file: IFile;
+    file: {
+        name: string;
+        url: string;
+    };
     onClose: () => void;
     image?: any;
     text?: IRowTexts;
@@ -30,11 +33,8 @@ export default (props: IProps) => {
                         <ShowImage
                             connection={props.connection}
                             file={props.file}
-                            // onClick={() => console.log('Clicked')}
                             setImage={(data: any) => setImage(data)}
                             imageStatus={(value) => value === imageState.Done && setShowDownloadButton(true)}
-                            // setImage={(data: any) => setDownloadImage(data)}
-                            // setType={(data) => console.log('Type :', data)}
                             isAborted={abort}
                         />
                     </div>
@@ -59,9 +59,7 @@ export default (props: IProps) => {
                 downloadImage && <DownloadFile
                     headers={props.connection.headers}
                     url={downloadImage}
-                    // setLoading={(value) => value === false && setDownloadImage(null)}
                     filename={props.file.name || `zz-downloadfile`}
-                // ext={extention}
                 />
             }
 

@@ -1,11 +1,14 @@
 import React from 'react';
-import { IConnections, IFile, IRowTexts } from '../type';
+import { IConnections, IRowTexts } from '../type';
 import FullScreen from './FullScreen'
 
 interface IProps {
     onClose: () => void;
     connection: IConnections;
-    file: IFile;
+    file: {
+        name: string;
+        url: string;
+    };
     image?: any;
     text?: IRowTexts
 

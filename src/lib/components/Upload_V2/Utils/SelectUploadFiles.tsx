@@ -1,16 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { IUploadFileType } from '../../type';
+import { IUploadFileType } from '../type';
 
 interface IProps {
     open: boolean;
     disabled?: boolean;
     multiple?: boolean;
     onChange: (files: IUploadFileType[]) => void;
-
-    setLoading?: (value: boolean) => void;
-    uploadURL: string;
-    headers: any;
-
 }
 
 export default (props: IProps) => {
@@ -41,5 +36,6 @@ export default (props: IProps) => {
             multiple={multiple}
             onChange={onFilesAdded}
         />
+
     );
 };

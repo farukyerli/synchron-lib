@@ -7,10 +7,8 @@ export type IConnections = {
 
 export interface IFile {
     name: string;
-    url: string;
     type?: string;
-    data?: any;
-    // custom: any;
+    rawFileData?: any;
     status?: number;
 }
 export interface IUploadFileType {
@@ -39,6 +37,11 @@ export interface IUploadActions {
     Delete?: (data: any) => void
     Download?: (data: any) => void
     Upload?: (data: any) => void
+
+    onAbort?: (fileName?: string) => void;
+    onError?: (status: number, data: string) => void;
+    onSuccess?: (data?: any) => void;
+    onDelete?: (fileName?: string) => void;
 }
 
 export interface IRowItems {
@@ -55,6 +58,7 @@ export interface IRowTexts {
     UploadButton?: string;
     ViewButton?: string;
     EditButton?: string;
+    AbortButton?: string;
     DeleteButton?: string;
     CloseButton?: string;
     LoadingError?: string;
@@ -67,22 +71,31 @@ export const imageState = {
     Done: 2,
     Problem: 3
 }
+interface IBaseGraphs {
+    backgroundColor?: string;
+    foregroundColor?: string;
+    width?: string;
+    height?: string;
+}
+export interface IPieChartLoading extends IBaseGraphs {
+
+}
+export interface IUploadTools {
+    PieChartLoading?: IPieChartLoading
+}
 export interface IUploadFilesProps {
     value?: string;
     skintype?: 'dropzone' | 'row' | 'modal';
     classes?: IClasses;
     rowItems?: IRowItems;
-    actionButtons?: IUploadActions;
+    actions?: IUploadActions;
     text?: IRowTexts;
     files: string[];
+    tools?: IUploadTools;
 
 
 
 
-    onAbort?: () => void;
-    onError?: (data: string, status: number) => void;
-    onSuccess?: (data?: any) => void;
-    onDelete?: (fileName?: any) => void;
     progressBarSteps?: number;
     progressBarType?: 'Horizontal-1' | 'Horizontal-2';
     multiUpload?: boolean;

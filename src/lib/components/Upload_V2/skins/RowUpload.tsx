@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { IConnections, IUploadFilesProps, } from '../type';
+import { IConnections, IFile, IUploadFilesProps, } from '../type';
 import './styles/RowUpload.scss'
+import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 import Preview from '../Previews'
-import IconButton from '../Utils/Button'
-import DownloadFile from '../Utils/DownloadFile';
-import UploadFile from '../Utils/UploadFile';
 import { loadingIcon } from '../images'
 
 interface IProps extends IUploadFilesProps {
@@ -12,13 +10,17 @@ interface IProps extends IUploadFilesProps {
 }
 
 const RowUploadForm = (props: IProps) => {
-    const { classes, rowItems, actionButtons, text, connection, files } = props;
+    const { classes, rowItems, actions, text, connection, files } = props;
     const [showPreview, setShowPreview] = useState<string | null>(null)
     const [fileUrl, setFileUrl] = useState<string>('')
     const [fileName, setFileName] = useState<string>('')
     const [downloadImage, setDownloadImage] = useState<any>(null)
     const [showUpload, setShowUpload] = useState(false)
-    const [loading, setLoading] = useState(false);
+    const [downloading, setDownloading] = useState(false);
+    const [uploading, setUploading] = useState(false);
+    const [abort, setAbort] = useState(false);
+    const [uploadedRatio, setUploadedRatio] = useState<number>(0);
+    const [file, setFile] = useState<IFile | null>(null)
 
     useEffect(() => {
         if (files && files.length) {
@@ -29,15 +31,20 @@ const RowUploadForm = (props: IProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [files])
 
+    useEffect(() => {
+        console.log('Selected File', file)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [file])
+
 
     const DownloadSection = () => {
-        if (loading)
+        if (downloading)
             return <img src={loadingIcon} alt={''} />
 
         return rowItems?.Column1 ||
             <IconButton
                 action={() => {
-                    actionButtons?.Download && actionButtons.Download(fileUrl);
+                    actions?.Download && actions.Download(fileUrl);
                     setDownloadImage(fileUrl)
                 }}
                 className={`fas fa-download column1 ${classes?.Column1}`}
@@ -45,13 +52,16 @@ const RowUploadForm = (props: IProps) => {
     }
 
     const UploadSection = () => {
-        if (loading)
-            return <img src={loadingIcon} alt={''} />
+        if (uploading)
+            return <PieLoading
+                ratio={uploadedRatio}
+            // ratio={0.7}
+            />
 
         return rowItems?.Column1 ||
             <IconButton
                 action={() => {
-                    actionButtons?.Upload && actionButtons.Upload(fileUrl);
+                    actions?.Upload && actions.Upload(fileUrl);
                     setShowUpload(!showUpload)
                 }}
                 className={`fas fa-upload column1 ${classes?.Column1}`}
@@ -66,34 +76,51 @@ const RowUploadForm = (props: IProps) => {
                     <div className="columns column2">{rowItems?.Column2 || 'Please define description of task '}</div>
                     {rowItems?.Column3 && <div className="columns">{rowItems?.Column3 || 'Free Usage Place 1'}</div>}
                     {rowItems?.Column4 && <div className="columns">{rowItems?.Column4 || 'Free Usage Place 2'}</div>}
-                    {(actionButtons?.Delete || actionButtons?.Edit || actionButtons?.View) && fileName &&
-                        <div className="columns column5">
-                            {rowItems?.Column5 || (
-                                <>
-                                    <IconButton
-                                        action={() => {
-                                            actionButtons?.View && actionButtons.View('')
-                                            setShowPreview('1')
-                                        }}
-                                        className="fas fa-eye"
-                                        title={text?.ViewButton} />
-                                    <IconButton
-                                        action={() => actionButtons?.Edit && actionButtons.Edit('')}
-                                        className="fas fa-pencil-alt"
-                                        title={text?.EditButton} />
-                                    <IconButton
-                                        action={() => actionButtons?.Delete && actionButtons.Delete('')}
-                                        className="fas fa-trash"
-                                        title={text?.DeleteButton} />
-                                </>
-                            )}
-                        </div>}
+
+                    <div className="columns column5">
+                        {rowItems?.Column5 || (
+                            <>
+                                <IconButton
+                                    action={() => {
+                                        actions?.View && actions.View('')
+                                        setShowPreview('1')
+                                    }}
+                                    className="fas fa-eye"
+                                    title={text?.ViewButton}
+                                    visible={actions?.View !== undefined && fileName !== ''}
+                                />
+                                <IconButton
+                                    action={() => actions?.Edit && actions.Edit('')}
+                                    className="fas fa-pencil-alt"
+                                    title={text?.EditButton}
+                                    visible={actions?.Edit !== undefined && fileName !== ''}
+                                />
+                                <IconButton
+                                    action={() => {
+                                        actions?.Delete && actions.Delete(fileName);
+                                        actions?.onDelete && actions.onDelete(fileName)
+                                    }}
+                                    className="fas fa-trash"
+                                    title={text?.DeleteButton}
+                                    visible={actions?.Delete !== undefined && fileName !== ''}
+                                />
+                            </>
+                        )}
+                        {uploading && <IconButton
+                            action={() => setAbort(true)}
+                            className="fas fa-times abort"
+                            title={text?.AbortButton} />
+                        }
+                    </div>
                     {rowItems?.Column6 && <div className="columns" >
                         {rowItems?.Column6 || 'Free Usage Place 3'}
                     </div>}
                 </section>
             </div>
-            {showPreview && <Preview onClose={() => setShowPreview(null)} image={showPreview} connection={connection}
+            {showPreview && <Preview
+                onClose={() => setShowPreview(null)}
+                image={showPreview}
+                connection={connection}
                 file={{
                     name: fileName,
                     url: fileUrl,
@@ -104,16 +131,29 @@ const RowUploadForm = (props: IProps) => {
                 downloadImage && <DownloadFile
                     headers={props.connection.headers}
                     url={fileUrl}
-                    setLoading={setLoading}
+                    setLoading={setDownloading}
                     filename={fileName || `zz-downloadfile`}
                 />
             }
-            <UploadFile
-                headers={props.connection.headers}
-                uploadURL={fileUrl}
-                setLoading={setLoading}
-                onChange={(data) => console.log('onChange:', data[0].name)}
+            <SelectUploadFiles
+                onChange={(data) => setFile({ name: data[0].name, rawFileData: data[0] })}
                 open={showUpload}
+            />
+
+            <UploadItem
+                connection={connection}
+                file={file}
+                abort={abort}
+                onEndTask={() => {
+                    setFile(null);
+                    setAbort(false);
+                }}
+                onRatio={(value: number) => setUploadedRatio(value)}
+                onUploading={(value: boolean) => setUploading(value)}
+                onAbort={() => actions?.onAbort && actions.onAbort(fileName)}
+                onError={actions?.onError}
+                onSuccess={actions?.onSuccess}
+
             />
 
         </>

@@ -55,6 +55,10 @@
 					cursor: pointer;
 					color: #222222;
 				}
+
+				&.abort {
+					color: #cf0e0e;
+				}
 			}
 		}
 	}
