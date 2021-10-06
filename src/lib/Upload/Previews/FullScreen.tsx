@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { IConnections, imageState, IRowTexts } from '../type';
 import ShowImage from '../Utils/ShowImage';
-// import './FullScreen.scss'
-import '../../../styles/Upload/FullScreen.scss'
+import '../../styles/Upload/FullScreen.scss'
 import IconButton from '../Utils/Button';
 import DownloadFile from '../Utils/DownloadFile';
 interface IProps {
