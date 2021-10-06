@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { IConnections, imageState, IRowTexts } from '../type';
 import { pdfIcon, docIcon, pptIcon, txtIcon, xlsIcon, loadingIcon } from '../images';
-import './ShowImage.scss'
+import '../../../styles/Upload/ShowImage.scss'
 
 interface IProps {
     connection: IConnections;

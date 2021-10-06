@@ -1,6 +1,6 @@
 {
   "name": "synchron-lib",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "",
   "contributors": [
     {
@@ -8,7 +8,8 @@
     }
   ],
   "private": false,
-  "main": "bundle/lib/index.js",
+  "license": "MIT",
+  "main": "index.js",
   "files": [
     "bundle/**/*.js",
     "bundle/**/*.d.ts",
@@ -20,33 +21,27 @@
     "Equalizer",
     "Faruk"
   ],
-  "peerDependencies": {
-    "react": ">= 16.10.0",
-    "react-dom": ">= 16.10.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "clean-bundle": "rimraf build",
-    "bundle-scripts": "tsc -b ./src",
+    "bundle-scripts": "tsc -b ./src/lib",
     "bundle-css": "gulp",
     "bundle": "npm-run-all clean-bundle bundle-scripts bundle-css",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf dist",
+    "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx\" ",
+    "copy": "cp package.json dist/ && cp README.md dist/",
+    "xbuild": "npm run prepare-build && npm run copy"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "react": ">= 16.10.0",
+    "react-dom": ">= 16.10.0",
     "@material-ui/core": "^4.12.3",
     "axios": "^0.21.1",
-    "axios-hooks": "^2.6.3",
-    "babel-polyfill": "^6.26.0",
-    "bootstrap": "^5.1.1",
-    "node-sass": "~4.14.1",
-    "react": ">= 16.10.0",
-    "react-app-polyfill": "^2.0.0",
-    "react-dom": ">= 16.10.0",
-    "react-scripts": "^4.0.3",
-    "typescript": "^4.4.3"
+    "axios-hooks": "^2.6.3"
   },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
@@ -75,7 +70,19 @@
     "react-app-env": "^1.2.3",
     "react-app-rewired": "^2.1.8",
     "rimraf": "^3.0.2",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "@babel/cli": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "react": ">= 16.10.0",
+    "react-dom": ">= 16.10.0",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.4.3",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^5.1.1",
+    "node-sass": "~4.14.1",
+    "react-app-polyfill": "^2.0.0"
   },
   "browserslist": {
     "production": [
@@ -86,9 +93,7 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version",
-      "ie 11",
-      "ie 9"
+      "last 1 safari version"
     ]
   },
   "husky": {

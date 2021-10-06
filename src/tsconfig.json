@@ -2,20 +2,34 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "jsx": "react",
         "declaration": true,
-        "outDir": "../bundle",
+        "outDir": "../dist",
         "rootDir": "./",
         "composite": true,
         "strict": true,
         "esModuleInterop": true,
-        "types": ["node", "jest"],
-        "typeRoots": ["node_modules/@types/"],
+        "types": [
+            "node",
+            "jest"
+        ],
+        "typeRoots": [
+            "node_modules/@types/"
+        ],
         "skipLibCheck": true
     },
-    "files": ["lib/index.ts"],
-    "include": ["lib/**/*.ts", "lib/**/*.tsx"],
+    "files": [
+        "lib/index.ts"
+    ],
+    "include": [
+        "lib/**/*.ts",
+        "lib/**/*.tsx"
+    ],
     "exclude": [
         "../node_modules",
         "../build",

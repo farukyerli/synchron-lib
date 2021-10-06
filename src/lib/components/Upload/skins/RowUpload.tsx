@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IConnections, IFile, IUploadFilesProps, } from '../type';
-import './styles/RowUpload.scss'
+import '../../../styles/Upload/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 import { FullScreen } from '../Previews'
 import { loadingIcon } from '../images'

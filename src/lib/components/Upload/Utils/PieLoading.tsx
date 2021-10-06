@@ -1,6 +1,6 @@
 import React from 'react';
 import { IPieChartLoading } from '../type';
-import './PieLoading.scss'
+import '../../../styles/Upload/PieLoading.scss'
 
 interface IProps extends IPieChartLoading {
     ratio: number;
