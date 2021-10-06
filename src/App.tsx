@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { RowUpload } from './lib';
+// import { RowUpload } from 'synchron-lib';
 import './_assests/fontawesome/scss/fontawesome.scss';
 import './_assests/fontawesome/scss/light.scss';
 import './_assests/fontawesome/scss/regular.scss';

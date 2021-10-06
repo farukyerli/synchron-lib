@@ -6,9 +6,11 @@ npm login
 
 npm build
 
+## scss isimlerini css xtentiona cevir
+find dist/**/*.js -type f -exec sed -i -e 's/.scss/.css/g' *.js {} \;
+
 cd dist
 
 npm publish
 
-type script to js
- npx tsc --jsx preserve -t es2020 --outDir ../build --noEmit false   
+

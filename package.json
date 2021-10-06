@@ -31,9 +31,11 @@
     "eject": "react-scripts eject",
     "clean": "rm -rf dist",
     "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx\" ",
-    "copy": "cp package.json dist/ && cp README.md dist/",
+    "copy-system-files": "cp package.json dist/ && cp README.md dist/",
+    "copy-images": "cp -pr src/lib/images dist/images",
     "ybuild": "npm run prepare-build && npm run copy",
-    "build": "npm-run-all prepare-build bundle-css && npm run copy"
+    "fix-css": "/bin/sleep 10 && find dist/**/*.js -type f -exec sed -i -e 's/.scss/.css/g' *.js {} \\;",
+    "build": "npm run bundle-css && npm run prepare-build && npm run copy-images && npm run copy-system-files && npm run fix-css"
   },
   "peerDependencies": {
     "@material-ui/core": "^4.12.3",
@@ -116,5 +118,8 @@
       "./node_modules/.bin/eslint — fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "synchron-lib": "^0.1.16"
   }
 }
