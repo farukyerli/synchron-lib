@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { IConnections, IFile, imageState, IRowTexts } from '../type';
+import { IConnections, imageState, IRowTexts } from '../type';
 import { pdfIcon, docIcon, pptIcon, txtIcon, xlsIcon, loadingIcon } from '../images';
 import './ShowImage.scss'
 
-
 interface IProps {
     connection: IConnections;
-    file: IFile;
+    file: {
+        name: string;
+        url: string;
+    };
     setImage?: (value: any) => void;
     setType?: (value: string) => void;
     setError?: (value: any) => void;
@@ -29,7 +31,6 @@ class DownloadImage extends Component<IProps, IState> {
             file: null,
             status: imageState.None,
         };
-        // console.log('DownloadImage props', props);
     }
 
     request = new XMLHttpRequest();
