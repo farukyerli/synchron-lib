@@ -12,5 +12,7 @@ import PptIcon from './ppt';
 import TruckIcon from './fa-truck-duo';
 // @ts-ignore
 import LoadingIcon from './LoadingIcon';
+import DownloadIcon from './download';
+import UploadIcon from './upload';
 
-export { PdfIcon, DocIcon, PptIcon, TruckIcon, TxtIcon, XlsIcon, LoadingIcon }
+export { PdfIcon, DocIcon, PptIcon, TruckIcon, TxtIcon, XlsIcon, LoadingIcon, DownloadIcon, UploadIcon }
