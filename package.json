@@ -1,6 +1,6 @@
 {
   "name": "synchron-lib",
-  "version": "0.1.20",
+  "version": "0.1.28",
   "description": "",
   "contributors": [
     {
@@ -16,25 +16,29 @@
   "keywords": [
     "Synchron",
     "Equalizer",
-    "Faruk"
+    "Zozengo",
+    "Upload",
+    "UploadFiles"
   ],
   "scripts": {
     "start": "react-scripts start",
-    "bundle-css": "gulp",
     "clean": "rm -rf dist",
     "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx\" ",
-    "copy-system-files": "cp package.json dist/ && cp README.md dist/",
-    "copy-images": "cp -pr src/lib/_images dist/_images",
-    "ybuild": "npm run prepare-build && npm run copy",
-    "fix-css": "find dist/**/*.js -type f -exec sed -i -e 's/.scss/.css/g' dist/**/*.js {} \\;",
-    "build": "npm run prepare-build && npm run bundle-css && npm run copy-images && npm run copy-system-files && npm run fix-css"
+    "bundle-css": "gulp",
+    "system-script": "./_buildScript.sh ",
+    "build": "npm run prepare-build && npm run bundle-css && npm run system-script",
+    "pub": "./_publish.sh "
   },
   "peerDependencies": {
     "@material-ui/core": "^4.12.3",
-    "axios": "^0.21.1",
-    "axios-hooks": "^2.6.3",
+    "@types/react": "^16.8.6 || ^17.0.0",
     "react": ">= 16.10.0",
     "react-dom": ">= 16.10.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -112,6 +116,6 @@
     ]
   },
   "dependencies": {
-    "synchron-lib": "^0.1.19"
+    "synchron-lib": "^0.1.27"
   }
 }

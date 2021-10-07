@@ -3,7 +3,7 @@ import { IConnections, imageState, IRowTexts } from '../type';
 import ShowImage from '../Utils/ShowImage';
 import '../../_styles/FullScreen.scss'
 import IconButton from '../Utils/Button';
-import DownloadFile from '../Utils/DownloadFile';
+import { DownloadFile } from '../Utils';
 interface IProps {
     connection: IConnections;
     file: {
@@ -56,9 +56,11 @@ export default (props: IProps) => {
             </div>
             {
                 downloadImage && <DownloadFile
-                    headers={props.connection.headers}
-                    url={downloadImage}
-                    filename={props.file.name || `zz-downloadfile`}
+                    file={{
+                        url: downloadImage,
+                        name: props.file.name || `zz-downloadfile`
+                    }}
+                    connection={props.connection}
                 />
             }
 

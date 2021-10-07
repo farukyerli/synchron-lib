@@ -1,52 +1,113 @@
-import React, { Fragment, useEffect } from 'react';
-import useAxios from 'axios-hooks';
+import React, { Component } from 'react';
+import { IConnections, imageState } from '../type';
+import '../../_styles/ShowImage.scss'
 
 interface IProps {
-    url: string;
-    headers: any;
+    connection: IConnections;
+    file: {
+        name: string;
+        url: string;
+    };
     setLoading?: (value: boolean) => void;
-    filename: string;
-    ext?: string;
+
+    imageStatus?: (value: number) => void;
+    setError?: (value: any) => void;
+    isAborted?: boolean;
+
 }
 
-export default (props: IProps) => {
-    const [{ loading, error }, getDataFromAPI] = useAxios({ responseType: 'blob' }, { manual: true });
 
-    useEffect(() => {
-        // console.log('props.url : ', props.url)
-        props.url && startDownload({ url: props.url, headers: props.headers });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.url]);
+interface IState {
+    file: any;
+    status: number;
+}
 
-    useEffect(() => {
-        props.setLoading && props.setLoading(loading);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loading]);
+class DownloadImage extends Component<IProps, IState> {
+    constructor(props: IProps) {
+        super(props);
+        this.state = {
+            file: null,
+            status: imageState.None,
+        };
+    }
 
-    useEffect(() => {
-        error && console.log('download error : ', error);
-    }, [error]);
+    request = new XMLHttpRequest();
 
-    const startDownload = async (value: any) => {
-        const result: any = await getDataFromAPI(value);
-        let contentType = 'application/pdf'
-        try {
-            contentType = result.headers['content-type']
-        } catch {
+    downloadFileWithFetch = () => {
+        this.request.open('GET', `${this.props.file.url}`, true);
+        Object.keys(this.props.connection.headers).map((key) => {
+            this.request.setRequestHeader(key, this.props.connection.headers[key]);
+            return null;
+        });
+        this.request.responseType = 'blob';
+        this.setState({ status: imageState.Loading });
+        this.props.setLoading && this.props.setLoading(true);
+        this.request.onload = (e) => {
+            switch (this.request.status) {
+                case 200: {
+                    const docURL = URL.createObjectURL(this.request.response);
+                    const ext: string = this.request.response.type.split('/')[1];
+                    // console.log('Downloaded ..', type, type.indexOf('word'));
 
-        }
-        if (result && result.status === 200) {
-            const data = new Blob([result.data], { type: contentType });
-            const ext = contentType.split('/')[1];
-            const docURL = window.URL.createObjectURL(data);
-            const tempLink = document.createElement('a');
-            tempLink.href = docURL;
-            tempLink.target = '_blank';
-            tempLink.rel = 'noopener noreferrer';
-            tempLink.setAttribute('download', `${props.filename}.${props.ext || ext}`);
-            tempLink.click();
-        }
+                    const tempLink = document.createElement('a');
+                    tempLink.href = docURL;
+                    tempLink.target = '_blank';
+                    tempLink.rel = 'noopener noreferrer';
+                    tempLink.setAttribute('download', `${this.props.file.name}.${ext}`);
+                    tempLink.click()
+
+                    // this.setState({ file });
+                    this.setState({ status: imageState.Done });
+                    this.props.setLoading && this.props.setLoading(false);
+
+                    break;
+                }
+
+                case 406: {
+                    this.setState({ file: null });
+                    // console.log('Download error: ', this.request.status, this.request.statusText);
+                    this.setState({ status: imageState.Problem });
+                    this.props.setLoading && this.props.setLoading(false);
+                    break;
+                }
+
+                default: {
+                    const ErrorMessage: any = this.request.response;
+                    ErrorMessage && console.log('ERROR RESPONSE : ', ErrorMessage);
+                    ErrorMessage && this.props.setError && this.props.setError(ErrorMessage);
+                    this.setState({ file: null });
+                    this.setState({ status: imageState.Problem });
+                    this.props.setLoading && this.props.setLoading(false);
+                }
+            }
+
+        };
+        // this.state.status !== imageState.Done && this.setState({ status: imageState.Problem });
+
+        this.request.send(null);
     };
 
-    return <Fragment></Fragment>;
-};
+    componentWillUnmount = () => {
+        this.request.abort();
+    };
+
+    componentDidMount = () => {
+        this.downloadFileWithFetch();
+    };
+
+    componentDidUpdate = () => {
+        this.props.isAborted && this.request.abort();
+        if (this.state.status === imageState.Done || this.state.status === imageState.Problem)
+            this.props.imageStatus && this.props.imageStatus(this.state.status)
+    }
+
+    render() {
+        return (
+            <>
+
+            </>
+        );
+    }
+}
+
+export default DownloadImage;

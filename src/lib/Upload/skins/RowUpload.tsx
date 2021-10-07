@@ -124,10 +124,12 @@ const RowUploadForm = (props: IProps) => {
             />}
             {
                 downloadImage && <DownloadFile
-                    headers={props.connection.headers}
-                    url={fileUrl}
+                    file={{
+                        url: fileUrl,
+                        name: fileName || `zz-downloadfile`
+                    }}
+                    connection={props.connection}
                     setLoading={setDownloading}
-                    filename={fileName || `zz-downloadfile`}
                 />
             }
             <SelectUploadFiles
