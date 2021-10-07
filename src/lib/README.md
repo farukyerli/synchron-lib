@@ -18,11 +18,8 @@ const NewForm = (props: IProps) => {
     return (
         <RowUpload
                     connection={{ url: APP_URL, headers }}
-                    files={[img]}
-                    // files={[]}
-                    // previewType="FullScreen"
-
-
+                    files={[]}
+                    previewType="FullScreen"
                     skintype="row"
                     rowItems={{
                         // Column3: <>Deneme</>,
@@ -30,12 +27,12 @@ const NewForm = (props: IProps) => {
                         // Column6: ''
                     }}
                     text={{
-                        DeleteButton: "Sil",
-                        DownloadButton: "Indir",
-                        UploadButton: "Yukle",
-                        EditButton: "Degistir",
-                        ViewButton: "Goster",
-                        AbortButton: "Durdur"
+                        DeleteButton: "Delete",
+                        DownloadButton: "Download",
+                        UploadButton: "Upload",
+                        EditButton: "Edit",
+                        ViewButton: "View",
+                        AbortButton: "Cancel"
                     }}
                     tools={{
                         PieChartLoading: {

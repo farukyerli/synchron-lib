@@ -4,6 +4,7 @@ import DownloadFile from './DownloadFile';
 import SelectUploadFiles from './SelectUploadFiles';
 import ShowImage from './ShowImage';
 import UploadItem from './UploadItem';
+import DropzoneCanvas from './DropzoneCanvas';
 
 export {
     PieLoading,
@@ -11,5 +12,6 @@ export {
     ShowImage,
     SelectUploadFiles,
     IconButton,
-    DownloadFile
+    DownloadFile,
+    DropzoneCanvas
 }

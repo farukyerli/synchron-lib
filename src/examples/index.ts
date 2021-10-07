@@ -1,3 +1,4 @@
 import RowUploadExample from './RowUpload';
+import ModalUploadExample from './ModalUpload';
 
-export { RowUploadExample }
+export { RowUploadExample, ModalUploadExample }

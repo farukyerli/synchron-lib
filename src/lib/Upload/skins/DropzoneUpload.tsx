@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { IUploadFileType } from '../types';
+import { IConnections, IUploadFilesProps, IUploadFileType } from '../types';
+import '../../_styles/Dropzone.scss'
 
-import './styles/Dropzone.scss'
 
 // import uploadIcon from '../images/fa-upload.svg';
 
-interface IProps {
+interface IProps extends IUploadFilesProps {
+    connection: IConnections;
     disabled?: boolean;
     upLoadText?: string;
     onChange?: (files: IUploadFileType[]) => void;
