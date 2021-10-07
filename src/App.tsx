@@ -3,11 +3,7 @@ import { RowUpload } from './lib';
 // import { RowUpload } from 'synchron-lib';
 // import { RowUpload } from './dist';
 import './_assests/fontawesome/scss/fontawesome.scss';
-import './_assests/fontawesome/scss/light.scss';
-import './_assests/fontawesome/scss/regular.scss';
-import './_assests/fontawesome/scss/brands.scss';
 import './_assests/fontawesome/scss/solid.scss';
-import './_assests/fontawesome/scss/duotone.scss';
 import { DocIcon } from './lib/_images'
 
 const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiIwYzNkODc4Zi1lNDY5LTQ1MjQtYjgzMy02MDNkYTFiYzQ3MzIiLCJpYXQiOiIxMC8wNy8yMDIxIDA1OjUzOjE1ICswMDowMCIsIm5iZiI6MTYzMzU4NTk5NSwiZXhwIjoxNjMzNjAwMzk1LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.5LqONODYcWQV0qBzdDGdd6IsORirFLHBEEzcUEvVpB0'
@@ -57,7 +53,8 @@ const App = () => {
                     }}
                     tools={{
                         PieChartLoading: {
-                            backgroundColor: '#030303'
+                            backgroundColor: '#030303',
+
                         }
                     }}
                     actions={{
