@@ -1,13 +1,15 @@
 echo "Working Directory ...."
 
-VERSION =""
-
 pwd
-cp -pr src/lib/_images dist/_images
+cp src/lib/_images dist/_images
 echo "Images Copied ...."
 ####################################################
 ### Increase Project Pacth Value in Main JSON File
-# ./setVersion.sh
+if [ "$1" = "+" ]; then
+    ./_setVersion.sh
+else
+    echo "Version NOT updated"
+fi
 ### Copy MainJSON to Library
 cp package.json dist/
 ### Delete unnecessary keys from Library
@@ -17,7 +19,7 @@ jq 'del(.dependencies)' package.json >dist/package.json
 echo "package.json Copied ...."
 cp src/lib/README.md dist/
 echo "src/lib/README.md Copied ...."
-cp src/lib/index.d.ts dist/
+# cp src/lib/index.d.ts dist/
 rm dist/index.d.js
 echo "src/lib/index.d.ts Copied ...."
 
@@ -27,6 +29,7 @@ for i in $(find ./dist/ -name "*.js"); do
     sed -i "" "s/.scss/.css/g" $i
 done
 
+# Uretilen Hata dosyalarini temizle
 for i in $(find ./dist/ -name "*.js-e"); do
     echo "deleting $i"
     rm $i

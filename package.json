@@ -1,6 +1,6 @@
 {
   "name": "synchron-lib",
-  "version": "0.1.22",
+  "version": "0.1.28",
   "description": "",
   "contributors": [
     {
@@ -25,8 +25,9 @@
     "clean": "rm -rf dist",
     "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx\" ",
     "bundle-css": "gulp",
-    "system-script": "./buildScript.sh ",
-    "build": "npm run prepare-build && npm run bundle-css && npm run system-script"
+    "system-script": "./_buildScript.sh ",
+    "build": "npm run prepare-build && npm run bundle-css && npm run system-script",
+    "pub": "./_publish.sh "
   },
   "peerDependencies": {
     "@material-ui/core": "^4.12.3",
@@ -115,6 +116,6 @@
     ]
   },
   "dependencies": {
-    "synchron-lib": "^0.1.19"
+    "synchron-lib": "^0.1.27"
   }
 }
