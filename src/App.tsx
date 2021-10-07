@@ -10,7 +10,7 @@ import './_assests/fontawesome/scss/solid.scss';
 import './_assests/fontawesome/scss/duotone.scss';
 import { DocIcon } from './lib/_images'
 
-const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiIyYWFlNTBhZS0zZDdkLTQ2YmYtODc0NC0wNjEyMWYyYzI0NDkiLCJpYXQiOiIxMC8wNi8yMDIxIDIyOjAzOjAyICswMDowMCIsIm5iZiI6MTYzMzU1Nzc4MiwiZXhwIjoxNjMzNTcyMTgyLCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.pfIGzyV-abVzqQ6lAjcFsYYRWUVUmDCAG_BtTarGIn4'
+const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiIwYzNkODc4Zi1lNDY5LTQ1MjQtYjgzMy02MDNkYTFiYzQ3MzIiLCJpYXQiOiIxMC8wNy8yMDIxIDA1OjUzOjE1ICswMDowMCIsIm5iZiI6MTYzMzU4NTk5NSwiZXhwIjoxNjMzNjAwMzk1LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.5LqONODYcWQV0qBzdDGdd6IsORirFLHBEEzcUEvVpB0'
 const APP_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642';
 // const UPLOAD_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642?documentDefinitionId=17e2e8af-d039-46a4-97ed-3e79b2fa5bf7';
 const headers = {
@@ -30,7 +30,7 @@ const App = () => {
     return (
         <div className="App">
             <div className="container" style={{ padding: 100 }}>
-
+                RowUpload without file
                 <RowUpload
                     connection={{ url: APP_URL, headers }}
 
@@ -73,7 +73,8 @@ const App = () => {
                         onError: (s, d) => console.log('error:', s, d),
                     }}
                 />
-
+                <br />
+                RowUpload with file
                 <RowUpload
                     connection={{ url: APP_URL, headers }}
 
@@ -118,7 +119,7 @@ const App = () => {
                 />
             </div>
             <div style={{ width: '200px', height: '100%' }}>
-                XXXX<DocIcon />XXXX
+                <DocIcon />
             </div>
         </div>
     );
