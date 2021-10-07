@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IConnections, imageState } from '../type';
+import { IConnections, imageState } from '../types';
 import '../../_styles/ShowImage.scss'
 
 interface IProps {

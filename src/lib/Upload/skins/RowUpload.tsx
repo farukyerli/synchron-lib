@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IConnections, IFile, IUploadFilesProps, } from '../type';
+import { IConnections, IFile, IUploadFilesProps, } from '../types';
 import '../../_styles/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 import { FullScreen } from '../Previews'
@@ -62,12 +62,13 @@ const RowUploadForm = (props: IProps) => {
                 className={`fas fa-upload column1 ${classes?.Column1}`}
                 title={text?.UploadButton} />
     }
-
     return (
         <>
             <div className={`component-container ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
-                    <div className="columns">{fileName ? DownloadSection() : UploadSection()}</div>
+                    {(actions?.Download || actions?.Upload)
+                        && < div className="columns">{fileName ? DownloadSection() : UploadSection()}</div>
+                    }
                     <div className="columns column2">{rowItems?.Column2 || 'Please define description of task '}</div>
                     {rowItems?.Column3 && <div className="columns">{rowItems?.Column3 || 'Free Usage Place 1'}</div>}
                     {rowItems?.Column4 && <div className="columns">{rowItems?.Column4 || 'Free Usage Place 2'}</div>}
@@ -82,14 +83,17 @@ const RowUploadForm = (props: IProps) => {
                                     }}
                                     className="fas fa-eye"
                                     title={text?.ViewButton}
-                                    visible={actions?.View !== undefined && fileName !== ''}
+                                    visible={(actions?.View
+                                        ? fileName !== ''
+                                        : false)}
                                 />
                                 <IconButton
                                     action={() => actions?.Edit && actions.Edit('')}
                                     className="fas fa-pencil-alt"
                                     title={text?.EditButton}
-                                    visible={actions?.Edit !== undefined && fileName !== ''}
-                                />
+                                    visible={(actions?.Edit
+                                        ? fileName !== ''
+                                        : false)} />
                                 <IconButton
                                     action={() => {
                                         actions?.Delete && actions.Delete(fileName);
@@ -97,8 +101,9 @@ const RowUploadForm = (props: IProps) => {
                                     }}
                                     className="fas fa-trash"
                                     title={text?.DeleteButton}
-                                    visible={actions?.Delete !== undefined && fileName !== ''}
-                                />
+                                    visible={(actions?.Delete
+                                        ? fileName !== ''
+                                        : false)} />
                             </>
                         )}
                         {uploading && <IconButton
@@ -111,7 +116,7 @@ const RowUploadForm = (props: IProps) => {
                         {rowItems?.Column6 || 'Free Usage Place 3'}
                     </div>}
                 </section>
-            </div>
+            </div >
             {showPreview && <FullScreen
                 onClose={() => setShowPreview(null)}
                 image={showPreview}
@@ -121,6 +126,7 @@ const RowUploadForm = (props: IProps) => {
                     url: fileUrl,
                 }}
                 text={text}
+                actions={actions}
             />}
             {
                 downloadImage && <DownloadFile

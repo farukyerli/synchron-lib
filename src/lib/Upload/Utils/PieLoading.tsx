@@ -1,5 +1,5 @@
 import React from 'react';
-import { IPieChartLoading } from '../type';
+import { IPieChartLoading } from '../types';
 import '../../_styles/PieLoading.scss'
 
 interface IProps extends IPieChartLoading {

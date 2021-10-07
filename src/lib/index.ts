@@ -1,4 +1,4 @@
-import { IUploadFilesProps, IRowItems, IRowTexts, IUploadActions as MyUploadActions } from './Upload/type';
+import { IUploadFilesProps, IRowItems, IRowTexts, IUploadActions as MyUploadActions } from './Upload/types';
 import RowUpload from './Upload/skins/RowUpload';
 
 

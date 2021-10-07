@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IConnections, imageState, IRowTexts } from '../type';
+import { IConnections, imageState, IRowTexts } from '../types';
 import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 

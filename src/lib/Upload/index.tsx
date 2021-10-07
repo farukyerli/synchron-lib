@@ -1,5 +1,5 @@
 import React from 'react';
-import { IUploadFilesProps, IConnections } from './type';
+import { IUploadFilesProps, IConnections } from './types';
 import Dropzone from './skins/Dropzone';
 import RowUpload from './skins/RowUpload';
 import ModalUpload from './skins/ModalUpload';

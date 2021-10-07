@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { IUploadFileType } from '../type';
+import { IUploadFileType } from '../types';
 
 import './styles/Dropzone.scss'
 
