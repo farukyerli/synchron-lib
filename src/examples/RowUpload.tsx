@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { RowUpload } from '../lib';
 import { IConnections } from '../lib/Upload/types';
+import { RowUpload } from '../lib';
 // import { RowUpload } from 'synchron-lib';
 // import { RowUpload } from '../dist';
 

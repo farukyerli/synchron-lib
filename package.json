@@ -116,6 +116,6 @@
     ]
   },
   "dependencies": {
-    "synchron-lib": "^0.1.27"
+    "synchron-lib": "^0.1.28"
   }
 }

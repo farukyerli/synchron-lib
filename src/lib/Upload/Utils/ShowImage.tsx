@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IConnections, imageState, IRowTexts } from '../types';
+import { IConnections, IDropzoneClasses, imageState, IRowTexts } from '../types';
 import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 
@@ -16,6 +16,8 @@ interface IProps {
     imageStatus?: (value: number) => void;
     isAborted?: boolean;
     text?: IRowTexts;
+    size?: 'full' | 'small'
+    height?: string;
 }
 
 
@@ -125,25 +127,32 @@ class DownloadImage extends Component<IProps, IState> {
             this.props.imageStatus && this.props.imageStatus(this.state.status)
     }
 
+    customProps = this.props?.height ? {
+        //  height: this.props?.height,
+        width: this.props?.height
+    } : {};
+
     render() {
+        this.props?.height && console.log(this.customProps)
         return (
             <>
                 {!this.props.isAborted && (
                     <>
                         {this.state.status === imageState.Problem
                             ? (
-                                <div className="error-picture">
-                                    <i className="fas fa-exclamation-square " />
-                                    <span>{this.props.text?.LoadingError || "Picture couldn't loaded"}</span>
+                                <div className={`error-picture ${this.props.size === 'small' && 'small'}`}>
+                                    <i className={`fas fa-exclamation-square ${this.props.size === 'small' && 'small'}`} />
+                                    {this.props.size !== 'small' && <span>{this.props.text?.LoadingError || "Picture couldn't loaded"}</span>}
                                 </div>
                             )
                             : this.state.status === imageState.None || this.state.status === imageState.Loading
                                 ? <LoadingIcon />
                                 : <img
                                     src={this.state.file}
-                                    className={`truck-icon ${this.props.isAborted && 'fail'}`}
-                                    alt="truck-icon"
+                                    className={`loaded-image ${this.props.isAborted && 'fail'} ${this.props.size === 'small' && 'small'}`}
+                                    alt=""
                                     onClick={this.props.onClick}
+                                    style={{ ...this.customProps }}
                                 />
                         }
                     </>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import { ModalUpload } from '../lib';
 import { IConnections } from '../lib/Upload/types';
 // import { RowUpload } from 'synchron-lib';
@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const ModalUploadExample = (props: IProps) => {
-    const { connection: { url, headers }, sampleImageURL } = props;
+    const { connection: { url, headers } } = props;
     // const uploadUrl = `${url}/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642`
     // const downloadUrl = `${url}/Download`
 
@@ -24,11 +24,7 @@ const ModalUploadExample = (props: IProps) => {
 
                 // files={[img]}
                 files={[]}
-                rowItems={{
-                    // Column3: <>Deneme</>,
-                    Column4: '4.',
-                    Column6: 'llnlnlknl'
-                }}
+
                 text={{
                     DeleteButton: "Sil",
                     DownloadButton: "Indir",

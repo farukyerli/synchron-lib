@@ -19,8 +19,10 @@ export interface IUploadFileType {
     webkitRelativePath: string;
 }
 
-export interface IClasses {
+export interface IBaseClasses {
     componentContainer?: string;
+}
+export interface IRowClasses extends IBaseClasses {
     section?: string;
     footer?: string;
     Column1?: string;
@@ -31,6 +33,16 @@ export interface IClasses {
     Column6?: string;
 }
 
+export interface IDropzoneClasses extends IBaseClasses {
+    activeColor?: string;
+    passiveColor?: string;
+    disabledColor?: string;
+    width?: string;
+    height?: string;
+    minWidth?: string;
+    minHeight?: string;
+}
+export interface IModalClasses extends IBaseClasses { }
 export interface IUploadActions {
     View?: (data: any) => void;
     Edit?: (data: any) => void;
@@ -64,18 +76,12 @@ interface IBaseTexts {
     LoadingError?: string;
     UploadText?: string;
 }
-export interface IRowTexts extends IBaseTexts {
-
-}
-export interface IModalTexts extends IBaseTexts {
-
-}
+export interface IRowTexts extends IBaseTexts { }
+export interface IModalTexts extends IBaseTexts { }
 
 export interface IDropzoneTexts extends IBaseTexts {
     DragboxText?: string;
 }
-
-
 
 export const imageState = {
     None: 0,
@@ -98,26 +104,27 @@ export interface IUploadTools {
 
 
 interface IBaseUploadProps {
-    classes?: IClasses;
     actions?: IUploadActions;
     files: string[];
     tools?: IUploadTools;
 }
 export interface IRowUploadProps extends IBaseUploadProps {
+    classes?: IRowClasses;
     rowItems?: IRowItems;
     text?: IRowTexts;
-    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+    // progressBarType?: 'Horizontal-1' | 'Horizontal-2';
 }
 
 export interface IModalUploadProps extends IBaseUploadProps {
-    rowItems?: IRowItems;
-    text?: IRowTexts;
-    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+    classes?: IModalClasses;
+    text?: IModalTexts;
+    // progressBarType?: 'Horizontal-1' | 'Horizontal-2';
 }
 export interface IDropzoneUploadProps extends IBaseUploadProps {
-    rowItems?: IRowItems;
-    text?: IRowTexts;
-    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+    classes?: IDropzoneClasses;
+    text?: IDropzoneTexts;
+    details?: boolean;
+
 }
 
 // export interface IUploadFilesProps {

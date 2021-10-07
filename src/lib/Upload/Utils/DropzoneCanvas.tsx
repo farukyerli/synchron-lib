@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { IDropzoneTexts, IUploadFileType } from '../types';
+import React, { useState, useRef, useEffect } from 'react';
+import { IDropzoneClasses, IDropzoneTexts, IUploadFileType } from '../types';
 import '../../_styles/DropzoneCanvas.scss'
 import { UploadIcon } from '../../_images';
 
@@ -9,16 +9,15 @@ import { UploadIcon } from '../../_images';
 interface IProps {
     disabled?: boolean;
     onChange?: (files: IUploadFileType[]) => void;
-    classOnFocus?: string;
-    classOnBlur?: string;
-    buttonVisible?: boolean;
     text?: IDropzoneTexts;
+    classes?: IDropzoneClasses;
 
 }
 const DropzoneCanvas = (props: IProps) => {
-    const { text } = props;
+    const { text, classes, disabled } = props;
     const [hightlight, setHighlight] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [imgColor, setImgColor] = useState(classes?.passiveColor || '#D2D2D2')
 
     const openFileDialog = () => {
         if (props.disabled) return;
@@ -26,7 +25,7 @@ const DropzoneCanvas = (props: IProps) => {
     };
 
     const onFilesAdded = (evt: any) => {
-        if (props.disabled) return;
+        if (disabled) return;
         const files = evt.target.files;
         const array = files;
         props.onChange && props.onChange(array);
@@ -34,13 +33,21 @@ const DropzoneCanvas = (props: IProps) => {
 
     const onDragOver = (evt: any) => {
         evt.preventDefault();
-        if (props.disabled) return;
+        if (disabled) return;
         setHighlight(true);
+
     };
 
     const onDragLeave = () => {
         setHighlight(false);
     };
+
+    useEffect(() => {
+        hightlight && !disabled
+            ? setImgColor(classes?.activeColor || '#38b1d6')
+            : setImgColor(classes?.passiveColor || '#D2D2D2')
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hightlight])
 
     const onDrop = (evt: any) => {
         evt.preventDefault();
@@ -62,18 +69,19 @@ const DropzoneCanvas = (props: IProps) => {
 
     return (
         <>
-            <div className="synchron-dropzone-upload-area-modal">
+            <div className="synchron-dropzone-upload-canvas-container">
                 <div
-                    className={`upload-box ${hightlight && 'OnDragOver'}`}
+                    className={`upload-box ${!disabled && hightlight && 'OnDragOver'}`}
                     onDragOver={onDragOver}
                     onDragLeave={onDragLeave}
                     onDrop={onDrop}
                     onClick={openFileDialog}
                     onMouseOver={() => setHighlight(true)}
                     onMouseOut={() => setHighlight(false)}
+                    style={{ opacity: disabled ? 0.3 : 1 }}
                 >
-                    <div className="upload-icon"><UploadIcon /> </div>
-                    <div className="upload-text">{text?.DragboxText || 'Drag here to upload'}</div>
+                    <div className="upload-icon"><UploadIcon {...props} color={imgColor} /> </div>
+                    <div className={`upload-text ${!disabled && hightlight && 'active'}`} >{text?.DragboxText || 'Drag here to upload'}</div>
                 </div>
 
             </div>

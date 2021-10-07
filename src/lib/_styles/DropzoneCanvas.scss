@@ -1,7 +1,7 @@
 // customizations / default-theme
-.synchron-dropzone-upload-area-modal {
-	// display: flex;
-	// flex: 1;
+.synchron-dropzone-upload-canvas-container {
+	display: flex;
+	flex: 1;
 	text-align: center;
 	font-family: Roboto, "Public Sans", sans-serif;
 	position: relative;
@@ -11,7 +11,7 @@
 		align-items: center;
 		flex: 1;
 		background: #f6f6f6;
-		border: 2px dashed #d2d2d2;
+		border: 3px dashed #d2d2d2;
 		border-radius: 4px;
 		padding-top: 20px;
 		padding-bottom: 26px;
@@ -26,24 +26,81 @@
 			width: 66px;
 			// color: #d2d2d2;
 			svg {
-				color: red;
 				// background-color: aqua;
-				// border: #666666 1px solid;
+				color: #38b1d6;
 			}
 		}
 		.upload-text {
-			font-size: 12px;
+			font-family: Roboto;
+			font-style: normal;
 			font-weight: normal;
-			white-space: nowrap;
-			align-self: center;
+			font-size: 16px;
+			line-height: 19px;
+			/* identical to box height */
+			color: #7c7c7c;
+			text-align: center;
+
+			&.active {
+				color: #38b1d6;
+			}
 		}
 	}
 
 	.OnDragOver {
-		background: #666666;
+		background: rgba(56, 177, 214, 0.1);
+		border: 3px dashed #38b1d6;
 	}
 
 	.FileInput {
 		display: none;
+	}
+}
+.synchron-dropzone-upload-container {
+	display: flex;
+	flex-direction: row;
+}
+.synchron-dropzone-upload-item-container {
+	border: 1px solid #dadada;
+	display: flex;
+	flex-direction: column;
+	border-radius: 4px;
+	margin-right: 5px;
+	width: 150px;
+	.preview {
+		display: flex;
+		flex: 1;
+		// border: 1px solid #bd0f0f;
+		// height: 110px;
+	}
+	.bottom-bar {
+		border-top: 1px solid #dadada;
+		// border: 1px solid #0c1596;
+		height: 40px;
+	}
+	.delete-button-container {
+		// border: 1px solid #38b1d6;
+		// position: absolute;
+		margin-left: -30px;
+		margin-top: 7px;
+		display: flex;
+		justify-content: flex-end;
+		// flex: 1;
+		// height: 100%;
+		// width: 10%;
+		.delete-button {
+			border: 1px solid #b9b5b5;
+			height: 20px;
+			width: 20px;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #d2d2d2;
+
+			&:hover {
+				cursor: pointer;
+				background-color: #b9b5b5;
+			}
+		}
 	}
 }
