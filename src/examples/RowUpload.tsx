@@ -24,10 +24,10 @@ const RowUploadExampleForm = (props: IProps) => {
 
                 // files={[img]}
                 files={[file]}
-                previewType="FullScreen"
 
 
-                skintype="row"
+
+
                 rowItems={{
                     // Column3: <>Deneme</>,
                     Column4: '4.',
@@ -74,13 +74,10 @@ const RowUploadExampleForm = (props: IProps) => {
                 connection={{ url: uploadUrl, headers }}
 
                 // title="Test Title"
-                upLoadText="Upload Document"
                 files={[sampleImageURL]}
                 // files={[]}
-                previewType="FullScreen"
 
 
-                skintype="row"
                 rowItems={{
                     Column2: <>Deneme</>,
                     Column3: <>Deneme</>,

@@ -24,10 +24,6 @@ const ModalUploadExample = (props: IProps) => {
 
                 // files={[img]}
                 files={[]}
-                previewType="FullScreen"
-
-
-                skintype="row"
                 rowItems={{
                     // Column3: <>Deneme</>,
                     Column4: '4.',

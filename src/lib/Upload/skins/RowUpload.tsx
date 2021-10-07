@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { IConnections, IFile, IUploadFilesProps, } from '../types';
+import { IConnections, IFile, IRowUploadProps, } from '../types';
 import '../../_styles/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 import { FullScreen } from '../Previews'
 import { LoadingIcon } from '../../_images'
 
-interface IProps extends IUploadFilesProps {
+interface IProps extends IRowUploadProps {
     connection: IConnections;
 }
 

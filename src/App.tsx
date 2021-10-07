@@ -33,7 +33,7 @@ const App = () => {
                 <br />
                 <br />
                 <br />
-                <ModalUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
+                {/* <ModalUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
             </div>
             {/* <div style={{ width: '200px', height: '100%' }}>
                 <DocIcon />

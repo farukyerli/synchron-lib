@@ -1,5 +1,5 @@
 import {
-    IUploadFilesProps,
+    IModalUploadProps, IRowUploadProps, IDropzoneUploadProps,
     IRowItems, IRowTexts,
     IUploadActions as MyUploadActions,
     IConnections as IConn
@@ -11,7 +11,9 @@ import DropzoneUpload from './Upload/skins/DropzoneUpload';
 
 
 export { RowUpload, ModalUpload, DropzoneUpload }
-export type IUploadFiles = IUploadFilesProps;
+export type IModalUpload = IModalUploadProps;
+export type IRowUpload = IRowUploadProps;
+export type IDropzoneUpload = IDropzoneUploadProps;
 export type IUploadItems = IRowItems
 export type IUploadTexts = IRowTexts
 export type IUploadActions = MyUploadActions

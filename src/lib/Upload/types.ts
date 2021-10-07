@@ -53,7 +53,7 @@ export interface IRowItems {
     Column6?: string | ReactNode;
 }
 
-export interface IRowTexts {
+interface IBaseTexts {
     DownloadButton?: string;
     UploadButton?: string;
     ViewButton?: string;
@@ -63,8 +63,20 @@ export interface IRowTexts {
     CloseButton?: string;
     LoadingError?: string;
     UploadText?: string;
+}
+export interface IRowTexts extends IBaseTexts {
 
 }
+export interface IModalTexts extends IBaseTexts {
+
+}
+
+export interface IDropzoneTexts extends IBaseTexts {
+    DragboxText?: string;
+}
+
+
+
 export const imageState = {
     None: 0,
     Loading: 1,
@@ -83,27 +95,52 @@ export interface IPieChartLoading extends IBaseGraphs {
 export interface IUploadTools {
     PieChartLoading?: IPieChartLoading
 }
-export interface IUploadFilesProps {
-    value?: string;
-    skintype?: 'dropzone' | 'row' | 'modal';
+
+
+interface IBaseUploadProps {
     classes?: IClasses;
-    rowItems?: IRowItems;
     actions?: IUploadActions;
-    text?: IRowTexts;
     files: string[];
     tools?: IUploadTools;
-
-
-
-
-    progressBarSteps?: number;
-    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
-    multiUpload?: boolean;
-    dropzone?: boolean;
-    dropzoneButton?: boolean;
-    title?: string;
-    upLoadText?: string;
-    buttonTitle?: string;
-    previewType?: 'FullScreen' | 'Modal-Type-1';
-
 }
+export interface IRowUploadProps extends IBaseUploadProps {
+    rowItems?: IRowItems;
+    text?: IRowTexts;
+    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+}
+
+export interface IModalUploadProps extends IBaseUploadProps {
+    rowItems?: IRowItems;
+    text?: IRowTexts;
+    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+}
+export interface IDropzoneUploadProps extends IBaseUploadProps {
+    rowItems?: IRowItems;
+    text?: IRowTexts;
+    progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+}
+
+// export interface IUploadFilesProps {
+//     value?: string;
+//     skintype?: 'dropzone' | 'row' | 'modal';
+//     classes?: IClasses;
+//     rowItems?: IRowItems;
+//     actions?: IUploadActions;
+//     text?: IRowTexts;
+//     files: string[];
+//     tools?: IUploadTools;
+
+
+
+
+//     progressBarSteps?: number;
+//     progressBarType?: 'Horizontal-1' | 'Horizontal-2';
+//     multiUpload?: boolean;
+//     dropzone?: boolean;
+//     dropzoneButton?: boolean;
+//     title?: string;
+//     upLoadText?: string;
+//     buttonTitle?: string;
+//     previewType?: 'FullScreen' | 'Modal-Type-1';
+
+// }

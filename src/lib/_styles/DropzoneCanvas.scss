@@ -1,0 +1,49 @@
+// customizations / default-theme
+.synchron-dropzone-upload-area-modal {
+	// display: flex;
+	// flex: 1;
+	text-align: center;
+	font-family: Roboto, "Public Sans", sans-serif;
+	position: relative;
+	.upload-box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 1;
+		background: #f6f6f6;
+		border: 2px dashed #d2d2d2;
+		border-radius: 4px;
+		padding-top: 20px;
+		padding-bottom: 26px;
+
+		i {
+			font-size: 66px;
+			margin-bottom: 10px;
+			// width: 66px;
+			// height: 66px;
+		}
+		.upload-icon {
+			width: 66px;
+			// color: #d2d2d2;
+			svg {
+				color: red;
+				// background-color: aqua;
+				// border: #666666 1px solid;
+			}
+		}
+		.upload-text {
+			font-size: 12px;
+			font-weight: normal;
+			white-space: nowrap;
+			align-self: center;
+		}
+	}
+
+	.OnDragOver {
+		background: #666666;
+	}
+
+	.FileInput {
+		display: none;
+	}
+}

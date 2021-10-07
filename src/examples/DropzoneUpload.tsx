@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DropzoneUpload } from '../lib';
-import { IConnections, IUploadFilesProps } from '../lib/Upload/types';
+import { IConnections } from '../lib/Upload/types';
 // import { RowUpload } from 'synchron-lib';
 // import { RowUpload } from '../dist';
 
@@ -24,10 +24,7 @@ const DropzoneUploadExample = (props: IProps) => {
 
                 // files={[img]}
                 files={[]}
-                previewType="FullScreen"
 
-
-                skintype="row"
                 rowItems={{
                     // Column3: <>Deneme</>,
                     Column4: '4.',
