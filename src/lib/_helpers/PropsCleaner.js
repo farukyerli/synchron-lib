@@ -6,6 +6,7 @@ const propsCleaner = (Component) =>
         render() {
             const newProps = { ...this.props };
             delete newProps['thumbnailSize'];
+            delete newProps['showDetails'];
             return <Component {...newProps} />;
         }
     };

@@ -25,18 +25,15 @@ const DropzoneItemForm = (props: IProps) => {
     const { showDetails, connection, text, actions } = props;
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
-    const [status, setStatus] = useState<number>(imageState.None)
-    const [showPreview, setShowPreview] = useState<string | null>(null)
+    const [status, setStatus] = useState<number>(imageState.None);
+    const [showPreview, setShowPreview] = useState<string | null>(null);
     const [uploading, setUploading] = useState(false);
     // const [uploadedRatio, setUploadedRatio] = useState<number>(0);
-    const [uploadFile, setUploadFile] = useState<IFile | null>(null)
+    const [uploadFile, setUploadFile] = useState<IFile | null>(null);
+    const [isProblemExists, setIsProblemExists] = useState(false);
 
-    // useEffect(() => {
-    //     uploadFile && console.log('uploadFile:', uploadFile)
-    // }, [uploadFile])
 
     useEffect(() => {
-        // console.log('props.uploadFile:', props.uploadFile)
         props.uploadFile && setUploadFile({
             name: props.uploadFile.name,
             rawFileData: props.uploadFile
@@ -48,7 +45,6 @@ const DropzoneItemForm = (props: IProps) => {
     return (
         <>
             <div className="synchron-dropzone-upload-item-container"
-            // style={{ ...customProps }} 
             >
                 <div className="preview" >
                     <ShowImage
@@ -60,10 +56,13 @@ const DropzoneItemForm = (props: IProps) => {
                         isAborted={abort}
                         size='small'
                         onClick={() => setShowPreview(image)}
+                        isProblemExists={isProblemExists}
+
+                        isUploading={uploading}
                     />
 
                 </div>
-                {status === imageState.Done && actions?.onDelete && !uploading &&
+                {(status === imageState.Done || isProblemExists) && actions?.onDelete && !uploading &&
                     <div className="delete-button-container">
                         <div className="delete-button"
                             onClick={(e) => actions?.onDelete && actions.onDelete(props.file.name)}
@@ -96,6 +95,7 @@ const DropzoneItemForm = (props: IProps) => {
                 onAbort={() => actions?.onAbort && actions.onAbort(props.file.name)}
                 onError={(state: number, data: any) => {
                     actions?.onError && actions.onError(state, data)
+                    setIsProblemExists(true);
                 }}
                 onSuccess={actions?.onSuccess}
 

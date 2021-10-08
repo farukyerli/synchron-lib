@@ -89,7 +89,6 @@ const DropZoneForm = (props: IProps) => {
 
             {state.fileURLList.length < 5 && <DropzoneCanvas
                 {...props}
-
                 onChange={(data) => {
                     dispatch({
                         type: stateAction.onUpload, payload: {

@@ -31,7 +31,8 @@ const DropzoneUploadExample = (props: IProps) => {
             <DropzoneUpload
                 connection={{ url: uploadUrl, headers }}
                 // files={fileURLList}
-                files={sampleImageURL}
+                files={[]}
+                // files={sampleImageURL}
                 // files={[sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL]}
                 // classes={{
                 //     width: '40px',
@@ -40,7 +41,7 @@ const DropzoneUploadExample = (props: IProps) => {
                 text={{
                     DragboxText: 'Dropzone 1 Drag Here'
                 }}
-                thumbnailSize={70}
+                // thumbnailSize={70}
                 // showDetails
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),

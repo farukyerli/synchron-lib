@@ -53,7 +53,6 @@ export interface IBaseUploadActions {
     onError?: (status: number, data: string) => void;
     onDelete?: (fileName?: string) => void;
 }
-
 export interface IRowUploadActions extends IBaseUploadActions {
     onSuccess?: (data?: any) => void;
 
@@ -76,7 +75,7 @@ export interface IRowItems {
     Column6?: string | ReactNode;
 }
 
-interface IBaseTexts {
+export interface IBaseTexts {
     DownloadButton?: string;
     UploadButton?: string;
     ViewButton?: string;
@@ -86,6 +85,8 @@ interface IBaseTexts {
     CloseButton?: string;
     LoadingError?: string;
     UploadText?: string;
+    UploadError?: string;
+    DownloadError?: string;
 }
 export interface IRowTexts extends IBaseTexts { }
 export interface IModalTexts extends IBaseTexts { }

@@ -7,13 +7,14 @@
 
 	// border: 1px solid red;
 	padding: 10px;
-	color: red;
+	// color: red;
 	border-radius: 10px;
 	font-size: 30px;
+	min-width: 70px;
 	i {
 		font-size: 190px;
 		&.small {
-			font-size: 60px;
+			font-size: 30px;
 		}
 	}
 
