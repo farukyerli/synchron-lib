@@ -8,7 +8,7 @@ const headers = {
     authorization: ApiKey,
 }
 ```
-## Upload component
+## Single Upload component
 
 ```es6
 import React, { useState } from 'react';
@@ -74,7 +74,7 @@ const RowUploadExampleForm = (props: IProps) => {
 export default RowUploadExampleForm
 ```
 
-### Dropzone Upload Component
+## Dropzone Upload Component
 
 ```es6
 import React, { useState } from 'react';
