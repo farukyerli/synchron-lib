@@ -40,7 +40,7 @@ const DropzoneUploadExample = (props: IProps) => {
                 text={{
                     DragboxText: 'Dropzone 1 Drag Here'
                 }}
-                thumbnailSize={30}
+                thumbnailSize={70}
                 // showDetails
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),

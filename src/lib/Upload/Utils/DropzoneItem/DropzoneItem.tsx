@@ -17,7 +17,7 @@ interface IProps {
     actions?: IDropzoneUploadActions;
     showDetails?: boolean;
     classes?: IDropzoneClasses;
-    height?: string;
+    thumbnailSize?: number;
 
 }
 
@@ -27,7 +27,7 @@ const DropzoneItemForm = (props: IProps) => {
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None)
     const [showPreview, setShowPreview] = useState<string | null>(null)
-    // const [uploading, setUploading] = useState(false);
+    const [uploading, setUploading] = useState(false);
     // const [uploadedRatio, setUploadedRatio] = useState<number>(0);
     const [uploadFile, setUploadFile] = useState<IFile | null>(null)
 
@@ -45,16 +45,14 @@ const DropzoneItemForm = (props: IProps) => {
     }, [props.uploadFile])
 
 
-    const customProps = props?.height ? {
-        //  height: this.props?.height,
-        width: props?.height
-    } : {};
     return (
         <>
-            <div className="synchron-dropzone-upload-item-container" style={{ ...customProps }} >
+            <div className="synchron-dropzone-upload-item-container"
+            // style={{ ...customProps }} 
+            >
                 <div className="preview" >
                     <ShowImage
-                        height={props.height}
+                        thumbnailSize={props.thumbnailSize}
                         connection={props.connection}
                         file={props.file}
                         setImage={(data: any) => setImage(data)}
@@ -63,13 +61,14 @@ const DropzoneItemForm = (props: IProps) => {
                         size='small'
                         onClick={() => setShowPreview(image)}
                     />
-                    {status === imageState.Done && actions?.onDelete &&
-                        <div className="delete-button-container">
-                            <div className="delete-button"
-                                onClick={(e) => actions?.onDelete && actions.onDelete(props.file.name)}
-                            ><i className="fas fa-times" /></div>
-                        </div>}
+
                 </div>
+                {status === imageState.Done && actions?.onDelete && !uploading &&
+                    <div className="delete-button-container">
+                        <div className="delete-button"
+                            onClick={(e) => actions?.onDelete && actions.onDelete(props.file.name)}
+                        ><i className="fas fa-times" /></div>
+                    </div>}
                 {showDetails && <div className="bottom-bar">
 
                 </div>
@@ -93,9 +92,11 @@ const DropzoneItemForm = (props: IProps) => {
                     setAbort(false);
                 }}
                 // onRatio={(value: number) => setUploadedRatio(value)}
-                // onUploading={(value: boolean) => setUploading(value)}
+                onUploading={(value: boolean) => setUploading(value)}
                 onAbort={() => actions?.onAbort && actions.onAbort(props.file.name)}
-                onError={actions?.onError}
+                onError={(state: number, data: any) => {
+                    actions?.onError && actions.onError(state, data)
+                }}
                 onSuccess={actions?.onSuccess}
 
             />

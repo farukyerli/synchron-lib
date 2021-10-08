@@ -17,7 +17,7 @@ interface IProps {
     isAborted?: boolean;
     text?: IRowTexts;
     size?: 'full' | 'small'
-    height?: string;
+    thumbnailSize?: number;
 }
 
 
@@ -135,13 +135,10 @@ class DownloadImage extends Component<IProps, IState> {
         }
     }
 
-    customProps = this.props?.height ? {
-        //  height: this.props?.height,
-        width: this.props?.height
-    } : {};
+    customProps = { width: this.props.size === 'small' ? `${this.props?.thumbnailSize}px` : '100%' };
 
     render() {
-        this.props?.height && console.log(this.customProps)
+
         return (
             <>
                 {!this.props.isAborted && (

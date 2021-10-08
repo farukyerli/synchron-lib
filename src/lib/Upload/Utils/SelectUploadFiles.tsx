@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IUploadFileType } from '../types';
 
 interface IProps {
@@ -11,6 +11,11 @@ interface IProps {
 export default (props: IProps) => {
     const { open, multiple = false } = props;
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     const openFileDialog = () => {
         if (props.disabled) return;
@@ -24,7 +29,7 @@ export default (props: IProps) => {
     };
 
     useEffect(() => {
-        openFileDialog()
+        isMounted && openFileDialog()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open])
 

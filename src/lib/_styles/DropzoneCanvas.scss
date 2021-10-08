@@ -13,15 +13,9 @@
 		background: #f6f6f6;
 		border: 3px dashed #d2d2d2;
 		border-radius: 4px;
-		padding-top: 20px;
-		padding-bottom: 26px;
+		// padding-top: 20px;
+		// padding-bottom: 26px;
 
-		i {
-			font-size: 66px;
-			margin-bottom: 10px;
-			// width: 66px;
-			// height: 66px;
-		}
 		.upload-icon {
 			width: 66px;
 			// color: #d2d2d2;
@@ -64,12 +58,14 @@
 	display: flex;
 	flex-direction: column;
 	border-radius: 4px;
-	margin-right: 5px;
-	width: 150px;
+	// margin-right: 5px;
+	// width: 150px;
 	.preview {
 		display: flex;
 		flex: 1;
-		// border: 1px solid #bd0f0f;
+		border: 1px solid #bd0f0f;
+		align-items: center;
+		justify-content: center;
 		// height: 110px;
 	}
 	.bottom-bar {
@@ -79,14 +75,11 @@
 	}
 	.delete-button-container {
 		// border: 1px solid #38b1d6;
-		// position: absolute;
-		margin-left: -30px;
-		margin-top: 7px;
+		position: absolute;
 		display: flex;
-		justify-content: flex-end;
-		// flex: 1;
-		// height: 100%;
-		// width: 10%;
+		align-self: flex-end;
+		margin-right: 7px;
+		margin-top: 7px;
 		.delete-button {
 			border: 1px solid #b9b5b5;
 			height: 20px;

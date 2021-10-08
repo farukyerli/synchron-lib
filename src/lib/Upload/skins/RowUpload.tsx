@@ -22,6 +22,7 @@ const RowUploadForm = (props: IProps) => {
     const [uploadedRatio, setUploadedRatio] = useState<number>(0);
     const [file, setFile] = useState<IFile | null>(null)
 
+
     useEffect(() => {
         if (files && files.length) {
             setFileUrl(props.files[0])

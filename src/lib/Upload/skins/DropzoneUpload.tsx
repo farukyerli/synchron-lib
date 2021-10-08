@@ -30,7 +30,6 @@ function reducer(state: IState, action: IActions): IState {
 }
 
 
-
 const DropZoneForm = (props: IProps) => {
     const { connection, classes, actions } = props;
     const initState: IState = {
@@ -40,12 +39,6 @@ const DropZoneForm = (props: IProps) => {
     const [state, dispatch] = useReducer(reducer, initState);
     const [isMounted, setIsMounted] = useState(false);
 
-
-    // const height = props.classes?.height && parseInt(props.classes?.height.replace('px', ''))
-    // const width = props.classes?.width && parseInt(props.classes?.width.replace('px', ''))
-    // const minHeight = height && height >= 20 && height <= 80 ? height * 3 : null
-    // const minwidth = width && width >= 20 && width <= 80 ? width * 3 : null
-
     const onDelete = (ndx: number, data: any) => {
         const myArray = deepCopy(state.fileURLList.filter((item) => ndx !== item.index))
         dispatch({
@@ -54,15 +47,14 @@ const DropZoneForm = (props: IProps) => {
                 uploadList: myArray.map(() => null)
             }
         })
-        // actions?.onChange && actions?.onChange(myArray)
         actions?.onDelete && actions?.onDelete({ ndx, data })
     }
 
     useEffect(() => {
-        // console.log('fileURLList:', state.fileURLList)
         isMounted && actions?.onChange && actions?.onChange(state.fileURLList)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.fileURLList])
+
 
     useEffect(() => {
         setIsMounted(true)
@@ -73,7 +65,6 @@ const DropZoneForm = (props: IProps) => {
         <div className="synchron-dropzone-upload-container"
             style={{
                 ...classes,
-                //  minHeight: `${minHeight}px` 
             }}
         >
             {
@@ -86,15 +77,10 @@ const DropZoneForm = (props: IProps) => {
                             url: item.filename
                         }}
                         connection={connection}
-                        // height={minHeight || minwidth ? `${minHeight || minwidth}px` : ''}
                         uploadFile={state.uploadList[ndx]}
                         actions={{
                             ...props.actions,
-                            onSuccess: (data: any) => {
-                                // console.log('onChange:', ndx, data)
-                                actions?.onSuccess && actions.onSuccess({ ndx, data })
-
-                            },
+                            onSuccess: (data: any) => actions?.onSuccess && actions.onSuccess({ ndx, data }),
                             onDelete: () => onDelete(ndx, item)
                         }}
                     />
