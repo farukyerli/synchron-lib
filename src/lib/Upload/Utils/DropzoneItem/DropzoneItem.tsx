@@ -15,15 +15,14 @@ interface IProps {
     image?: any;
     text?: IDropzoneTexts;
     actions?: IDropzoneUploadActions;
-    // onDelete: (value: string) => void;
-    details?: boolean;
+    showDetails?: boolean;
     classes?: IDropzoneClasses;
     height?: string;
 
 }
 
 const DropzoneItemForm = (props: IProps) => {
-    const { details, connection, text, actions } = props;
+    const { showDetails, connection, text, actions } = props;
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None)
@@ -71,7 +70,7 @@ const DropzoneItemForm = (props: IProps) => {
                             ><i className="fas fa-times" /></div>
                         </div>}
                 </div>
-                {details && <div className="bottom-bar">
+                {showDetails && <div className="bottom-bar">
 
                 </div>
                 }

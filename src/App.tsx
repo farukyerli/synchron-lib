@@ -23,7 +23,7 @@ const imgList = [
     // 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c',
     'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c',
     'https://zz-web-dev.zozengo.com/api/web/Download/6d869e6c-38cc-4bf4-a0a1-9a0a29afcaaf',
-    // 'https://zz-web-dev.zozengo.com/api/web/Download/ae9c1013-36cd-4ad5-86b7-7e0cf5397e3d'
+    'https://zz-web-dev.zozengo.com/api/web/Download/ae9c1013-36cd-4ad5-86b7-7e0cf5397e3d'
 ]
 const App = () => {
 

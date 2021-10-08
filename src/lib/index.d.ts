@@ -1,17 +1,17 @@
 
 import {
-    IRowItems, IRowTexts, IRowUploadProps,
-    IUploadActions as MyUploadActions,
+    IRowItems, IRowTexts, IRowUploadProps, IDropzoneUploadProps, IModalUploadProps,
     IConnections as IConn
 } from './Upload/types';
 
-import RowUpload from './Upload/skins/RowUpload';
-import ModalUpload from './Upload/skins/ModalUpload';
-import DropzoneUpload from './Upload/skins/DropzoneUpload';
+
+export const RowUpload: IRowUploadProps;
+export const DropzoneUpload: IModalUploadProps;
+export const ModalUpload: IDropzoneUploadProps;
 
 export type IRowUpload = IRowUploadProps
+export type IDropzoneUpload = IDropzoneUploadProps
+export type IModalUpload = IModalUploadProps
 export type IUploadItems = IRowItems
 export type IUploadTexts = IRowTexts
-export type IUploadActions = MyUploadActions
 export type IConnections = IConn
-export { RowUpload, ModalUpload, DropzoneUpload }

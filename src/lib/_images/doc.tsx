@@ -1,6 +1,8 @@
 import React from "react";
+// @ts-ignore
+import propsCleaner from '../_helpers/PropsCleaner.js';
 
-export default (props: any) => (
+export default propsCleaner((props: any) => (
     <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <path
             fillRule="evenodd"
@@ -9,4 +11,5 @@ export default (props: any) => (
             fill={props.color || '#959595'}
         />
     </svg>
-);
+));
+

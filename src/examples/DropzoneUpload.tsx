@@ -33,10 +33,15 @@ const DropzoneUploadExample = (props: IProps) => {
                 // files={fileURLList}
                 files={sampleImageURL}
                 // files={[sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL]}
-
+                // classes={{
+                //     width: '40px',
+                //     height: '40px',
+                // }}
                 text={{
                     DragboxText: 'Dropzone 1 Drag Here'
                 }}
+                thumbnailSize={30}
+                // showDetails
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),
                     Download: (data) => console.log('Download Pressed : ', data),
