@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IConnections, IDropzoneUploadProps, IUploadFileType } from '../types';
 import '../../_styles/DropzoneCanvas.scss'
 import DropzoneCanvas from '../Utils/DropzoneCanvas';
@@ -14,7 +14,9 @@ interface IProps extends IDropzoneUploadProps {
 }
 
 const DropZoneForm = (props: IProps) => {
-    const { files: fileURLList, connection, classes } = props;
+    const { connection, classes } = props;
+
+    const [fileURLList, setFileURLList] = useState<string[]>(props.files)
 
     const height = props.classes?.height && parseInt(props.classes?.height.replace('px', ''))
     const width = props.classes?.width && parseInt(props.classes?.width.replace('px', ''))
@@ -32,8 +34,8 @@ const DropZoneForm = (props: IProps) => {
                         url: item
                     }}
                     connection={connection}
-                    onDelete={(data) => console.log('onDelete : ', data)}
-                    height={`${minHeight || minwidth}px`}
+                    onDelete={() => setFileURLList([...fileURLList].filter((i, index) => ndx !== index))}
+                    height={minHeight || minwidth ? `${minHeight || minwidth}px` : ''}
                 />
             })}
 

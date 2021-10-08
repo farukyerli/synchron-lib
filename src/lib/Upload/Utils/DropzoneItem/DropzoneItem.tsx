@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { text } from 'stream/consumers';
 import '../../../_styles/DropzoneCanvas.scss'
 import { FullScreen } from '../../Previews';
-import { IConnections, IDropzoneClasses, IDropzoneTexts, imageState, IUploadActions } from '../../types';
+import { IConnections, IDropzoneClasses, IDropzoneTexts, IFile, imageState, IUploadActions } from '../../types';
 import ShowImage from '../ShowImage';
+import UploadItem from '../UploadItem';
 
 interface IProps {
     connection: IConnections;
@@ -23,13 +23,16 @@ interface IProps {
 }
 
 const DropzoneItemForm = (props: IProps) => {
-    const { details, connection, file, text, actions, onDelete } = props;
+    const { details, connection, text, actions, onDelete } = props;
     const [fileUrl, setFileUrl] = useState<string>('')
     const [fileName, setFileName] = useState<string>('')
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None)
     const [showPreview, setShowPreview] = useState<string | null>(null)
+    const [uploading, setUploading] = useState(false);
+    const [uploadedRatio, setUploadedRatio] = useState<number>(0);
+    const [file, setFile] = useState<IFile | null>(null)
 
     useEffect(() => {
         setFileUrl(props.file.url)
@@ -86,6 +89,22 @@ const DropzoneItemForm = (props: IProps) => {
                 text={text}
                 actions={actions}
             />}
+
+            <UploadItem
+                connection={connection}
+                file={file}
+                abort={abort}
+                onEndTask={() => {
+                    setFile(null);
+                    setAbort(false);
+                }}
+                onRatio={(value: number) => setUploadedRatio(value)}
+                onUploading={(value: boolean) => setUploading(value)}
+                onAbort={() => actions?.onAbort && actions.onAbort(fileName)}
+                onError={actions?.onError}
+                onSuccess={actions?.onSuccess}
+
+            />
         </>
 
     )
