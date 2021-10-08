@@ -80,8 +80,10 @@ const DropzoneCanvas = (props: IProps) => {
                     onMouseOut={() => setHighlight(false)}
                     style={{ opacity: disabled ? 0.3 : 1 }}
                 >
-                    <div className="upload-icon"><UploadIcon {...props} color={imgColor} /> </div>
-                    <div className={`upload-text ${!disabled && hightlight && 'active'}`} >{text?.DragboxText || 'Drag here to upload'}</div>
+                    <div className="upload-icon"><UploadIcon {...props} color={imgColor} className="upload-icon" /> </div>
+                    <div className={`upload-text ${!disabled && hightlight && 'active'}`} >
+                        {text?.DragboxText || 'Drag here to upload'}
+                    </div>
                 </div>
 
             </div>

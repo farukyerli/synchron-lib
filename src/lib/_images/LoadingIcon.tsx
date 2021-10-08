@@ -1,7 +1,7 @@
 import React from "react";
 import '../_styles/LoadingIcon.scss'
 
-export default () => <div id="circularG">
+export default (props: any) => <div id="circularG" {...props}>
     <div id="circularG_1" className="circularG"></div>
     <div id="circularG_2" className="circularG"></div>
     <div id="circularG_3" className="circularG"></div>

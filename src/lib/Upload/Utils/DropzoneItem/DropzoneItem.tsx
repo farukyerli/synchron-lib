@@ -22,7 +22,7 @@ interface IProps {
 }
 
 const DropzoneItemForm = (props: IProps) => {
-    const { showDetails, connection, text, actions } = props;
+    const { showDetails, connection, text, actions, classes } = props;
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None);
@@ -57,8 +57,8 @@ const DropzoneItemForm = (props: IProps) => {
                         size='small'
                         onClick={() => setShowPreview(image)}
                         isProblemExists={isProblemExists}
-
                         isUploading={uploading}
+                        classes={classes}
                     />
 
                 </div>

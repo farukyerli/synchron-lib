@@ -4,13 +4,14 @@
 	flex: 1;
 	align-items: center;
 	justify-content: center;
-
+	flex-wrap: wrap;
 	// border: 1px solid red;
 	padding: 10px;
-	// color: red;
+	color: red;
 	border-radius: 10px;
 	font-size: 30px;
 	min-width: 70px;
+	text-align: center;
 	i {
 		font-size: 190px;
 		&.small {
@@ -19,7 +20,7 @@
 	}
 
 	&.small {
-		font-size: 12px;
+		font-size: 16px;
 		padding: 0px;
 		margin: 0px;
 	}

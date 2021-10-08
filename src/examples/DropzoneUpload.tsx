@@ -31,17 +31,21 @@ const DropzoneUploadExample = (props: IProps) => {
             <DropzoneUpload
                 connection={{ url: uploadUrl, headers }}
                 // files={fileURLList}
-                files={[]}
-                // files={sampleImageURL}
+                // files={[]}
+                files={sampleImageURL}
                 // files={[sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL]}
-                // classes={{
-                //     width: '40px',
-                //     height: '40px',
-                // }}
+                classes={{
+                    // width: '40px',
+                    // height: '40px',
+                    errorStyles: {
+                        // color: 'blue',
+                        fontSize: '10px'
+                    }
+                }}
                 text={{
                     DragboxText: 'Dropzone 1 Drag Here'
                 }}
-                // thumbnailSize={70}
+                thumbnailSize={170}
                 // showDetails
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),

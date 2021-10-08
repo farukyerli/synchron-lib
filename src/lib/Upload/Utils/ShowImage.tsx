@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IBaseTexts, IConnections, imageState } from '../types';
+import { IBaseClasses, IBaseTexts, IConnections, imageState } from '../types';
 import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 
@@ -14,6 +14,7 @@ interface IProps {
     setError?: (value: any) => void;
     onClick?: () => void;
     imageStatus?: (value: number) => void;
+    classes?: IBaseClasses;
     isProblemExists?: boolean;
     isAborted?: boolean;
     isUploading?: boolean;
@@ -113,7 +114,7 @@ class DownloadImage extends Component<IProps, IState> {
     };
 
     componentDidUpdate = () => {
-        console.log('this.state.status :', this.state.status)
+        // console.log('this.state.status :', this.state.status)
         this.props.isAborted && this.request.abort();
         if (this.state.status === imageState.Done || this.state.status === imageState.Problem)
             this.props.imageStatus && this.props.imageStatus(this.state.status)
@@ -166,15 +167,20 @@ class DownloadImage extends Component<IProps, IState> {
                     <>
                         {this.state.status === imageState.Problem
                             ? (
-                                <div className={`error-picture ${this.props.size === 'small' && 'small'}`} style={{ ...this.customProps }}>
+                                <div
+                                    className={`error-picture ${this.props.size === 'small' && 'small'}`}
+                                    style={{ ...this.customProps, ...this.props.classes?.errorStyles }}
+                                >
                                     <i className={`fas fa-exclamation-square ${this.props.size === 'small' && 'small'}`} />
-                                    {this.props.size === 'small' && <span>{this.props.text?.LoadingError || "Picture couldn't loaded"}</span>}
+                                    {this.props.size === 'small' &&
+                                        <span>{this.props.text?.LoadingError || "Picture couldn't uploaded "}</span>}
 
-                                    {this.props.size !== 'small' && <span>{this.props.text?.UploadError || "Picture couldn't uploaded"}</span>}
+                                    {this.props.size !== 'small'
+                                        && <span>{this.props.text?.UploadError || "Picture couldn't loaded"}</span>}
                                 </div>
                             )
                             : this.state.status === imageState.None || this.state.status === imageState.Loading || this.props.isUploading
-                                ? <LoadingIcon />
+                                ? <LoadingIcon style={{ ...this.customProps }} />
 
                                 : (
                                     <div

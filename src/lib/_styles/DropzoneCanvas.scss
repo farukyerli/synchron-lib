@@ -7,22 +7,22 @@
 	position: relative;
 	.upload-box {
 		display: flex;
-		flex-direction: column;
+		// flex-direction: column;
+		justify-content: center;
 		align-items: center;
 		flex: 1;
 		background: #f6f6f6;
 		border: 3px dashed #d2d2d2;
 		border-radius: 4px;
+		flex-wrap: wrap;
 		// padding-top: 20px;
 		// padding-bottom: 26px;
 
+		min-height: 4rem;
+
 		.upload-icon {
-			width: 66px;
+			// width: 66px;
 			// color: #d2d2d2;
-			svg {
-				// background-color: aqua;
-				color: #38b1d6;
-			}
 		}
 		.upload-text {
 			font-family: Roboto;
@@ -33,6 +33,8 @@
 			/* identical to box height */
 			color: #7c7c7c;
 			text-align: center;
+			margin-left: 10px;
+			margin-right: 10px;
 
 			&.active {
 				color: #38b1d6;

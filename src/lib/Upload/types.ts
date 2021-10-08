@@ -21,6 +21,7 @@ export interface IUploadFileType {
 
 export interface IBaseClasses {
     componentContainer?: string;
+    errorStyles?: any;
 }
 export interface IRowClasses extends IBaseClasses {
     section?: string;
