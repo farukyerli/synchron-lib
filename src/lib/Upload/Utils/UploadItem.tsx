@@ -17,12 +17,14 @@ interface IState {
     ratio: number;
     isUploading: boolean;
     file: IFile | null;
+    existingFileURL: string | null;
 }
 
 class UploadFile extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
+            existingFileURL: null,
             file: null,
             ratio: 0,
             isUploading: false,
@@ -84,11 +86,18 @@ class UploadFile extends Component<IProps, IState> {
             this.uploadFileWithFetch();
             this.setState({ file: this.props.file })
         }
+        // if (this.props.file !== null && this.props.file.name !== this.state.existingFileURL) {
+        //     this.uploadFileWithFetch();
+
+        //     this.setState({ existingFileURL: this.props.file.name });
+
+        // }
     }
 
     onUploadProgress = (e: any) => this.setState({ ratio: e.loaded / e.total });
     onAbort = () => this.request.abort();
     componentWillUnmount = () => this.onAbort();
+    componentDidMount = () => console.log('UploadItem Mounted');
 
     render() {
         return <> </>

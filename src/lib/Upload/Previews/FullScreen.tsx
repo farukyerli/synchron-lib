@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { IConnections, imageState, IRowTexts } from '../types';
+import { IBaseUploadActions, IConnections, imageState, IRowTexts } from '../types';
 import ShowImage from '../Utils/ShowImage';
 import '../../_styles/FullScreen.scss'
 import IconButton from '../Utils/Button';
 import { DownloadFile } from '../Utils';
-import { IUploadActions } from '../..';
 interface IProps {
     connection: IConnections;
     file: {
@@ -14,7 +13,7 @@ interface IProps {
     onClose: () => void;
     image?: any;
     text?: IRowTexts;
-    actions?: IUploadActions;
+    actions?: IBaseUploadActions;
 }
 
 export default (props: IProps) => {

@@ -43,19 +43,29 @@ export interface IDropzoneClasses extends IBaseClasses {
     minHeight?: string;
 }
 export interface IModalClasses extends IBaseClasses { }
-export interface IUploadActions {
+export interface IBaseUploadActions {
     View?: (data: any) => void;
     Edit?: (data: any) => void;
     Delete?: (data: any) => void
     Download?: (data: any) => void
     Upload?: (data: any) => void
-
     onAbort?: (fileName?: string) => void;
     onError?: (status: number, data: string) => void;
-    onSuccess?: (data?: any) => void;
     onDelete?: (fileName?: string) => void;
 }
 
+export interface IRowUploadActions extends IBaseUploadActions {
+    onSuccess?: (data?: any) => void;
+
+}
+export interface IDropzoneUploadActions extends IBaseUploadActions {
+    onChange?: (data?: any[]) => void;
+    onSuccess?: (data?: any) => void;
+}
+export interface IModalUploadActions extends IBaseUploadActions {
+    onSuccess?: (data?: any) => void;
+
+}
 export interface IRowItems {
     Column1?: string | ReactNode;
     Column2?: string | ReactNode;
@@ -104,7 +114,6 @@ export interface IUploadTools {
 
 
 interface IBaseUploadProps {
-    actions?: IUploadActions;
     files: string[];
     tools?: IUploadTools;
 }
@@ -112,18 +121,21 @@ export interface IRowUploadProps extends IBaseUploadProps {
     classes?: IRowClasses;
     rowItems?: IRowItems;
     text?: IRowTexts;
+    actions?: IRowUploadActions;
     // progressBarType?: 'Horizontal-1' | 'Horizontal-2';
 }
 
 export interface IModalUploadProps extends IBaseUploadProps {
     classes?: IModalClasses;
     text?: IModalTexts;
+    actions?: IModalUploadActions;
     // progressBarType?: 'Horizontal-1' | 'Horizontal-2';
 }
 export interface IDropzoneUploadProps extends IBaseUploadProps {
     classes?: IDropzoneClasses;
     text?: IDropzoneTexts;
     details?: boolean;
+    actions?: IDropzoneUploadActions;
 
 }
 

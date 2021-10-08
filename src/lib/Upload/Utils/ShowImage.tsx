@@ -23,6 +23,7 @@ interface IProps {
 
 interface IState {
     file: any;
+    existingFileURL: string | null;
     status: number;
 }
 
@@ -31,6 +32,7 @@ class DownloadImage extends Component<IProps, IState> {
         super(props);
         this.state = {
             file: null,
+            existingFileURL: null,
             status: imageState.None,
         };
     }
@@ -118,13 +120,19 @@ class DownloadImage extends Component<IProps, IState> {
     };
 
     componentDidMount = () => {
-        this.downloadFileWithFetch();
+        this.state.existingFileURL === null && this.downloadFileWithFetch();
+        this.setState({ existingFileURL: this.props.file.url });
     };
 
     componentDidUpdate = () => {
         this.props.isAborted && this.request.abort();
         if (this.state.status === imageState.Done || this.state.status === imageState.Problem)
             this.props.imageStatus && this.props.imageStatus(this.state.status)
+        if (this.props.file.url !== this.state.existingFileURL) {
+            this.downloadFileWithFetch();
+            this.setState({ existingFileURL: this.props.file.url });
+
+        }
     }
 
     customProps = this.props?.height ? {

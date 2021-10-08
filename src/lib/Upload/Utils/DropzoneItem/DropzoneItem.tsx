@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../../../_styles/DropzoneCanvas.scss'
 import { FullScreen } from '../../Previews';
-import { IConnections, IDropzoneClasses, IDropzoneTexts, IFile, imageState, IUploadActions } from '../../types';
+import { IConnections, IDropzoneClasses, IDropzoneTexts, IDropzoneUploadActions, IFile, imageState } from '../../types';
 import ShowImage from '../ShowImage';
 import UploadItem from '../UploadItem';
 
 interface IProps {
+    uploadFile: any;
     connection: IConnections;
     file: {
         name: string;
@@ -13,32 +14,36 @@ interface IProps {
     };
     image?: any;
     text?: IDropzoneTexts;
-    actions?: IUploadActions;
-    onDelete: (value: string) => void;
+    actions?: IDropzoneUploadActions;
+    // onDelete: (value: string) => void;
     details?: boolean;
     classes?: IDropzoneClasses;
     height?: string;
 
-
 }
 
 const DropzoneItemForm = (props: IProps) => {
-    const { details, connection, text, actions, onDelete } = props;
-    const [fileUrl, setFileUrl] = useState<string>('')
-    const [fileName, setFileName] = useState<string>('')
+    const { details, connection, text, actions } = props;
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None)
     const [showPreview, setShowPreview] = useState<string | null>(null)
-    const [uploading, setUploading] = useState(false);
-    const [uploadedRatio, setUploadedRatio] = useState<number>(0);
-    const [file, setFile] = useState<IFile | null>(null)
+    // const [uploading, setUploading] = useState(false);
+    // const [uploadedRatio, setUploadedRatio] = useState<number>(0);
+    const [uploadFile, setUploadFile] = useState<IFile | null>(null)
+
+    // useEffect(() => {
+    //     uploadFile && console.log('uploadFile:', uploadFile)
+    // }, [uploadFile])
 
     useEffect(() => {
-        setFileUrl(props.file.url)
-        setFileName(props.file.name)
+        // console.log('props.uploadFile:', props.uploadFile)
+        props.uploadFile && setUploadFile({
+            name: props.uploadFile.name,
+            rawFileData: props.uploadFile
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [file])
+    }, [props.uploadFile])
 
 
     const customProps = props?.height ? {
@@ -57,19 +62,12 @@ const DropzoneItemForm = (props: IProps) => {
                         imageStatus={(value) => setStatus(value)}
                         isAborted={abort}
                         size='small'
-                        onClick={() => {
-                            // e.preventDefault();
-
-                            setShowPreview(image)
-                        }}
+                        onClick={() => setShowPreview(image)}
                     />
-                    {status === imageState.Done &&
+                    {status === imageState.Done && actions?.onDelete &&
                         <div className="delete-button-container">
                             <div className="delete-button"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    onDelete(fileName)
-                                }}
+                                onClick={(e) => actions?.onDelete && actions.onDelete(props.file.name)}
                             ><i className="fas fa-times" /></div>
                         </div>}
                 </div>
@@ -82,25 +80,22 @@ const DropzoneItemForm = (props: IProps) => {
                 onClose={() => setShowPreview(null)}
                 image={showPreview}
                 connection={connection}
-                file={{
-                    name: fileName,
-                    url: fileUrl,
-                }}
+                file={props.file}
                 text={text}
                 actions={actions}
             />}
 
             <UploadItem
                 connection={connection}
-                file={file}
+                file={uploadFile}
                 abort={abort}
                 onEndTask={() => {
-                    setFile(null);
+                    setUploadFile(null);
                     setAbort(false);
                 }}
-                onRatio={(value: number) => setUploadedRatio(value)}
-                onUploading={(value: boolean) => setUploading(value)}
-                onAbort={() => actions?.onAbort && actions.onAbort(fileName)}
+                // onRatio={(value: number) => setUploadedRatio(value)}
+                // onUploading={(value: boolean) => setUploading(value)}
+                onAbort={() => actions?.onAbort && actions.onAbort(props.file.name)}
                 onError={actions?.onError}
                 onSuccess={actions?.onSuccess}
 

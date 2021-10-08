@@ -27,7 +27,7 @@ const DropzoneCanvas = (props: IProps) => {
     const onFilesAdded = (evt: any) => {
         if (disabled) return;
         const files = evt.target.files;
-        const array = files;
+        const array = fileListToArray(files);
         props.onChange && props.onChange(array);
     };
 

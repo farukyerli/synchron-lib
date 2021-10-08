@@ -1,7 +1,6 @@
 import {
     IModalUploadProps, IRowUploadProps, IDropzoneUploadProps,
     IRowItems, IRowTexts,
-    IUploadActions as MyUploadActions,
     IConnections as IConn
 } from './Upload/types';
 
@@ -16,5 +15,4 @@ export type IRowUpload = IRowUploadProps;
 export type IDropzoneUpload = IDropzoneUploadProps;
 export type IUploadItems = IRowItems
 export type IUploadTexts = IRowTexts
-export type IUploadActions = MyUploadActions
 export type IConnections = IConn
