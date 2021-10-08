@@ -29,6 +29,7 @@
       "src"
     ],
     "declaration": true,
+    "emitDeclarationOnly": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noFallthroughCasesInSwitch": true

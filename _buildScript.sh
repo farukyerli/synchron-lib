@@ -19,11 +19,12 @@ jq 'del(.dependencies)' package.json >dist/package.json
 echo "package.json Copied ...."
 cp src/lib/README.md dist/
 echo "src/lib/README.md Copied ...."
-cp src/lib/index.d.ts dist/
+# npx -p typescript tsc dist/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir dist
+# cp src/lib/index.d.ts dist/
 rm dist/index.d.js
 echo "src/lib/index.d.ts Copied ...."
 
-cp src/lib/Upload/types.ts dist/Upload/
+# cp src/lib/Upload/types.ts dist/Upload/
 echo "types Copied ...."
 
 # gulp ile scss'ten css'e donusturulen dosyalar icin require satirlarinin duzeltilmesi gerekiyor.

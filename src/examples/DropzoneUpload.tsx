@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { DropzoneUpload } from '../lib';
-import { IConnections } from '../lib/Upload/types';
-// import { RowUpload } from 'synchron-lib';
+// import { DropzoneUpload, IConnections } from '../lib';
+// import { DropzoneUpload, IConnections } from 'synchron-lib';
+import { DropzoneUpload, IConnections } from '../_dist';
 // import { RowUpload } from '../dist';
 
 interface IProps {

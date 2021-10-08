@@ -1,6 +1,6 @@
 {
   "name": "synchron-lib",
-  "version": "0.1.28",
+  "version": "0.1.31",
   "description": "",
   "contributors": [
     {
@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "clean": "rm -rf dist",
-    "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx\" ",
+    "prepare-build": "npm run clean && NODE_ENV=production babel src/lib --out-dir dist --extensions \".ts,.tsx,.js\" ",
     "bundle-css": "gulp",
     "system-script": "./_buildScript.sh ",
     "build": "npm run prepare-build && npm run bundle-css && npm run system-script",
@@ -116,6 +116,6 @@
     ]
   },
   "dependencies": {
-    "synchron-lib": "^0.1.28"
+    "synchron-lib": "^0.1.31"
   }
 }

@@ -5,9 +5,9 @@ import {
 } from './Upload/types';
 
 
-export const RowUpload: IRowUploadProps;
-export const DropzoneUpload: IModalUploadProps;
-export const ModalUpload: IDropzoneUploadProps;
+// export const RowUpload: IRowUploadProps;
+// export const DropzoneUpload: IDropzoneUploadProps;
+// export const ModalUpload: IModalUploadProps;
 
 export type IRowUpload = IRowUploadProps
 export type IDropzoneUpload = IDropzoneUploadProps

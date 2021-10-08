@@ -25,6 +25,11 @@ module.exports = {
         // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
         // e.g. "@typescript-eslint/explicit-function-return-type": "off",
         // error || warn || off
+        //***************************************** */
+        '@typescript-eslint/no-this-alias': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        'no-undef': 'off',
+        //***************************************** */
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/camelcase': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',

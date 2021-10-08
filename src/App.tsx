@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './_assests/fontawesome/scss/fontawesome.scss';
 import './_assests/fontawesome/scss/solid.scss';
 import {
-    RowUploadExample,
+    // RowUploadExample,
     DropzoneUploadExample
 } from './examples';
 
@@ -35,7 +35,7 @@ const App = () => {
     return (
         <div className="App">
             <div className="container" style={{ padding: 100 }}>
-                <RowUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
+                {/* <RowUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
 
                 {/* <br />
                 <br />
