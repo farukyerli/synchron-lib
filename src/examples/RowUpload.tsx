@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { IConnections } from '../lib/Upload/types';
 import { RowUpload } from '../lib';
-// import { RowUpload } from 'synchron-lib';
-// import { RowUpload } from '../dist';
+// import { RowUpload } from '@equalizer/synchron-lib';
+// import { IConnections } from '@equalizer/synchron-lib-types';
 
 interface IProps {
     connection: IConnections;
@@ -21,13 +21,7 @@ const RowUploadExampleForm = (props: IProps) => {
             RowUpload without file
             <RowUpload
                 connection={{ url: uploadUrl, headers }}
-
-                // files={[img]}
                 files={[file]}
-
-
-
-
                 rowItems={{
                     // Column3: <>Deneme</>,
                     Column4: '4.',
@@ -40,13 +34,10 @@ const RowUploadExampleForm = (props: IProps) => {
                     EditButton: "Degistir",
                     ViewButton: "Goster",
                     AbortButton: "Durdur",
-
                 }}
                 tools={{
                     PieChartLoading: {
                         backgroundColor: '#030303',
-
-
                     }
                 }}
                 actions={{
@@ -111,7 +102,6 @@ const RowUploadExampleForm = (props: IProps) => {
                 }}
             />
         </>
-
     )
 };
 export default RowUploadExampleForm

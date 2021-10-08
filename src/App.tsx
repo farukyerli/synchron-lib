@@ -6,7 +6,7 @@ import {
     DropzoneUploadExample
 } from './examples';
 
-const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiJmYzU0OWRjMy1kNmE1LTQ3ZGQtYjBiZC01MmJjODlkYWY3YWUiLCJpYXQiOiIxMC8wOC8yMDIxIDE3OjIwOjQyICswMDowMCIsIm5iZiI6MTYzMzcxMzY0MiwiZXhwIjoxNjMzNzI4MDQyLCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.7oY6bdv-wi5ggyPbTS9fS8-cvCp_-NAAak4-owoaG-w'
+const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiJlMGFmNTE4MS0yN2E5LTQ0NzAtODFiNC0wYThlNDZmZDkyNzciLCJpYXQiOiIxMC8wOC8yMDIxIDIxOjU1OjM4ICswMDowMCIsIm5iZiI6MTYzMzczMDEzOCwiZXhwIjoxNjMzNzQ0NTM4LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.E-h4vQjQjsTzQXHU8jdmqVpb75kqCpvb--xquNKAjkM'
 const APP_URL = 'https://zz-web-dev.zozengo.com/api/web';
 // const UPLOAD_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642?documentDefinitionId=17e2e8af-d039-46a4-97ed-3e79b2fa5bf7';
 const headers = {
@@ -14,7 +14,7 @@ const headers = {
 }
 // const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
 // const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c';
-const img = 'https://zz-web-dev.zozengo.com/api/web/Download/6d869e6c-38cc-4bf4-a0a1-9a0a29afcaaf';
+// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/6d869e6c-38cc-4bf4-a0a1-9a0a29afcaaf';
 // const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
 // const img = 'https://cloud.zozengo.com/index.php/s/RxT8XFPRsKDHGHB/download'
 // const img='data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7';

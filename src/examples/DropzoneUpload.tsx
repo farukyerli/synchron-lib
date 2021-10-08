@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 // import { DropzoneUpload, IConnections } from '../lib';
-// import { DropzoneUpload, IConnections } from 'synchron-lib';
-import { DropzoneUpload, IConnections } from '../_dist';
+import { DropzoneUpload } from '@equalizer/synchron-lib';
+import { IConnections } from '@equalizer/synchron-lib-types';
+// import { DropzoneUpload } from '../_dist/app';
+// import { IConnections } from '../_dist/types';
 // import { RowUpload } from '../dist';
 
 interface IProps {
@@ -17,9 +19,9 @@ const DropzoneUploadExample = (props: IProps) => {
     const [fileURLList,
         // setFileURLList
     ] = useState<string[]>([])
-    // // const downloadUrl = `${url}/Download`
 
-    // // const [file, setFile] = useState('');
+    // const downloadUrl = `${url}/Download`
+    // const [file, setFile] = useState('');
 
     useEffect(() => {
         // console.log('Example fileURLList: ', fileURLList)
