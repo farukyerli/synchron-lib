@@ -4,7 +4,7 @@ import '../../_styles/DropzoneCanvas.scss'
 import DropzoneCanvas from '../Utils/DropzoneCanvas';
 import { DropzoneItemForm } from '../Utils';
 import { IActions, IFileList, IState, stateAction } from './types';
-import { deepCopy } from 'lib/_helpers';
+import { deepCopy } from '../../_helpers';
 
 interface IProps extends IDropzoneUploadProps {
     connection: IConnections;
