@@ -9,6 +9,8 @@ const propsCleaner = (Component) =>
             delete newProps['showDetails'];
             delete newProps['refreshOnFilesChange'];
             delete newProps['inititalFiles'];
+            delete newProps['uploadParameters'];
+            delete newProps['uploadMethod'];
             return <Component {...newProps} />;
         }
     };

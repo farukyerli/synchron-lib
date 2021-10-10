@@ -1,6 +1,6 @@
 {
   "name": "@equalizer/synchron-lib",
-  "version": "0.2.11",
+  "version": "0.2.14",
   "description": "",
   "contributors": [
     {
@@ -22,7 +22,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/farukyerli/synchron-lib"
+    "url": "https://github.com/farukyerli/synchron-lib.git",
+    "directory": "tree/deploy/github/src/lib"
   },
   "scripts": {
     "start": "react-scripts start",
