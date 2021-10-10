@@ -12,7 +12,7 @@ interface IProps {
     setImage?: (value: any) => void;
     setType?: (value: string) => void;
     setError?: (value: any) => void;
-    onClick?: () => void;
+    onClick?: (action?: 'download' | 'preview') => void;
     imageStatus?: (value: number) => void;
     classes?: IBaseClasses;
     isProblemExists?: boolean;
@@ -135,6 +135,7 @@ class DownloadImage extends Component<IProps, IState> {
         switch (type) {
             case 'pdf':
                 return <PdfIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+            // return <PdfIcon style={{ fontSize: this.props?.thumbnailSize }} />;
             case 'doc':
                 return <DocIcon style={{ fontSize: this.props?.thumbnailSize }} />;
             case 'docx':
@@ -152,7 +153,6 @@ class DownloadImage extends Component<IProps, IState> {
                     src={this.state.file}
                     className={`loaded-image ${this.props.isAborted && 'fail'} ${this.props.size === 'small' && 'small'}`}
                     alt=""
-                    onClick={this.props.onClick}
                     style={{ ...this.customProps }}
 
                 />;
@@ -186,7 +186,9 @@ class DownloadImage extends Component<IProps, IState> {
                                     <div
                                         className={`loaded-image 
                                         ${this.props.isAborted && 'fail'}
-                                        ${this.props.size === 'small' && 'small'}`} >
+                                        ${this.props.size === 'small' && 'small'}`}
+                                        onClick={() => this.props.onClick && this.props.onClick('preview')}
+                                    >
                                         {this.renderThumbnail(this.state.fileType, this.state.file)}
                                     </div>
                                 )
