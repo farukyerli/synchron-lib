@@ -34,7 +34,7 @@ export default (props: IProps) => {
                         <ShowImage
                             connection={props.connection}
                             file={props.file}
-                            setImage={(data: any) => setImage(data)}
+                            onImage={(data: any) => setImage(data)}
                             imageStatus={(value) => value === imageState.Done && setShowDownloadButton(true)}
                             isAborted={abort}
                         />

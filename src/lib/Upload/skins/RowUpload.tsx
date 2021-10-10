@@ -131,7 +131,7 @@ const RowUploadForm = (props: IProps) => {
             />}
             <DownloadFile
                 file={{
-                    url: fileUrl,
+                    url: downloadImage,
                     name: fileName || `zz-downloadfile`
                 }}
                 connection={props.connection}

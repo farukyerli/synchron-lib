@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
-import { IBaseClasses, IBaseTexts, IConnections, imageState } from '../types';
+import { IBaseClasses, IShowImagesProps, imageState } from '../types';
 import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 
-interface IProps {
-    connection: IConnections;
-    file: {
-        name: string;
-        url: string;
-    };
-    setImage?: (value: any) => void;
-    setType?: (value: string) => void;
-    setError?: (value: any) => void;
-    onClick?: (action?: 'download' | 'preview') => void;
-    imageStatus?: (value: number) => void;
+interface IProps extends IShowImagesProps {
+
+    // setImage?: (value: any) => void;
+    onImage?: (value: string) => void;
     classes?: IBaseClasses;
     isProblemExists?: boolean;
-    isAborted?: boolean;
-    isUploading?: boolean;
-    text?: IBaseTexts;
     size?: 'full' | 'small'
     thumbnailSize?: number;
+    isUploading?: boolean;
 }
 
 
@@ -44,8 +35,17 @@ class DownloadImage extends Component<IProps, IState> {
 
     request = new XMLHttpRequest();
 
+    onError = (status: number, data: any) => {
+        this.setState({ file: null });
+        this.setState({ status: imageState.Problem });
+        this.props.onLoading && this.props.onLoading(false);
+        this.props.onError && this.props.onError(status, data);
+
+    }
+
     downloadFileWithFetch = () => {
         this.request.open('GET', `${this.props.file.url}`, true);
+        this.props.onLoading && this.props.onLoading(true);
         Object.keys(this.props.connection.headers).map((key) => {
             this.request.setRequestHeader(key, this.props.connection.headers[key]);
             return null;
@@ -57,6 +57,11 @@ class DownloadImage extends Component<IProps, IState> {
             this.setState({ file: null });
             this.setState({ status: imageState.Problem });
         };
+        this.request.onerror = (e) => {
+
+            this.onError(500, e)
+        }
+
 
         this.request.onload = (e) => {
             switch (this.request.status) {
@@ -70,29 +75,16 @@ class DownloadImage extends Component<IProps, IState> {
                     type === 'vnd.openxmlformats-officedocument.wordprocessingml.document' && (type = 'docx');
                     // type.indexOf('word') !== -1 && (type = 'docx');
 
-                    // console.log('Type : ', type, 'file:', file)
-                    this.props.setType && this.props.setType(type);
                     this.setState({ fileType: type });
                     this.setState({ file: url });
-                    this.props.setImage && this.props.setImage(url);
+                    this.props.onImage && this.props.onImage(url);
                     this.setState({ status: imageState.Done });
-
-                    break;
-                }
-
-                case 406: {
-                    this.setState({ file: null });
-                    // console.log('Download error: ', this.request.status, this.request.statusText);
-                    this.setState({ status: imageState.Problem });
+                    this.props.onLoading && this.props.onLoading(false);
                     break;
                 }
 
                 default: {
-                    const ErrorMessage: any = this.request.response;
-                    // ErrorMessage && console.log('ERROR RESPONSE : ', ErrorMessage);
-                    ErrorMessage && this.props.setError && this.props.setError(ErrorMessage);
-                    this.setState({ file: null });
-                    this.setState({ status: imageState.Problem });
+                    this.onError(this.request.status, e)
                 }
             }
 
@@ -133,29 +125,37 @@ class DownloadImage extends Component<IProps, IState> {
         ? { maxWidth: `${this.props?.thumbnailSize}px` || '170px' }
         : { width: '90%' }
 
+    renderIcon = (props: any) => {
+        return <div className={`${this.props.size === 'small' ? ' small' : ''} `}
+        >
+
+            {props}
+        </div>
+    }
+
     renderThumbnail = (type: string, file: string) => {
         switch (type) {
             case 'pdf':
-                return <PdfIcon style={{ fontSize: this.props?.thumbnailSize }} />;
-            // return <PdfIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<PdfIcon />);
             case 'doc':
-                return <DocIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<DocIcon />);
             case 'docx':
-                return <DocIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<DocIcon />);
             case 'xls':
-                return <XlsIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<XlsIcon />);
             case 'xlsx':
-                return <XlsIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<XlsIcon />);
             case 'txt':
-                return <TxtIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<TxtIcon />);
             case 'ppt':
-                return <PptIcon style={{ fontSize: this.props?.thumbnailSize }} />;
+                return this.renderIcon(<PptIcon />);
             default:
                 return <img
                     src={this.state.file}
-                    className={`loaded-image ${this.props.isAborted && 'fail'} ${this.props.size === 'small' && 'small'}`}
-                    alt=""
                     style={{ ...this.customProps }}
+                    className={`${this.props.size === 'small' ? ' small' : ''} `
+                    }
+                    alt=""
 
                 />;
         }
@@ -186,10 +186,8 @@ class DownloadImage extends Component<IProps, IState> {
 
                                 : (
                                     <div
-                                        className={`loaded-image 
-                                        ${this.props.isAborted && 'fail'}
-                                        ${this.props.size === 'small' && 'small'}`}
-                                        onClick={() => this.props.onClick && this.props.onClick('preview')}
+                                        className={`loaded-image${this.props.isAborted ? ' fail' : ''}${this.props.size === 'small' ? ' small' : ''} ${this.props.className || ''}`}
+                                        onClick={this.props.onClick}
                                     >
                                         {this.renderThumbnail(this.state.fileType, this.state.file)}
                                     </div>

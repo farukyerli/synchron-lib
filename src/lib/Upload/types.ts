@@ -154,3 +154,22 @@ export interface IDownloadFileProps {
     imageStatus?: (value: number) => void;
     isAborted?: boolean;
 }
+
+export interface IShowImagesProps {
+    connection: IConnections;
+    file: {
+        name?: string;
+        url: string;
+    };
+    isAborted?: boolean;
+    text?: IBaseTexts;
+    onError?: (status: number, data: any) => void;
+    onLoading?: (value: boolean) => void;
+    imageStatus?: (value: number) => void;
+    onClick?: () => void;
+    className?: string;
+    styles?: any;
+
+
+
+}

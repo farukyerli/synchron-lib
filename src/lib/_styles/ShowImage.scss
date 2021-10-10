@@ -28,11 +28,13 @@
 .loaded-image {
 	display: flex;
 	flex-direction: column;
-	// flex: 1;
 	align-items: center;
 	justify-content: center;
+	// position: relative;
 
-	&.small {
+	// width: 200px;
+
+	.small {
 		min-width: 30px;
 		min-height: 30px;
 		max-width: 150px;

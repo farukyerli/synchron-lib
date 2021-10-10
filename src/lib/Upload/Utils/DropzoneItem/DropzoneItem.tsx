@@ -51,7 +51,7 @@ const DropzoneItemForm = (props: IProps) => {
                         thumbnailSize={props.thumbnailSize}
                         connection={props.connection}
                         file={props.file}
-                        setImage={(data: any) => setImage(data)}
+                        onImage={(data: any) => setImage(data)}
                         imageStatus={(value) => setStatus(value)}
                         isAborted={abort}
                         size='small'
