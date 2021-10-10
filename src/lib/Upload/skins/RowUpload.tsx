@@ -10,7 +10,7 @@ interface IProps extends IRowUploadProps {
 }
 
 const RowUploadForm = (props: IProps) => {
-    const { classes, rowItems, actions, text, connection, files } = props;
+    const { classes, rowItems, actions, text, connection, files, uploadMethod = 'POST' } = props;
     const [showPreview, setShowPreview] = useState<string | null>(null)
     const [fileUrl, setFileUrl] = useState<string>('')
     const [fileName, setFileName] = useState<string>('')
@@ -156,6 +156,7 @@ const RowUploadForm = (props: IProps) => {
                 onAbort={() => actions?.onAbort && actions.onAbort(fileName)}
                 onError={actions?.onError}
                 onSuccess={actions?.onSuccess}
+                uploadMethod={uploadMethod}
 
             />
 

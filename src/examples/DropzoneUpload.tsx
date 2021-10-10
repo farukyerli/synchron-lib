@@ -50,6 +50,8 @@ const DropzoneUploadExample = (props: IProps) => {
             DropzoneUploadExample without file
             <DropzoneUpload
                 connection={{ url: uploadUrl, headers }}
+                uploadParameters={['param1=value1', 'param2=value2']}
+                uploadMethod='POST' // 'PUT'
                 // files={[]}
                 files={fileURLList || []}
                 classes={{

@@ -120,6 +120,8 @@ export interface IUploadTools {
 
 interface IBaseUploadProps {
     files: string[];
+    uploadParameters?: string[];
+    uploadMethod?: 'POST' | 'PUT';
     tools?: IUploadTools;
 }
 export interface IRowUploadProps extends IBaseUploadProps {
