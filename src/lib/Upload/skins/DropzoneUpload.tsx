@@ -23,6 +23,11 @@ function reducer(state: IState, action: IActions): IState {
                 fileURLList: [...state.fileURLList, ...action.payload.fileURLList],
                 uploadList: [...state.uploadList, ...action.payload.uploadList]
             }
+        case stateAction.onReset:
+            return {
+                fileURLList: [...action.payload.fileURLList],
+                uploadList: [...action.payload.uploadList]
+            }
         default:
             break;
     }
@@ -32,11 +37,13 @@ function reducer(state: IState, action: IActions): IState {
 
 const DropZoneForm = (props: IProps) => {
     const { connection, classes, actions } = props;
-    const initState: IState = {
-        fileURLList: props.files.map((filename, index) => ({ index, filename })),
-        uploadList: props.files.map(() => null)
+    const initState = (): IState => {
+        return ({
+            fileURLList: props.files.map((filename, index) => ({ index, filename })),
+            uploadList: props.files.map(() => null)
+        })
     }
-    const [state, dispatch] = useReducer(reducer, initState);
+    const [state, dispatch] = useReducer(reducer, initState());
     const [isMounted, setIsMounted] = useState(false);
 
     const onDelete = (ndx: number, data: any) => {
@@ -49,6 +56,18 @@ const DropZoneForm = (props: IProps) => {
         })
         actions?.onDelete && actions?.onDelete({ ndx, data })
     }
+
+    useEffect(() => {
+        console.log('props cheanged', props.files)
+        dispatch({
+            type: stateAction.onReset,
+            payload: {
+                fileURLList: props.files.map((filename, index) => ({ index, filename })),
+                uploadList: props.files.map(() => null)
+            }
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.files])
 
     useEffect(() => {
         isMounted && actions?.onChange && actions?.onChange(state.fileURLList)

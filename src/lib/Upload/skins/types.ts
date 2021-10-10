@@ -1,11 +1,11 @@
 type IStateAction = {
     onDelete: string;
-    onSuccess: string;
+    onReset: string;
     onUpload: string;
 }
 export const stateAction: IStateAction = {
     onDelete: 'onDelete',
-    onSuccess: 'onSuccess',
+    onReset: 'onReset',
     onUpload: 'onUpload'
 }
 export interface IState {

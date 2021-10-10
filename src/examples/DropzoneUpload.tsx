@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { Button } from '@material-ui/core';
+import React, { useState } from 'react';
 import { DropzoneUpload, IConnections } from '../lib';
 // import { DropzoneUpload } from '@equalizer/synchron-lib';
 // import { IConnections } from '@equalizer/synchron-lib-types';
@@ -17,24 +18,41 @@ const DropzoneUploadExample = (props: IProps) => {
     } = props;
     const uploadUrl = `${url}/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642`
     const [fileURLList,
-        // setFileURLList
+        setFileURLList
     ] = useState<string[]>([])
 
     // const downloadUrl = `${url}/Download`
     // const [file, setFile] = useState('');
 
-    useEffect(() => {
-        // console.log('Example fileURLList: ', fileURLList)
-    }, [fileURLList])
+    // useEffect(() => {
+    //     // console.log('Example fileURLList: ', fileURLList)
+    // }, [fileURLList])
 
     return (
-        <>
+        <> <br />
+
+            <Button
+                variant='contained'
+                onClick={() => setFileURLList(sampleImageURL || [])}
+
+            >Assign Files</Button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Button
+                variant='contained'
+                onClick={() => setFileURLList([])}
+
+            >Delete  Files</Button>
+            <br />
+            <br />
             DropzoneUploadExample without file
             <DropzoneUpload
                 connection={{ url: uploadUrl, headers }}
                 // files={fileURLList}
                 // files={[]}
-                files={sampleImageURL || []}
+                files={fileURLList || []}
                 // files={[sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL]}
                 classes={{
                     // width: '40px',
