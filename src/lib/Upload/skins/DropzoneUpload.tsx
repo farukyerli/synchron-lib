@@ -65,7 +65,7 @@ const DropZoneForm = (props: IProps) => {
                     uploadList: props.files.map(() => null)
                 }
             })
-            console.log('props changed', props.files);
+            // console.log('props changed', props.files);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.files])

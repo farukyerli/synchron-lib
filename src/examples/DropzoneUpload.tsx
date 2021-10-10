@@ -77,7 +77,7 @@ const DropzoneUploadExample = (props: IProps) => {
                     onAbort: (() => { console.log('Aborted') }),
                     onDelete: ((data) => { console.log('Deleted :', data) }),
                     onError: (s, d) => console.log('error:', s, d),
-                    onDirty: ((data) => { console.log('onDirty:', data) }),
+                    // onDirty: ((data) => { console.log('onDirty:', data) }),
                 }}
             />
 

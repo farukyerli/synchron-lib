@@ -107,16 +107,18 @@ const DropzoneUploadExample = (props: IProps) => {
                 text={{
                     DragboxText: 'Dropzone 1 Drag Here'
                 }}
-                thumbnailSize={170}
+               // thumbnailSize={100}
+                refreshOnFilesChange={true}
+                inititalFiles={fileURLList || []}
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),
                     Download: (data) => console.log('Download Pressed : ', data),
-
                     onSuccess: ((data) => { console.log('onSuccess : ', data) }),
                     onChange: ((data) => { console.log('onChange : ', data) }),
                     onAbort: (() => { console.log('Aborted') }),
                     onDelete: ((data) => { console.log('Deleted :', data) }),
                     onError: (s, d) => console.log('error:', s, d),
+                    onDirty: ((data) => { console.log('onDirty:', data) }),
                 }}
             />
         </>
