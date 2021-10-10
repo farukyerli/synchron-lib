@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import './_assests/fontawesome/scss/fontawesome.scss';
 import './_assests/fontawesome/scss/solid.scss';
 import {
-    RowUploadExample,
+    // RowUploadExample,
     DropzoneUploadExample,
-    DownloadFileExample,
-    ShowImageExample
+    // DownloadFileExample,
+    // ShowImageExample
 } from './examples';
 import APIKEY from './key';
 
@@ -14,7 +14,7 @@ const APP_URL = 'https://zz-web-dev.zozengo.com/api/web';
 const headers = {
     authorization: ApiKey,
 }
-const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c';
+// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c';
 
 const imgList = [
     // 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c',
@@ -33,16 +33,17 @@ const App = () => {
     return (
         <div className="App">
             <div className="container" >
-                <RowUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
+                {/* <RowUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
                 {/* <br />
                 <br />
                 <br /> */}
                 <DropzoneUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={imgList} />
                 <br />
+                <br />
                 {/* <br /> */}
                 {/* <br /> */}
-                <ShowImageExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
-                <DownloadFileExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
+                {/* <ShowImageExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
+                {/* <DownloadFileExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
                 {/* <ModalUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
             </div>
         </div>

@@ -62,6 +62,8 @@ export interface IDropzoneUploadActions extends IBaseUploadActions {
     onChange?: (data?: any[]) => void;
     onSuccess?: (data?: any) => void;
     onDelete?: (data?: any) => void;
+    onDirty?: (value: boolean) => void;
+
 }
 export interface IModalUploadActions extends IBaseUploadActions {
     onSuccess?: (data?: any) => void;
@@ -140,6 +142,8 @@ export interface IDropzoneUploadProps extends IBaseUploadProps {
     showDetails?: boolean;
     actions?: IDropzoneUploadActions;
     thumbnailSize?: number;
+    refreshOnFilesChange?: boolean;
+    inititalFiles?: string[];
 
 }
 

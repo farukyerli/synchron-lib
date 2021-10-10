@@ -7,6 +7,8 @@ const propsCleaner = (Component) =>
             const newProps = { ...this.props };
             delete newProps['thumbnailSize'];
             delete newProps['showDetails'];
+            delete newProps['refreshOnFilesChange'];
+            delete newProps['inititalFiles'];
             return <Component {...newProps} />;
         }
     };

@@ -50,9 +50,42 @@ const DropzoneUploadExample = (props: IProps) => {
             DropzoneUploadExample without file
             <DropzoneUpload
                 connection={{ url: uploadUrl, headers }}
-                // files={fileURLList}
                 // files={[]}
                 files={fileURLList || []}
+                classes={{
+                    // width: '40px',
+                    // height: '40px',
+                    errorStyles: {
+                        // color: 'blue',
+                        fontSize: '10px'
+                    }
+                }}
+                text={{
+                    DragboxText: 'Dropzone 1 Drag Here',
+
+
+                }}
+                // thumbnailSize={100}
+                // showDetails
+                refreshOnFilesChange={true}
+                inititalFiles={fileURLList || []}
+                actions={{
+                    View: (data) => console.log('View Pressed : ', data),
+                    Download: (data) => console.log('Download Pressed : ', data),
+                    onSuccess: ((data) => { console.log('onSuccess : ', data) }),
+                    onChange: ((data) => { console.log('onChange : ', data) }),
+                    onAbort: (() => { console.log('Aborted') }),
+                    onDelete: ((data) => { console.log('Deleted :', data) }),
+                    onError: (s, d) => console.log('error:', s, d),
+                    onDirty: ((data) => { console.log('onDirty:', data) }),
+                }}
+            />
+
+            {/* <DropzoneUpload
+                connection={{ url: uploadUrl, headers }}
+                // files={fileURLList}
+                // files={[]}
+                files={sampleImageURL || []}
                 // files={[sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL]}
                 classes={{
                     // width: '40px',
@@ -69,6 +102,7 @@ const DropzoneUploadExample = (props: IProps) => {
                 }}
                 // thumbnailSize={100}
                 // showDetails
+                // refreshOnFilesChange={true}
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),
                     Download: (data) => console.log('Download Pressed : ', data),
@@ -84,8 +118,7 @@ const DropzoneUploadExample = (props: IProps) => {
                     onDelete: ((data) => { console.log('Deleted :', data) }),
                     onError: (s, d) => console.log('error:', s, d),
                 }}
-            />
-
+            /> */}
 
 
 
