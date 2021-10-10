@@ -2,12 +2,12 @@ var gulp = require('gulp'),
     gulpFlatten = require('gulp-flatten');
 var sass = require('gulp-sass')(require('node-sass'));
 var routeSources = {
-    dist: './dist/',
+    dist: './dist/app/',
     app: './src/',
     html_views: {
         // path: 'src/lib/**/*.css',
         path: 'src/lib/**/*.scss',
-        dist: 'dist',
+        dist: 'dist/app',
     },
 };
 

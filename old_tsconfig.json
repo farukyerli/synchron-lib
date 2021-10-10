@@ -18,7 +18,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error",
+    "importsNotUsedAsValues": "preserve",
     "isolatedModules": true,
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -26,12 +26,15 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictFunctionTypes": true,
+    "strictFunctionTypes": false,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "declaration": true
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "exclude": [
     "node_modules",

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IConnections, imageState, IRowTexts } from '../type';
+import { IBaseUploadActions, IConnections, imageState, IRowTexts } from '../types';
 import ShowImage from '../Utils/ShowImage';
 import '../../_styles/FullScreen.scss'
 import IconButton from '../Utils/Button';
@@ -13,9 +13,11 @@ interface IProps {
     onClose: () => void;
     image?: any;
     text?: IRowTexts;
+    actions?: IBaseUploadActions;
 }
 
 export default (props: IProps) => {
+    const { actions } = props;
     // console.log({ props });
 
     const [image, setImage] = useState('');
@@ -32,7 +34,7 @@ export default (props: IProps) => {
                         <ShowImage
                             connection={props.connection}
                             file={props.file}
-                            setImage={(data: any) => setImage(data)}
+                            onImage={(data: any) => setImage(data)}
                             imageStatus={(value) => value === imageState.Done && setShowDownloadButton(true)}
                             isAborted={abort}
                         />
@@ -44,25 +46,23 @@ export default (props: IProps) => {
                         }}
                         className="fas fa-times remove-icon"
                         title={props.text?.CloseButton || 'Close'} position='left' />
-                    <div onClick={() => setDownloadImage(image)}>
+                    {actions?.Download && <div onClick={() => setDownloadImage(image)}>
                         <IconButton
                             action={() => { }}
                             className="download-container fas fa-download "
                             title={props.text?.DownloadButton} position='right'
                             visible={showDownloadButton}
                         />
-                    </div>
+                    </div>}
                 </div>
             </div>
-            {
-                downloadImage && <DownloadFile
-                    file={{
-                        url: downloadImage,
-                        name: props.file.name || `zz-downloadfile`
-                    }}
-                    connection={props.connection}
-                />
-            }
+            <DownloadFile
+                file={{
+                    url: downloadImage,
+                    name: props.file.name || `zz-downloadfile`
+                }}
+                connection={props.connection}
+            />
 
         </>
     )

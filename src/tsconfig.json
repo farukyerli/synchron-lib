@@ -28,7 +28,8 @@
     ],
     "include": [
         "lib/**/*.ts",
-        "lib/**/*.tsx"
+        "lib/**/*.tsx",
+        "lib/**/*.jsx"
     ],
     "exclude": [
         "../node_modules",

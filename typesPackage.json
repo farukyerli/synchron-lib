@@ -1,0 +1,26 @@
+{
+  "name": "@equalizer/synchron-lib-types",
+  "version": "0.1.31",
+  "description": "",
+  "contributors": [
+    {
+      "name": "Faruk Yerli"
+    }
+  ],
+  "private": false,
+  "license": "MIT",
+  "main": "index.d.ts",
+  "files": [
+    "**/*.*"
+  ],
+  "keywords": [
+    "synchron-lib",
+    "Equalizer",
+    "Zozengo",
+    "types"
+  ],
+  "peerDependencies": {
+    "@types/react": "^16.8.6 || ^17.0.0",
+    "react": ">= 16.10.0"
+  }
+}

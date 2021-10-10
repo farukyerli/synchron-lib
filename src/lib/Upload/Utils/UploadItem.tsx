@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IConnections, IFile } from '../type';
+import type { IConnections, IFile } from '../types';
 
 interface IProps {
     file: IFile | null;
@@ -84,6 +84,7 @@ class UploadFile extends Component<IProps, IState> {
             this.uploadFileWithFetch();
             this.setState({ file: this.props.file })
         }
+
     }
 
     onUploadProgress = (e: any) => this.setState({ ratio: e.loaded / e.total });

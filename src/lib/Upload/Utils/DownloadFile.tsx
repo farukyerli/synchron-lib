@@ -1,47 +1,48 @@
 import React, { Component } from 'react';
-import { IConnections, imageState } from '../type';
+import { IDownloadFileProps, imageState } from '../types';
 import '../../_styles/ShowImage.scss'
 
-interface IProps {
-    connection: IConnections;
-    file: {
-        name: string;
-        url: string;
-    };
-    setLoading?: (value: boolean) => void;
-
-    imageStatus?: (value: number) => void;
-    setError?: (value: any) => void;
-    isAborted?: boolean;
-
-}
-
-
 interface IState {
-    file: any;
+    fileName: string;
+    fileURL: string | null;
     status: number;
 }
 
-class DownloadImage extends Component<IProps, IState> {
-    constructor(props: IProps) {
+const initialFileName = 'SynchronFile';
+class DownloadImage extends Component<IDownloadFileProps, IState> {
+    constructor(props: IDownloadFileProps) {
         super(props);
         this.state = {
-            file: null,
+            fileName: initialFileName,
+            fileURL: null,
             status: imageState.None,
         };
     }
 
     request = new XMLHttpRequest();
 
-    downloadFileWithFetch = () => {
-        this.request.open('GET', `${this.props.file.url}`, true);
+    onError = (status: number, data: any) => {
+        this.setState({ fileURL: null, fileName: initialFileName });
+        this.setState({ status: imageState.Problem });
+        this.props.onLoading && this.props.onLoading(false);
+        this.props.onError && this.props.onError(status, data);
+
+    }
+
+    downloadFileWithFetch = (fileURL: string) => {
+        this.request.open('GET', `${fileURL}`, true);
         Object.keys(this.props.connection.headers).map((key) => {
             this.request.setRequestHeader(key, this.props.connection.headers[key]);
             return null;
         });
         this.request.responseType = 'blob';
         this.setState({ status: imageState.Loading });
-        this.props.setLoading && this.props.setLoading(true);
+        this.props.onLoading && this.props.onLoading(true);
+        this.request.onerror = (e) => {
+
+            this.onError(500, e)
+        }
+
         this.request.onload = (e) => {
             switch (this.request.status) {
                 case 200: {
@@ -53,31 +54,19 @@ class DownloadImage extends Component<IProps, IState> {
                     tempLink.href = docURL;
                     tempLink.target = '_blank';
                     tempLink.rel = 'noopener noreferrer';
-                    tempLink.setAttribute('download', `${this.props.file.name}.${ext}`);
+                    tempLink.setAttribute('download', `${this.state.fileName}.${ext}`);
                     tempLink.click()
 
                     // this.setState({ file });
                     this.setState({ status: imageState.Done });
-                    this.props.setLoading && this.props.setLoading(false);
+                    this.props.onLoading && this.props.onLoading(false);
 
-                    break;
-                }
-
-                case 406: {
-                    this.setState({ file: null });
-                    // console.log('Download error: ', this.request.status, this.request.statusText);
-                    this.setState({ status: imageState.Problem });
-                    this.props.setLoading && this.props.setLoading(false);
                     break;
                 }
 
                 default: {
-                    const ErrorMessage: any = this.request.response;
-                    ErrorMessage && console.log('ERROR RESPONSE : ', ErrorMessage);
-                    ErrorMessage && this.props.setError && this.props.setError(ErrorMessage);
-                    this.setState({ file: null });
-                    this.setState({ status: imageState.Problem });
-                    this.props.setLoading && this.props.setLoading(false);
+                    this.onError(this.request.status, e)
+
                 }
             }
 
@@ -92,21 +81,27 @@ class DownloadImage extends Component<IProps, IState> {
     };
 
     componentDidMount = () => {
-        this.downloadFileWithFetch();
+        // this.downloadFileWithFetch();
     };
 
     componentDidUpdate = () => {
         this.props.isAborted && this.request.abort();
         if (this.state.status === imageState.Done || this.state.status === imageState.Problem)
             this.props.imageStatus && this.props.imageStatus(this.state.status)
+
+        !this.props.file && this.setState({ fileURL: null })
+        if (this.props.file && this.props.file.url !== this.state.fileURL) {
+            this.setState({ fileURL: this.props.file.url, fileName: this.props.file.name || initialFileName })
+            this.props.file.url && this.downloadFileWithFetch(this.props.file.url);
+        } else {
+            // this.setState({ fileURL: null })
+        }
+
+
     }
 
     render() {
-        return (
-            <>
-
-            </>
-        );
+        return <></>
     }
 }
 
