@@ -4,6 +4,7 @@ import '../../_styles/DropzoneCanvas.scss'
 import DropzoneCanvas from '../Utils/DropzoneCanvas';
 import { DropzoneItemForm } from '../Utils';
 import { IActions, IFileList, IState, stateAction } from './types';
+import { deepCopy } from 'lib/_helpers';
 
 interface IProps extends IDropzoneUploadProps {
     connection: IConnections;
@@ -44,8 +45,9 @@ const DropZoneForm = (props: IProps) => {
     const [state, dispatch] = useReducer(reducer, initState());
     const [isMounted, setIsMounted] = useState(false);
 
-    const onDelete = (index: number, data: any) => {
-        const myArray = state.fileURLList.filter((item, ndx) => ndx !== index)
+    const onDelete = (ndx: number, data: any) => {
+        // const myArray = state.fileURLList.filter((item, ndx) => ndx !== index)
+        const myArray = deepCopy(state.fileURLList.filter((item) => ndx !== item.index))
         actions?.onDelete && actions?.onDelete(data)
 
         dispatch({
@@ -88,10 +90,6 @@ const DropZoneForm = (props: IProps) => {
         if (a.length !== b.length)
             return true;
         let _returnValue = false;
-        b.forEach((item: IFileList) => {
-            if (item.index === -1)
-                _returnValue = true;
-        })
         a.forEach((item) => {
             if (b.findIndex((x) => x.filename === item) === -1)
                 _returnValue = true;
@@ -121,7 +119,7 @@ const DropZoneForm = (props: IProps) => {
                             // ...props.actions,
                             onSuccess: (data: any) => {
                                 actions?.onDirty && actions?.onDirty(true);
-                                actions?.onSuccess && actions.onSuccess({ ndx: -1, data });
+                                actions?.onSuccess && actions.onSuccess({ ndx, data });
                             },
                             onDelete: () => onDelete(ndx, item)
                         }}
@@ -137,7 +135,7 @@ const DropZoneForm = (props: IProps) => {
                             fileURLList: [
                                 ...data.map((item: any, index: number) => (
                                     {
-                                        index: -1,
+                                        index: index + state.fileURLList.length,
                                         filename: URL.createObjectURL(item)
                                     }))]
                             ,
