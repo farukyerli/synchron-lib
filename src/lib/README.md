@@ -167,7 +167,9 @@ export default DownloadFileExample
 ```
 
 
-## Download Component
+## Show Image or File Component
+
+Recognozed non image file types : pdf, xls,xlsx,doc,docx,ppt and txt. System will show icon. 
 
 ```es6
 import React from 'react';

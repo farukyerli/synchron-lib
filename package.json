@@ -1,6 +1,6 @@
 {
   "name": "@equalizer/synchron-lib",
-  "version": "0.2.2",
+  "version": "0.2.5",
   "description": "",
   "contributors": [
     {
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/farukyerli/synchron-lib/tree/deploy/github/src/lib"
+    "url": "https://github.com/farukyerli/synchron-lib"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,8 +37,7 @@
     "@material-ui/core": ">= 4.12.3",
     "@types/react": "^16.8.6 || ^17.0.0",
     "react": ">= 16.10.0",
-    "react-dom": ">= 16.10.0",
-    "@equalizer/synchron-lib-types": "0.1.34"
+    "react-dom": ">= 16.10.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
@@ -121,7 +120,7 @@
     ]
   },
   "dependencies": {
-    "@equalizer/synchron-lib": "0.1.34",
-    "@equalizer/synchron-lib-types": "0.1.34"
+    "@equalizer/synchron-lib": "^0.2.4",
+    "@equalizer/synchron-lib-types": "^0.2.4"
   }
 }
