@@ -3,6 +3,8 @@ import type { IConnections, IFile } from '../types';
 
 interface IProps {
     file: IFile | null;
+    uploadParameters?: string[];
+    uploadMethod: 'POST' | 'PUT';
     connection: IConnections;
     abort?: boolean;
     onRatio?: (value: number) => void;
@@ -34,7 +36,10 @@ class UploadFile extends Component<IProps, IState> {
         this.setState({ isUploading: true });
         const formData = new FormData();
         formData.append(this.props.file?.rawFileData.name, this.props.file?.rawFileData);
-        this.request.open('POST', `${this.props.connection.url}`, true);
+
+        const params = (this.props.uploadParameters && `?${this.props.uploadParameters.join('&')}`) || '';
+        this.request.open(this.props.uploadMethod, `${this.props.connection.url}${params}`, true);
+
         Object.keys(this.props.connection.headers).forEach((key) => this.request.setRequestHeader(key, this.props.connection.headers[key]));
         this.request.upload.addEventListener('progress', this.onUploadProgress);
 

@@ -7,6 +7,8 @@ import UploadItem from '../UploadItem';
 
 interface IProps {
     uploadFile: any;
+    uploadParameters?: string[];
+    uploadMethod?: 'POST' | 'PUT';
     connection: IConnections;
     file: {
         name: string;
@@ -22,7 +24,7 @@ interface IProps {
 }
 
 const DropzoneItemForm = (props: IProps) => {
-    const { showDetails, connection, text, actions, classes } = props;
+    const { showDetails, connection, text, actions, classes, uploadMethod = 'POST' } = props;
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None);
@@ -98,6 +100,8 @@ const DropzoneItemForm = (props: IProps) => {
                     setIsProblemExists(true);
                 }}
                 onSuccess={actions?.onSuccess}
+                uploadParameters={props.uploadParameters}
+                uploadMethod={uploadMethod}
 
             />
         </>

@@ -53,15 +53,11 @@ class DownloadImage extends Component<IProps, IState> {
         this.request.responseType = 'blob';
         this.setState({ status: imageState.Loading });
         this.request.onerror = (e) => {
-            console.log('ERROR RESPONSE : ', e);
+            // console.log('ERROR RESPONSE : ', e);
             this.setState({ file: null });
             this.setState({ status: imageState.Problem });
-        };
-        this.request.onerror = (e) => {
-
             this.onError(500, e)
-        }
-
+        };
 
         this.request.onload = (e) => {
             switch (this.request.status) {

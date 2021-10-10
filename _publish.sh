@@ -1,5 +1,5 @@
 #!/bin/bash
-export NPM_TOKEN=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
+export NPM_TOKEN=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
 cd dist/app
 npm publish
 cd ..
