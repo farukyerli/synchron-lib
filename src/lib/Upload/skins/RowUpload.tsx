@@ -129,16 +129,15 @@ const RowUploadForm = (props: IProps) => {
                 text={text}
                 actions={actions}
             />}
-            {
-                downloadImage && <DownloadFile
-                    file={{
-                        url: fileUrl,
-                        name: fileName || `zz-downloadfile`
-                    }}
-                    connection={props.connection}
-                    setLoading={setDownloading}
-                />
-            }
+            <DownloadFile
+                file={{
+                    url: fileUrl,
+                    name: fileName || `zz-downloadfile`
+                }}
+                connection={props.connection}
+                onLoading={setDownloading}
+            />
+
             <SelectUploadFiles
                 onChange={(data) => setFile({ name: data[0].name, rawFileData: data[0] })}
                 open={showUpload}

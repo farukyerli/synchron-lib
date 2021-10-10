@@ -3,7 +3,8 @@ import './_assests/fontawesome/scss/fontawesome.scss';
 import './_assests/fontawesome/scss/solid.scss';
 import {
     // RowUploadExample,
-    DropzoneUploadExample
+    DropzoneUploadExample,
+    DownloadFileExample
 } from './examples';
 
 const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiJmMjRhMmVkZi02MTY1LTQ0NDAtOGQ5MC03NzM2ZmU5ODc2ZDQiLCJpYXQiOiIxMC8xMC8yMDIxIDEwOjA0OjM3ICswMDowMCIsIm5iZiI6MTYzMzg2MDI3NywiZXhwIjoxNjMzODc0Njc3LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.nYRNW75EWSw7c8ZH8eNWusI4qq2fsB2onHjo-tj64Rk'
@@ -15,8 +16,8 @@ const headers = {
 // const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
 // const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c';
 // const img = 'https://zz-web-dev.zozengo.com/api/web/Download/6d869e6c-38cc-4bf4-a0a1-9a0a29afcaaf';
-// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
-// const img = 'https://cloud.zozengo.com/index.php/s/RxT8XFPRsKDHGHB/download'
+const img = 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c';
+// const img = 'https://file-examples-com.github.io/uploads/2017/10/file_example_JPG_500kB.jpg'
 // const img='data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7';
 
 const imgList = [
@@ -40,9 +41,10 @@ const App = () => {
                 <br />
                 <br /> */}
                 <DropzoneUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={imgList} />
-                {/* <br />
                 <br />
-                <br /> */}
+                <br />
+                <br />
+                <DownloadFileExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
                 {/* <ModalUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
             </div>
             {/* <div style={{ width: '200px', height: '100%' }}>

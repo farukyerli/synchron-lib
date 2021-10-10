@@ -129,7 +129,9 @@ class DownloadImage extends Component<IProps, IState> {
             && this.setState({ status: imageState.Problem });
     }
 
-    customProps = { width: this.props.size === 'small' ? `${this.props?.thumbnailSize}px` : '100%' };
+    customProps = this.props.size === 'small'
+        ? { maxWidth: `${this.props?.thumbnailSize}px` || '170px' }
+        : { width: '90%' }
 
     renderThumbnail = (type: string, file: string) => {
         switch (type) {

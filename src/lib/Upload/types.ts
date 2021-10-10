@@ -143,27 +143,14 @@ export interface IDropzoneUploadProps extends IBaseUploadProps {
 
 }
 
-// export interface IUploadFilesProps {
-//     value?: string;
-//     skintype?: 'dropzone' | 'row' | 'modal';
-//     classes?: IClasses;
-//     rowItems?: IRowItems;
-//     actions?: IUploadActions;
-//     text?: IRowTexts;
-//     files: string[];
-//     tools?: IUploadTools;
-
-
-
-
-//     progressBarSteps?: number;
-//     progressBarType?: 'Horizontal-1' | 'Horizontal-2';
-//     multiUpload?: boolean;
-//     dropzone?: boolean;
-//     dropzoneButton?: boolean;
-//     title?: string;
-//     upLoadText?: string;
-//     buttonTitle?: string;
-//     previewType?: 'FullScreen' | 'Modal-Type-1';
-
-// }
+export interface IDownloadFileProps {
+    connection: IConnections;
+    file: {
+        name: string | null;
+        url: string | null;
+    };
+    onLoading?: (value: boolean) => void;
+    onError?: (status: number, data: any) => void;
+    imageStatus?: (value: number) => void;
+    isAborted?: boolean;
+}

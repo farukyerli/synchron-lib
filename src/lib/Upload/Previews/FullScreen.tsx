@@ -56,15 +56,13 @@ export default (props: IProps) => {
                     </div>}
                 </div>
             </div>
-            {
-                downloadImage && <DownloadFile
-                    file={{
-                        url: downloadImage,
-                        name: props.file.name || `zz-downloadfile`
-                    }}
-                    connection={props.connection}
-                />
-            }
+            <DownloadFile
+                file={{
+                    url: downloadImage,
+                    name: props.file.name || `zz-downloadfile`
+                }}
+                connection={props.connection}
+            />
 
         </>
     )

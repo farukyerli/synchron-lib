@@ -49,7 +49,7 @@ const DropzoneUploadExample = (props: IProps) => {
 
 
                 }}
-                thumbnailSize={170}
+                // thumbnailSize={100}
                 // showDetails
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),
