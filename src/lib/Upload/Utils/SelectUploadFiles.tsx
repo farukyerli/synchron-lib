@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IUploadFileType } from '../types';
+import type { IUploadFileType } from '../types';
 
 interface IProps {
     open: boolean;

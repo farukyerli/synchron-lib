@@ -1,6 +1,6 @@
 import React, { } from 'react';
 import { ModalUpload } from '../lib';
-import { IConnections } from '../lib/Upload/types';
+import type { IConnections } from '../lib/Upload/types';
 // import { RowUpload } from 'synchron-lib';
 // import { RowUpload } from '../dist';
 

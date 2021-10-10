@@ -89,7 +89,7 @@ class DownloadImage extends Component<IProps, IState> {
 
                 default: {
                     const ErrorMessage: any = this.request.response;
-                    ErrorMessage && console.log('ERROR RESPONSE : ', ErrorMessage);
+                    // ErrorMessage && console.log('ERROR RESPONSE : ', ErrorMessage);
                     ErrorMessage && this.props.setError && this.props.setError(ErrorMessage);
                     this.setState({ file: null });
                     this.setState({ status: imageState.Problem });
@@ -173,10 +173,10 @@ class DownloadImage extends Component<IProps, IState> {
                                 >
                                     <i className={`fas fa-exclamation-square ${this.props.size === 'small' && 'small'}`} />
                                     {this.props.size === 'small' &&
-                                        <span>{this.props.text?.LoadingError || "Picture couldn't uploaded "}</span>}
+                                        <span>{this.props.text?.ErrorDownload || "Picture couldn't uploaded "}</span>}
 
                                     {this.props.size !== 'small'
-                                        && <span>{this.props.text?.UploadError || "Picture couldn't loaded"}</span>}
+                                        && <span>{this.props.text?.ErrorUpload || "Picture couldn't loaded"}</span>}
                                 </div>
                             )
                             : this.state.status === imageState.None || this.state.status === imageState.Loading || this.props.isUploading

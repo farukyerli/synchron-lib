@@ -6,7 +6,7 @@ import {
     DropzoneUploadExample
 } from './examples';
 
-const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiJlMGFmNTE4MS0yN2E5LTQ0NzAtODFiNC0wYThlNDZmZDkyNzciLCJpYXQiOiIxMC8wOC8yMDIxIDIxOjU1OjM4ICswMDowMCIsIm5iZiI6MTYzMzczMDEzOCwiZXhwIjoxNjMzNzQ0NTM4LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.E-h4vQjQjsTzQXHU8jdmqVpb75kqCpvb--xquNKAjkM'
+const ApiKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbXIiOiJwd2QiLCJuYW1laWQiOiIwOGQ4ZGVmMS1kYzk0LTRlYTAtODk0Zi03MjQwMzhmMTljNDEiLCJlbWFpbCI6ImZhcnVreWVybGkrY29AZ21haWwuY29tIiwiY29tcGFueUlkIjoiMDhkOGRlZjEtZGM0Yi00MmM0LTgxMjgtN2I5MDhhODNlNjQyIiwiY29tcGFueU5hbWUiOiLQn9Cg0JjQktCQ0KLQndCVINCf0IbQlNCf0KDQmNCE0JzQodCi0JLQniBcItCQ0JLQotCeLSDQotCg0JXQmdCUXCIiLCJmdWxsTmFtZSI6ItCQ0LTQvNGW0L3RltGB0YLRgNCw0YLQvtGAINC60L7QvNC_0LDQvdGW0ZciLCJzdWIiOiIwOGQ1OTk3OC0xNTllLWMyM2EtZDJmMi00OGU5MTJjZDNmOWMiLCJqdGkiOiJmMjRhMmVkZi02MTY1LTQ0NDAtOGQ5MC03NzM2ZmU5ODc2ZDQiLCJpYXQiOiIxMC8xMC8yMDIxIDEwOjA0OjM3ICswMDowMCIsIm5iZiI6MTYzMzg2MDI3NywiZXhwIjoxNjMzODc0Njc3LCJpc3MiOiJodHRwOi8vd3d3LnN5bmNocm9uLnVhIiwiYXVkIjoiTWVydCBZZXJsaSJ9.nYRNW75EWSw7c8ZH8eNWusI4qq2fsB2onHjo-tj64Rk'
 const APP_URL = 'https://zz-web-dev.zozengo.com/api/web';
 // const UPLOAD_URL = 'https://zz-web-dev.zozengo.com/api/web/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642?documentDefinitionId=17e2e8af-d039-46a4-97ed-3e79b2fa5bf7';
 const headers = {
@@ -36,7 +36,6 @@ const App = () => {
         <div className="App">
             <div className="container" style={{ padding: 100 }}>
                 {/* <RowUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
-
                 {/* <br />
                 <br />
                 <br /> */}

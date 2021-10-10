@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type IConnections = {
     url: string;
@@ -86,8 +86,8 @@ export interface IBaseTexts {
     CloseButton?: string;
     LoadingError?: string;
     UploadText?: string;
-    UploadError?: string;
-    DownloadError?: string;
+    ErrorUpload?: string;
+    ErrorDownload?: string;
 }
 export interface IRowTexts extends IBaseTexts { }
 export interface IModalTexts extends IBaseTexts { }

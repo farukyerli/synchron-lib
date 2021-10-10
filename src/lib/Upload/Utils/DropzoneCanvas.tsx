@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { IDropzoneClasses, IDropzoneTexts, IUploadFileType } from '../types';
+import type { IDropzoneClasses, IDropzoneTexts, IUploadFileType } from '../types';
 import '../../_styles/DropzoneCanvas.scss'
 import { UploadIcon } from '../../_images';
 

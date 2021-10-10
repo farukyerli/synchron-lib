@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import { IConnections, IModalUploadProps, } from '../types';
+import type { IConnections, IModalUploadProps, } from '../types';
 import '../../_styles/ModalUpload.scss'
 // import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 // import { FullScreen } from '../Previews'

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { IConnections } from '../lib/Upload/types';
+import type { IConnections } from '../lib/Upload/types';
 import { RowUpload } from '../lib';
 // import { RowUpload } from '@equalizer/synchron-lib';
 // import { IConnections } from '@equalizer/synchron-lib-types';
 
 interface IProps {
     connection: IConnections;
-    sampleImageURL?: string;
+    sampleImageURL: string;
 }
 
 const RowUploadExampleForm = (props: IProps) => {

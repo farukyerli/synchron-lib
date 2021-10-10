@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IConnections, IFile, IRowUploadProps, } from '../types';
+import type { IConnections, IFile, IRowUploadProps, } from '../types';
 import '../../_styles/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
 import { FullScreen } from '../Previews'

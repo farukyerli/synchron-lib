@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import { DropzoneUpload, IConnections } from '../lib';
-import { DropzoneUpload } from '@equalizer/synchron-lib';
-import { IConnections } from '@equalizer/synchron-lib-types';
+import { DropzoneUpload, IConnections } from '../lib';
+// import { DropzoneUpload } from '@equalizer/synchron-lib';
+// import { IConnections } from '@equalizer/synchron-lib-types';
 // import { DropzoneUpload } from '../_dist/app';
 // import { IConnections } from '../_dist/types';
 // import { RowUpload } from '../dist';
@@ -34,7 +34,7 @@ const DropzoneUploadExample = (props: IProps) => {
                 connection={{ url: uploadUrl, headers }}
                 // files={fileURLList}
                 // files={[]}
-                files={sampleImageURL}
+                files={sampleImageURL || []}
                 // files={[sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL, sampleImageURL]}
                 classes={{
                     // width: '40px',
@@ -45,7 +45,9 @@ const DropzoneUploadExample = (props: IProps) => {
                     }
                 }}
                 text={{
-                    DragboxText: 'Dropzone 1 Drag Here'
+                    DragboxText: 'Dropzone 1 Drag Here',
+
+
                 }}
                 thumbnailSize={170}
                 // showDetails

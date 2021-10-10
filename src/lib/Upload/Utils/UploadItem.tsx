@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IConnections, IFile } from '../types';
+import type { IConnections, IFile } from '../types';
 
 interface IProps {
     file: IFile | null;

@@ -1,4 +1,4 @@
-import {
+import type {
     IModalUploadProps, IRowUploadProps, IDropzoneUploadProps,
     IRowItems, IRowTexts,
     IConnections as IConn

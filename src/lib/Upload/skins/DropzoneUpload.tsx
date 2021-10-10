@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { IConnections, IDropzoneUploadProps, IUploadFileType } from '../types';
+import type { IConnections, IDropzoneUploadProps, IUploadFileType } from '../types';
 import '../../_styles/DropzoneCanvas.scss'
 import DropzoneCanvas from '../Utils/DropzoneCanvas';
 import { DropzoneItemForm } from '../Utils';
