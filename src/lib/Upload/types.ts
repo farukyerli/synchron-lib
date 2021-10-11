@@ -146,7 +146,7 @@ export interface IDropzoneUploadProps extends IBaseUploadProps {
     thumbnailSize?: number;
     refreshOnFilesChange?: boolean;
     inititalFiles?: string[];
-
+    maxFiles?: 1 | 2 | 3 | 4 | 5
 }
 
 export interface IDownloadFileProps {

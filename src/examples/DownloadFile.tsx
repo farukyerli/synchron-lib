@@ -2,6 +2,7 @@ import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import { DownloadFile } from '../lib';
 import type { IConnections } from '../lib/Upload/types';
+// import DownloadFile from '@equalizer/synchron-lib';
 
 interface IProps {
     connection: IConnections;

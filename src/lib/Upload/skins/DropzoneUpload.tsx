@@ -4,7 +4,6 @@ import '../../_styles/DropzoneCanvas.scss'
 import DropzoneCanvas from '../Utils/DropzoneCanvas';
 import { DropzoneItemForm } from '../Utils';
 import { IActions, IFileList, IState, stateAction } from './types';
-import { deepCopy } from '../../_helpers';
 
 interface IProps extends IDropzoneUploadProps {
     connection: IConnections;
@@ -45,9 +44,9 @@ const DropZoneForm = (props: IProps) => {
     const [state, dispatch] = useReducer(reducer, initState());
     const [isMounted, setIsMounted] = useState(false);
 
-    const onDelete = (ndx: number, data: any) => {
-        // const myArray = state.fileURLList.filter((item, ndx) => ndx !== index)
-        const myArray = deepCopy(state.fileURLList.filter((item) => ndx !== item.index))
+    const onDelete = (index: number, data: any) => {
+        const myArray = state.fileURLList.filter((item, ndx) => ndx !== index)
+        // const myArray = deepCopy(state.fileURLList.filter((item, ndx) => ndx !== item.index))
         actions?.onDelete && actions?.onDelete(data)
 
         dispatch({
@@ -116,7 +115,7 @@ const DropZoneForm = (props: IProps) => {
                         connection={connection}
                         uploadFile={state.uploadList[ndx]}
                         actions={{
-                            // ...props.actions,
+                            ...props.actions,
                             onSuccess: (data: any) => {
                                 actions?.onDirty && actions?.onDirty(true);
                                 actions?.onSuccess && actions.onSuccess({ ndx, data });

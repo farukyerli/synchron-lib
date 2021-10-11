@@ -4,7 +4,7 @@ import './_assests/fontawesome/scss/solid.scss';
 import {
     // RowUploadExample,
     DropzoneUploadExample,
-    // DownloadFileExample,
+    DownloadFileExample,
     // ShowImageExample
 } from './examples';
 import APIKEY from './key';
@@ -14,7 +14,8 @@ const APP_URL = 'https://zz-web-dev.zozengo.com/api/web';
 const headers = {
     authorization: ApiKey,
 }
-// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c';
+const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-b5f9-4f51dd5e142c';
+// const img = 'https://zz-web-dev.zozengo.com/api/web/Download/fc4fb6e8-2455-4cba-a621-42ea31a376f3';
 
 const imgList = [
     // 'https://zz-web-dev.zozengo.com/api/web/Download/2682837d-4189-470d-8b36-031549b2222c',
@@ -43,7 +44,7 @@ const App = () => {
                 {/* <br /> */}
                 {/* <br /> */}
                 {/* <ShowImageExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
-                {/* <DownloadFileExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
+                <DownloadFileExample connection={{ url: APP_URL, headers }} sampleImageURL={img} />
                 {/* <ModalUploadExample connection={{ url: APP_URL, headers }} sampleImageURL={img} /> */}
             </div>
         </div>
