@@ -55,7 +55,10 @@ const DropzoneItemForm = (props: IProps) => {
                         connection={props.connection}
                         file={props.file}
                         onImage={(data: any) => setImage(data)}
-                        imageStatus={(value) => setStatus(value)}
+                        imageStatus={(value) => {
+                            value === imageState.Problem && setIsProblemExists(true);
+                            setStatus(value)
+                        }}
                         isAborted={abort}
                         size='small'
                         onClick={() => setShowPreview(image)}
@@ -72,7 +75,8 @@ const DropzoneItemForm = (props: IProps) => {
                         <div className="delete-button"
                             onClick={(e) => actions?.onDelete && actions.onDelete(props.file.name)}
                         ><i className="fas fa-times" /></div>
-                    </div>}
+                    </div>
+                }
                 {showDetails && <div className="bottom-bar">
 
                 </div>

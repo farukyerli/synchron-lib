@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { IBaseClasses, IShowImagesProps, imageState } from '../types';
-import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon } from '../../_images';
+import { PdfIcon, DocIcon, PptIcon, TxtIcon, XlsIcon, LoadingIcon, ErrorIcon } from '../../_images';
 import '../../_styles/ShowImage.scss'
 
 interface IProps extends IShowImagesProps {
@@ -122,12 +122,12 @@ class DownloadImage extends Component<IProps, IState> {
         ? { maxWidth: `${this.props?.thumbnailSize}px` || '170px' }
         : { width: '90%' }
 
-    renderIcon = (props: any) => {
-        return <div className={`${this.props.size === 'small' ? ' small' : ''} `}
-        >
-
-            {props}
-        </div>
+    renderIcon = (props: ReactNode, className = '') => {
+        return (
+            <div className={`${this.props.size === 'small' ? ' small' : ''} ${className}`}   >
+                {props}
+            </div>
+        )
     }
 
     renderThumbnail = (type: string, file: string) => {
@@ -146,6 +146,8 @@ class DownloadImage extends Component<IProps, IState> {
                 return this.renderIcon(<TxtIcon />);
             case 'ppt':
                 return this.renderIcon(<PptIcon />);
+            case 'error':
+                return this.renderIcon(<ErrorIcon />, 'error-icon');
             default:
                 return <img
                     src={this.state.file}
@@ -167,15 +169,19 @@ class DownloadImage extends Component<IProps, IState> {
                         {this.state.status === imageState.Problem
                             ? (
                                 <div
-                                    className={`error-picture ${this.props.size === 'small' && 'small'}`}
-                                    style={{ ...this.customProps, ...this.props.classes?.errorStyles }}
+                                    className={`loaded-image fail
+                                    ${this.props.className || ''}`}
+                                    onClick={this.props.onClick}
                                 >
-                                    <i className={`fas fa-exclamation-square ${this.props.size === 'small' && 'small'}`} />
-                                    {this.props.size === 'small' &&
-                                        <span>{this.props.text?.ErrorDownload || "Picture couldn't uploaded "}</span>}
+                                    {this.renderThumbnail('error', this.state.file)}
+                                    {this.props.size === 'small'
+                                        ? (
+                                            <span>{this.props.text?.ErrorDownload || "Picture couldn't uploaded "}
 
-                                    {this.props.size !== 'small'
-                                        && <span>{this.props.text?.ErrorUpload || "Picture couldn't loaded"}</span>}
+                                            </span>)
+                                        : (
+                                            <span>{this.props.text?.ErrorUpload || "Picture couldn't loaded"}</span>
+                                        )}
                                 </div>
                             )
                             : this.state.status === imageState.None || this.state.status === imageState.Loading || this.props.isUploading
@@ -183,7 +189,7 @@ class DownloadImage extends Component<IProps, IState> {
 
                                 : (
                                     <div
-                                        className={`loaded-image${this.props.isAborted ? ' fail' : ''}${this.props.size === 'small' ? ' small' : ''} ${this.props.className || ''}`}
+                                        className={`loaded-image${this.props.isAborted ? ' fail' : ''} ${this.props.className || ''}`}
                                         onClick={this.props.onClick}
                                     >
                                         {this.renderThumbnail(this.state.fileType, this.state.file)}

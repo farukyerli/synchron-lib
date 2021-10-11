@@ -71,7 +71,7 @@ const DropzoneUploadExample = (props: IProps) => {
                 // showDetails
                 refreshOnFilesChange={true}
                 inititalFiles={fileURLList || []}
-                readOnly
+                // readOnly
                 actions={{
                     View: (data) => console.log('View Pressed : ', data),
                     Download: (data) => console.log('Download Pressed : ', data),
