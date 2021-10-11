@@ -16,6 +16,6 @@ cp src/lib/Upload/types.ts dist/types/Upload/
 echo "types Copied ...."
 
 mkdir -p src/_dist/types
-cp -pr dist/types src/_dist/types
+cp -pr dist/types src/_dist/
 
 ./_setTypesVersion.sh

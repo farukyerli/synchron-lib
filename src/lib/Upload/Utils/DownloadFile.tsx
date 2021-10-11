@@ -90,7 +90,7 @@ class DownloadImage extends Component<IDownloadFileProps, IState> {
             this.props.imageStatus && this.props.imageStatus(this.state.status)
 
         !this.props.file && this.setState({ fileURL: null })
-        if (this.props.file && this.props.file.url !== this.state.fileURL) {
+        if (this.props.file && this.props.file.url !== this.state.fileURL && this.state.status === imageState.None) {
             this.setState({ fileURL: this.props.file.url, fileName: this.props.file.name || initialFileName })
             this.props.file.url && this.downloadFileWithFetch(this.props.file.url);
         } else {

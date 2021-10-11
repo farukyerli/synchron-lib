@@ -1,6 +1,7 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
-import { DownloadFile } from '../lib';
+// import { DownloadFile } from '../lib';
+import { DownloadFile } from '../_dist/app';
 import type { IConnections } from '../lib/Upload/types';
 // import DownloadFile from '@equalizer/synchron-lib';
 

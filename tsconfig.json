@@ -38,6 +38,6 @@
     "build",
     "dist",
     "**/*.spec.ts",
-    "src/dist"
+    "src/_dist/**/*.*"
   ]
 }

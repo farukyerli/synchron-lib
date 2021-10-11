@@ -41,4 +41,4 @@ done
 
 rm -r src/_dist
 mkdir -p src/_dist/app
-cp -pr dist/app src/_dist/app
+cp -pr dist/app src/_dist/
