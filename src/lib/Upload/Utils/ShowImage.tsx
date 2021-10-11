@@ -12,6 +12,7 @@ interface IProps extends IShowImagesProps {
     size?: 'full' | 'small'
     thumbnailSize?: number;
     isUploading?: boolean;
+    readOnly?: boolean;
 }
 
 

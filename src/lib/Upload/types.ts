@@ -123,6 +123,7 @@ interface IBaseUploadProps {
     uploadParameters?: string[];
     uploadMethod?: 'POST' | 'PUT';
     tools?: IUploadTools;
+    readOnly?: boolean;
 }
 export interface IRowUploadProps extends IBaseUploadProps {
     classes?: IRowClasses;

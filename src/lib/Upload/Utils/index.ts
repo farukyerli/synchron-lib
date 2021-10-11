@@ -5,7 +5,7 @@ import SelectUploadFiles from './SelectUploadFiles';
 import ShowImage from './ShowImage';
 import UploadItem from './UploadItem';
 import DropzoneCanvas from './DropzoneCanvas';
-import DropzoneItemForm from './DropzoneItem/DropzoneItem';
+import DropzoneItemForm from './DropzoneItem';
 
 export {
     PieLoading,

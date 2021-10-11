@@ -25,6 +25,18 @@ const imgList = [
     // 'https://zz-web-dev.zozengo.com/api/web/Download/ae9c1013-36cd-4ad5-86b7-7e0cf5397e3d'
 ]
 const App = () => {
+    // TODO: RowUpload default imajlarini svg'ye cevir.
+    // TODO: hatali image boyutunu duzelt
+    // TODO: max upload dosya sayisini hallet
+    // TODO: Fulscreen icin tum ekran ayalarini duzelt-->DONE
+    // TODO: Thumbnail icin kucuk olan resimleri fit yap
+    // TODO: Modal Upload koponentini hazirla
+    // TODO: DownloadFile icin multiple downloda izin ver
+    // TODO: Tum upload olaylarinda blob image adini ver
+    // TODO: Preview yerine image blob linki secmeli olsun
+    // TODO: 
+    // TODO: 
+    // TODO: 
 
     useEffect(() => {
         // eslint-disable-next-line

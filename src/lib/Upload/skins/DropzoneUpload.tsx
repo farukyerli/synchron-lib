@@ -34,7 +34,7 @@ function reducer(state: IState, action: IActions): IState {
 
 
 const DropZoneForm = (props: IProps) => {
-    const { connection, classes, actions, refreshOnFilesChange = false } = props;
+    const { connection, classes, actions, refreshOnFilesChange = false, readOnly = false } = props;
     const initState = (): IState => {
         return ({
             fileURLList: props.files.map((filename, index) => ({ index, filename })),
@@ -126,7 +126,7 @@ const DropZoneForm = (props: IProps) => {
                 })
             }
 
-            {state.fileURLList.length < 5 && <DropzoneCanvas
+            {state.fileURLList.length < 5 && !readOnly && <DropzoneCanvas
                 {...props}
                 onChange={(data) => {
                     dispatch({

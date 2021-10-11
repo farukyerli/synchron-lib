@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../../../_styles/DropzoneCanvas.scss'
-import { FullScreen } from '../../Previews';
-import { IConnections, IDropzoneClasses, IDropzoneTexts, IDropzoneUploadActions, IFile, imageState } from '../../types';
-import ShowImage from '../ShowImage';
-import UploadItem from '../UploadItem';
+import '../../_styles/DropzoneCanvas.scss'
+import { FullScreen } from '../Previews';
+import { IConnections, IDropzoneClasses, IDropzoneTexts, IDropzoneUploadActions, IFile, imageState } from '../types';
+import ShowImage from './ShowImage';
+import UploadItem from './UploadItem';
 
 interface IProps {
     uploadFile: any;
@@ -20,11 +20,12 @@ interface IProps {
     showDetails?: boolean;
     classes?: IDropzoneClasses;
     thumbnailSize?: number;
+    readOnly?: boolean;
 
 }
 
 const DropzoneItemForm = (props: IProps) => {
-    const { showDetails, connection, text, actions, classes, uploadMethod = 'POST' } = props;
+    const { showDetails, connection, text, actions, classes, uploadMethod = 'POST', readOnly = false } = props;
     const [image, setImage] = useState('');
     const [abort, setAbort] = useState(false);
     const [status, setStatus] = useState<number>(imageState.None);
@@ -61,10 +62,12 @@ const DropzoneItemForm = (props: IProps) => {
                         isProblemExists={isProblemExists}
                         isUploading={uploading}
                         classes={classes}
+                        readOnly={readOnly}
+
                     />
 
                 </div>
-                {(status === imageState.Done || isProblemExists) && actions?.onDelete && !uploading &&
+                {(status === imageState.Done || isProblemExists) && !readOnly && !uploading &&
                     <div className="delete-button-container">
                         <div className="delete-button"
                             onClick={(e) => actions?.onDelete && actions.onDelete(props.file.name)}

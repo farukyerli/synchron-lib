@@ -52,6 +52,7 @@ export default (props: IProps) => {
                             className="download-container fas fa-download "
                             title={props.text?.DownloadButton} position='right'
                             visible={showDownloadButton}
+                            content={props.text?.DownloadButton || 'DOWNLOAD'}
                         />
                     </div>}
                 </div>

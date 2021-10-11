@@ -16,10 +16,10 @@ const ShowImageExample = (props: IProps) => {
                     name: 'TestFile',
                     url: props.sampleImageURL
                 }}
-                onError={(status, data) => console.log(status, data)}
-                onLoading={(value) => console.log('Loading:', value)}
-                imageStatus={(value) => console.log('imageStatus:', value)}
-                onClick={() => console.log('imageClicked:')}
+                // onError={(status, data) => console.log(status, data)}
+                // onLoading={(value) => console.log('Loading:', value)}
+                // imageStatus={(value) => console.log('imageStatus:', value)}
+                // onClick={() => console.log('imageClicked:')}
 
                 className="test"
                 styles={{}}
