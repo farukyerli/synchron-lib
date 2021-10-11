@@ -53,6 +53,8 @@ export interface IBaseUploadActions {
     onAbort?: (fileName?: string) => void;
     onError?: (status: number, data: string) => void;
     onDelete?: (fileName?: string) => void;
+    onRatio?: (value: number) => void;
+    onUploading?: (value: boolean) => void;
 }
 export interface IRowUploadActions extends IBaseUploadActions {
     onSuccess?: (data?: any) => void;
@@ -107,14 +109,21 @@ export const imageState = {
 interface IBaseGraphs {
     backgroundColor?: string;
     foregroundColor?: string;
-    width?: string;
-    height?: string;
+    className?: string;
 }
 export interface IPieChartLoading extends IBaseGraphs {
+    width?: string;
+    height?: string;
 
 }
+
+export interface ILinearLoading extends IBaseGraphs {
+    ratio: number;
+    uploadingText?: string;
+}
 export interface IUploadTools {
-    PieChartLoading?: IPieChartLoading
+    PieChartLoading?: IPieChartLoading;
+    LinearLoading?: ILinearLoading;
 }
 
 
@@ -122,6 +131,7 @@ interface IBaseUploadProps {
     files: string[];
     uploadParameters?: string[];
     uploadMethod?: 'POST' | 'PUT';
+    uploadPreview?: 'Linear' | 'Pie';
     tools?: IUploadTools;
     readOnly?: boolean;
 }

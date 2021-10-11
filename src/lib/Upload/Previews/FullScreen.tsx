@@ -32,6 +32,7 @@ export default (props: IProps) => {
 
                     <div className="large" onClick={() => props.onClose()}>
                         <ShowImage
+                            {...props}
                             connection={props.connection}
                             file={props.file}
                             onImage={(data: any) => setImage(data)}

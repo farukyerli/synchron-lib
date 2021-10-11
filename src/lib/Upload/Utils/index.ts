@@ -1,4 +1,5 @@
 import PieLoading from './PieLoading';
+import LinearLoading from './LinearLoading';
 import IconButton from './Button';
 import DownloadFile from './DownloadFile';
 import SelectUploadFiles from './SelectUploadFiles';
@@ -15,5 +16,6 @@ export {
     IconButton,
     DownloadFile,
     DropzoneCanvas,
-    DropzoneItemForm
+    DropzoneItemForm,
+    LinearLoading
 }

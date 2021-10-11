@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import type { IConnections, IFile, IRowUploadProps, } from '../types';
 import '../../_styles/RowUpload.scss'
-import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles } from '../Utils';
+import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles, LinearLoading } from '../Utils';
 import { FullScreen } from '../Previews'
-import { LoadingIcon } from '../../_images'
+import { DeleteIcon, DownloadIcon, EditIcon, LoadingIcon, UploadIcon, ViewIcon, LoadingSpinners, ErrorIcon } from '../../_images'
 
 interface IProps extends IRowUploadProps {
     connection: IConnections;
 }
 
 const RowUploadForm = (props: IProps) => {
-    const { classes, rowItems, actions, text, connection, files, uploadMethod = 'POST' } = props;
+    const { classes, rowItems, actions, text, connection, files, uploadMethod = 'POST', uploadPreview = 'Pie' } = props;
     const [showPreview, setShowPreview] = useState<string | null>(null)
     const [fileUrl, setFileUrl] = useState<string>('')
     const [fileName, setFileName] = useState<string>('')
@@ -31,9 +31,14 @@ const RowUploadForm = (props: IProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [files])
 
+    useEffect(() => {
+        actions?.onUploading && actions.onUploading(uploading);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [uploading])
 
 
-    const DownloadSection = () => {
+
+    const column1DownloadSection = () => {
         if (downloading)
             return <LoadingIcon />
 
@@ -43,16 +48,18 @@ const RowUploadForm = (props: IProps) => {
                     actions?.Download && actions.Download(fileUrl);
                     setDownloadImage(fileUrl)
                 }}
-                className={`fas fa-download column1 ${classes?.Column1}`}
-                title={text?.DownloadButton} />
+                className={`column1 ${classes?.Column1}`}
+                title={text?.DownloadButton}
+                component={<DownloadIcon />}
+            />
     }
 
-    const UploadSection = () => {
-        if (uploading)
-            return <PieLoading
-                ratio={uploadedRatio}
-            // ratio={0.7}
-            />
+    const column1UploadSection = () => {
+        if (uploading && uploadPreview === 'Linear')
+            return <LoadingSpinners />
+
+        if (uploading && uploadPreview === 'Pie')
+            return <PieLoading ratio={uploadedRatio} />
 
         return rowItems?.Column1 ||
             <IconButton
@@ -60,21 +67,39 @@ const RowUploadForm = (props: IProps) => {
                     actions?.Upload && actions.Upload(fileUrl);
                     setShowUpload(!showUpload)
                 }}
-                className={`fas fa-upload column1 ${classes?.Column1}`}
-                title={text?.UploadButton} />
+
+                // className={`column1 ${classes?.Column1}`}
+                title={text?.UploadButton}
+                component={<UploadIcon />}
+            />
+
     }
+
+    const column2UploadSection = () => {
+        if (uploading && uploadPreview === 'Linear')
+            return <LinearLoading ratio={uploadedRatio}  {...props.tools?.LinearLoading} />
+
+        return rowItems?.Column2 || 'Please define description of task '
+
+
+    }
+
     return (
         <>
-            <div className={`component-container ${classes?.componentContainer}`}>
+            <div className={`component-container  ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
                     {(actions?.Download || actions?.Upload)
-                        && < div className="columns">{fileName ? DownloadSection() : UploadSection()}</div>
+                        && < div className="columns">
+                            < div className={`column1 ${classes?.Column1 || ''}`}>
+                                {fileName ? column1DownloadSection() : column1UploadSection()}
+                            </div>
+                        </div>
                     }
-                    <div className="columns column2">{rowItems?.Column2 || 'Please define description of task '}</div>
+                    <div className="columns column2">{column2UploadSection()}</div>
                     {rowItems?.Column3 && <div className="columns">{rowItems?.Column3 || 'Free Usage Place 1'}</div>}
                     {rowItems?.Column4 && <div className="columns">{rowItems?.Column4 || 'Free Usage Place 2'}</div>}
 
-                    <div className="columns column5">
+                    <div className={`columns column5  ${classes?.Column5 || ''}`}>
                         {rowItems?.Column5 || (
                             <>
                                 <IconButton
@@ -82,35 +107,39 @@ const RowUploadForm = (props: IProps) => {
                                         actions?.View && actions.View('')
                                         setShowPreview('1')
                                     }}
-                                    className="fas fa-eye"
-                                    title={text?.ViewButton}
                                     visible={(actions?.View
                                         ? fileName !== ''
                                         : false)}
+                                    component={<ViewIcon />}
                                 />
                                 <IconButton
                                     action={() => actions?.Edit && actions.Edit('')}
-                                    className="fas fa-pencil-alt"
                                     title={text?.EditButton}
                                     visible={(actions?.Edit
                                         ? fileName !== ''
-                                        : false)} />
+                                        : false)}
+                                    component={<EditIcon />}
+                                />
                                 <IconButton
                                     action={() => {
                                         actions?.Delete && actions.Delete(fileName);
                                         actions?.onDelete && actions.onDelete(fileName)
                                     }}
-                                    className="fas fa-trash"
                                     title={text?.DeleteButton}
                                     visible={(actions?.Delete
                                         ? fileName !== ''
-                                        : false)} />
+                                        : false)}
+                                    component={<DeleteIcon />}
+
+                                />
                             </>
                         )}
                         {uploading && <IconButton
                             action={() => setAbort(true)}
                             className="fas fa-times abort"
-                            title={text?.AbortButton} />
+                            title={text?.AbortButton}
+                            component={<ErrorIcon />}
+                        />
                         }
                     </div>
                     {rowItems?.Column6 && <div className="columns" >
@@ -119,6 +148,7 @@ const RowUploadForm = (props: IProps) => {
                 </section>
             </div >
             {showPreview && <FullScreen
+                {...props}
                 onClose={() => setShowPreview(null)}
                 image={showPreview}
                 connection={connection}
@@ -150,9 +180,13 @@ const RowUploadForm = (props: IProps) => {
                 onEndTask={() => {
                     setFile(null);
                     setAbort(false);
+                    setUploading(false)
                 }}
-                onRatio={(value: number) => setUploadedRatio(value)}
-                onUploading={(value: boolean) => setUploading(value)}
+                onRatio={(value: number) => {
+                    setUploadedRatio(value)
+                    actions?.onRatio && actions.onRatio(value)
+                }}
+                onUploading={(value: boolean) => file && setUploading(value)}
                 onAbort={() => actions?.onAbort && actions.onAbort(fileName)}
                 onError={actions?.onError}
                 onSuccess={actions?.onSuccess}

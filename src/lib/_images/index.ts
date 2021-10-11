@@ -7,10 +7,16 @@ import TruckIcon from './fa-truck-duo';
 import LoadingIcon from './LoadingIcon';
 import DownloadIcon from './download';
 import UploadIcon from './upload';
+import DeleteIcon from './fa-delete';
+import EditIcon from './fa-edit';
+import ErrorIcon from './fa-error';
+import ViewIcon from './fa-view';
+import LoadingSpinners from './LoadingSpinners';
 
 export {
     PdfIcon, DocIcon, PptIcon, TruckIcon,
     TxtIcon, XlsIcon, LoadingIcon, DownloadIcon,
-    UploadIcon
+    UploadIcon, DeleteIcon, EditIcon, ErrorIcon, ViewIcon,
+    LoadingSpinners
 }
 
