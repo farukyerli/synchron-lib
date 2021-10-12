@@ -118,7 +118,7 @@ export interface IPieChartLoading extends IBaseGraphs {
 }
 
 export interface ILinearLoading extends IBaseGraphs {
-    ratio: number;
+    ratio?: number;
     uploadingText?: string;
 }
 export interface IUploadTools {

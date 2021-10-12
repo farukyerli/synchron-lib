@@ -6,6 +6,8 @@
 	align-items: center;
 	.percent {
 		// border: 1px blue solid;
+		display: flex;
+		flex-wrap: nowrap;
 	}
 	.bar {
 		// display: flex;

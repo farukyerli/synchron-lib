@@ -8,8 +8,19 @@ import {
 
 } from './Upload/types';
 
-export type IRowUpload = IRowUploadProps
-export type IDropzoneUpload = IDropzoneUploadProps
-export type IModalUpload = IModalUploadProps
 export type IConnections = IConn
-export type IDownloadFile = IDownloadFileProps
+export interface IRowUpload extends IRowUploadProps {
+    connection: IConnections;
+}
+export interface IDropzoneUpload extends IDropzoneUploadProps {
+    connection: IConnections;
+}
+export interface IModalUpload extends IModalUploadProps {
+    connection: IConnections;
+}
+export interface IDownloadFile extends IDownloadFileProps {
+    connection: IConnections;
+}
+
+
+

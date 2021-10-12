@@ -89,15 +89,13 @@ const RowUploadForm = (props: IProps) => {
             <div className={`row-upload-component-container  ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
                     {(actions?.Download || actions?.Upload)
-                        && < div className="columns">
-                            < div className={`column1 ${classes?.Column1 || ''}`}>
-                                {fileName ? column1DownloadSection() : column1UploadSection()}
-                            </div>
+                        && < div className={`columns column1 ${classes?.Column1 || ''}`}>
+                            {fileName ? column1DownloadSection() : column1UploadSection()}
                         </div>
                     }
-                    <div className="columns column2">{column2UploadSection()}</div>
-                    {rowItems?.Column3 && <div className="columns">{rowItems?.Column3 || 'Free Usage Place 1'}</div>}
-                    {rowItems?.Column4 && <div className="columns">{rowItems?.Column4 || 'Free Usage Place 2'}</div>}
+                    <div className={`columns column2  ${classes?.Column2 || ''}`}> {column2UploadSection()}</div>
+                    {rowItems?.Column3 && <div className={`columns column3  ${classes?.Column3 || ''}`}>{rowItems?.Column3}</div>}
+                    {rowItems?.Column4 && <div className={`columns column4  ${classes?.Column4 || ''}`}>{rowItems?.Column4}</div>}
 
                     <div className={`columns column5  ${classes?.Column5 || ''}`}>
                         {rowItems?.Column5 || (
@@ -142,9 +140,8 @@ const RowUploadForm = (props: IProps) => {
                         />
                         }
                     </div>
-                    {rowItems?.Column6 && <div className="columns" >
-                        {rowItems?.Column6 || 'Free Usage Place 3'}
-                    </div>}
+                    {rowItems?.Column6 && <div className={`columns column6  ${classes?.Column6 || ''}`}>{rowItems?.Column6}</div>}
+
                 </section>
             </div >
             {showPreview && <FullScreen

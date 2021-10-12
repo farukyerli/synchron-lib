@@ -16,7 +16,7 @@ const RowUploadExampleForm = (props: IProps) => {
     const uploadUrl = `${url}/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642`
     const downloadUrl = `${url}/Download`
 
-    const [file, setFile] = useState('');
+    const [file, setFile] = useState('https://zz-web-dev.zozengo.com/api/web/Download/f9fda594-4f1e-477c-89b8-2facf3a6481c');
 
     const MyButton = (
         <>
@@ -39,9 +39,9 @@ const RowUploadExampleForm = (props: IProps) => {
 
                 rowItems={{
                     // Column1: <></>,
-                    // Column2: <>Deneme</>,
+                    Column2: <>Deneme</>,
                     // Column3: <>Deneme</>,
-                    // Column4: MyButton,
+                    Column4: MyButton,
                     // Column6: 'mn lnlnlnl'
                 }}
                 text={{
@@ -59,7 +59,7 @@ const RowUploadExampleForm = (props: IProps) => {
                         backgroundColor: '#030303'
                     },
                     LinearLoading: {
-                        ratio: 30,
+                        // ratio: 30,
                         foregroundColor: 'red',
                         uploadingText: 'Upload'
                     }

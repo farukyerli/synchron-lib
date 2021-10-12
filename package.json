@@ -1,6 +1,6 @@
 {
   "name": "@equalizer/synchron-lib",
-  "version": "0.2.23",
+  "version": "0.2.25",
   "description": "",
   "contributors": [
     {
@@ -121,7 +121,7 @@
     ]
   },
   "dependencies": {
-    "@equalizer/synchron-lib": "^0.2.23",
-    "@equalizer/synchron-lib-types": "^0.2.23"
+    "@equalizer/synchron-lib": "^0.2.25",
+    "@equalizer/synchron-lib-types": "^0.2.25"
   }
 }
