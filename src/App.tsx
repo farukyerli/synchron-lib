@@ -25,10 +25,9 @@ const img = 'https://zz-web-dev.zozengo.com/api/web/Download/1da73db0-66f3-47e3-
 //     // 'https://zz-web-dev.zozengo.com/api/web/Download/ae9c1013-36cd-4ad5-86b7-7e0cf5397e3d'
 // ]
 const App = () => {
-    // TODO: RowUpload default imajlarini svg'ye cevir.-->DONE
-    // TODO: hatali image boyutunu duzelt -->DONE
+    // TODO: yeni yuklele doyanin silme islemindeki hatayi duzelt (Dropzone)
     // TODO: max upload dosya sayisini hallet
-    // TODO: Fulscreen icin tum ekran ayalarini duzelt-->DONE
+    // TODO: Fulscreen icin tum ekran ayalarini duzelt-->DONE --> ikonlar gozukmuyor kontrol et
     // TODO: Thumbnail icin kucuk olan resimleri fit yap
     // TODO: Modal Upload koponentini hazirla
     // TODO: DownloadFile icin multiple downloda izin ver

@@ -38,9 +38,10 @@ const RowUploadExampleForm = (props: IProps) => {
                 }}
 
                 rowItems={{
+                    // Column1: <></>,
                     // Column2: <>Deneme</>,
                     // Column3: <>Deneme</>,
-                    Column4: MyButton,
+                    // Column4: MyButton,
                     // Column6: 'mn lnlnlnl'
                 }}
                 text={{

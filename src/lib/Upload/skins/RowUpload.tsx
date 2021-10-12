@@ -86,7 +86,7 @@ const RowUploadForm = (props: IProps) => {
 
     return (
         <>
-            <div className={`component-container  ${classes?.componentContainer}`}>
+            <div className={`row-upload-component-container  ${classes?.componentContainer}`}>
                 <section className={`${classes?.section}`}>
                     {(actions?.Download || actions?.Upload)
                         && < div className="columns">
