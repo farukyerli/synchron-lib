@@ -27,33 +27,42 @@
 			right: 20px;
 			top: 20px;
 			cursor: pointer;
-			font-size: xx-large;
-			color: #ffffff;
-		}
-		.download-icon {
-			position: absolute;
-			right: 20px;
-			top: 20px;
-			cursor: pointer;
-			font-size: large;
+			width: 20px;
 			color: #ffffff;
 		}
 
 		.download-container {
 			position: absolute;
+			display: flex;
 			top: 20px;
 			left: 20px;
+			width: 150px;
+			align-items: center;
 			border: #ffffff 1px solid;
 			border-radius: 8px;
 			padding: 10px;
 			color: #ffffff;
-			font-weight: 500;
-			font-size: 18px;
-			line-height: 21px;
+			text-align: left;
+
+			&.download-icon {
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				cursor: pointer;
+				// font-size: large;
+				color: #ffffff;
+
+				svg {
+					width: 20px;
+					path {
+						fill: #ffffff;
+					}
+				}
+			}
 
 			span {
 				// border: #ff0000 10px solid;
-				margin-left: 10px;
+				margin-left: 20px;
 				width: 100px;
 				font-weight: bold;
 				font-size: 15px;

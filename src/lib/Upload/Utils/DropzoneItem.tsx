@@ -89,6 +89,8 @@ const DropzoneItemForm = (props: IProps) => {
                 file={props.file}
                 text={text}
                 actions={actions}
+                className={classes?.preview?.fullscreen}
+
             />}
 
             <UploadItem

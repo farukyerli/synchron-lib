@@ -19,9 +19,13 @@ export interface IUploadFileType {
     webkitRelativePath: string;
 }
 
+interface IPreviewTypes {
+    fullscreen?: string;
+}
 export interface IBaseClasses {
     componentContainer?: string;
     errorStyles?: any;
+    preview?: IPreviewTypes
 }
 export interface IRowClasses extends IBaseClasses {
     section?: string;

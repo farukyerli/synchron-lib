@@ -1,9 +1,12 @@
-.loaded-image {
+.show-image-loaded-image {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	// border: 5px solid green;
+	img {
+		width: 100%;
+	}
 
 	.small {
 		// min-width: 30px;

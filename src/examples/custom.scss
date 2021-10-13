@@ -23,3 +23,22 @@
 		}
 	}
 }
+.show-image-custom-container {
+	top: 40px;
+	padding-top: 40px;
+	.show-image-custom {
+		.large {
+			// width: 80%;
+			// width: 10%;
+		}
+		.loaded-image {
+			// width: 80%;
+			// width: 10%;
+		}
+
+		img {
+			width: 50%;
+			// width: 10%;
+		}
+	}
+}

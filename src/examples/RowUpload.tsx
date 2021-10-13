@@ -16,7 +16,7 @@ const RowUploadExampleForm = (props: IProps) => {
     const uploadUrl = `${url}/Upload/08d8def1-dc4b-42c4-8128-7b908a83e642`
     const downloadUrl = `${url}/Download`
 
-    const [file, setFile] = useState('https://zz-web-dev.zozengo.com/api/web/Download/f9fda594-4f1e-477c-89b8-2facf3a6481c');
+    const [file, setFile] = useState(props.sampleImageURL);
 
     const MyButton = (
         <>
@@ -34,7 +34,10 @@ const RowUploadExampleForm = (props: IProps) => {
                 // files={[]}
                 classes={{
                     Column1: 'mycol1',
-                    Column5: 'mycol5'
+                    Column5: 'mycol5',
+                    preview: {
+                        fullscreen: 'show-image-custom'
+                    }
                 }}
 
                 rowItems={{
@@ -46,7 +49,7 @@ const RowUploadExampleForm = (props: IProps) => {
                 }}
                 text={{
                     DeleteButton: "Sil",
-                    DownloadButton: "Indir",
+                    DownloadButton: "DOWNLOAD",
                     UploadButton: "Yukle",
                     EditButton: "Degistir",
                     ViewButton: "Goster",

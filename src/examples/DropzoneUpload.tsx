@@ -60,7 +60,11 @@ const DropzoneUploadExample = (props: IProps) => {
                     errorStyles: {
                         // color: 'blue',
                         fontSize: '10px'
+                    },
+                    preview: {
+                        fullscreen: 'show-image-custom'
                     }
+
                 }}
                 text={{
                     DragboxText: 'Dropzone 1 Drag Here',

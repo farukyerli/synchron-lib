@@ -120,7 +120,7 @@ class DownloadImage extends Component<IProps, IState> {
 
     customProps = this.props.size === 'small'
         ? { maxWidth: `${this.props?.thumbnailSize}px` || '170px' }
-        : { width: '90%' }
+        : {} //{ width: this.props.className ? '' : '90%' }
 
     renderIcon = (props: ReactNode, className = '') => {
         return (
@@ -169,8 +169,7 @@ class DownloadImage extends Component<IProps, IState> {
                         {this.state.status === imageState.Problem
                             ? (
                                 <div
-                                    className={`loaded-image fail
-                                    ${this.props.className || ''}`}
+                                    className={`show-image-loaded-image fail ${this.props.className || ''}`}
                                     onClick={this.props.onClick}
                                 >
                                     {this.renderThumbnail('error', this.state.file)}
@@ -189,7 +188,7 @@ class DownloadImage extends Component<IProps, IState> {
 
                                 : (
                                     <div
-                                        className={`loaded-image${this.props.isAborted ? ' fail' : ''} ${this.props.className || ''}`}
+                                        className={`show-image-loaded-image${this.props.isAborted ? ' fail' : ''} ${this.props.className || ''}`}
                                         onClick={this.props.onClick}
                                     >
                                         {this.renderThumbnail(this.state.fileType, this.state.file)}

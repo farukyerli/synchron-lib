@@ -149,6 +149,7 @@ const RowUploadForm = (props: IProps) => {
                 onClose={() => setShowPreview(null)}
                 image={showPreview}
                 connection={connection}
+                className={classes?.preview?.fullscreen}
                 file={{
                     name: fileName,
                     url: fileUrl,

@@ -21,7 +21,7 @@ const ShowImageExample = (props: IProps) => {
                 // imageStatus={(value) => console.log('imageStatus:', value)}
                 // onClick={() => console.log('imageClicked:')}
 
-                className="test"
+                className="show-image-custom"
                 styles={{}}
             />
         </div>

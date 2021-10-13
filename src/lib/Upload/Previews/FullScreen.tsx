@@ -4,6 +4,7 @@ import ShowImage from '../Utils/ShowImage';
 import '../../_styles/FullScreen.scss'
 import IconButton from '../Utils/Button';
 import { DownloadFile } from '../Utils';
+import { CancelIcon, DownloadIcon } from 'lib/_images';
 interface IProps {
     connection: IConnections;
     file: {
@@ -14,6 +15,8 @@ interface IProps {
     image?: any;
     text?: IRowTexts;
     actions?: IBaseUploadActions;
+    className?: string;
+
 }
 
 export default (props: IProps) => {
@@ -27,7 +30,7 @@ export default (props: IProps) => {
 
     return (
         <>
-            <div className="upload-component-full-screen-frame-cover  full-screen-preview" >
+            <div className={`upload-component-full-screen-frame-cover  ${props.className || ''}-container `}>
                 <div className="large-cover">
 
                     <div className="large" onClick={() => props.onClose()}>
@@ -45,15 +48,19 @@ export default (props: IProps) => {
                             setAbort(true);
                             props.onClose();
                         }}
-                        className="fas fa-times remove-icon"
-                        title={props.text?.CloseButton || 'Close'} position='left' />
+                        // className="fas fa-times remove-icon"
+                        className="remove-icon"
+                        component={<CancelIcon />}
+                    // title={props.text?.CloseButton || 'Close'} position='left' 
+                    />
                     {actions?.Download && <div onClick={() => setDownloadImage(image)}>
                         <IconButton
                             action={() => { }}
-                            className="download-container fas fa-download "
+                            className="download-container download-icon"
                             title={props.text?.DownloadButton} position='right'
                             visible={showDownloadButton}
                             content={props.text?.DownloadButton || 'DOWNLOAD'}
+                            component={<DownloadIcon />}
                         />
                     </div>}
                 </div>
