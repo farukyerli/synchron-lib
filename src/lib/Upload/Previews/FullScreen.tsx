@@ -4,7 +4,7 @@ import ShowImage from '../Utils/ShowImage';
 import '../../_styles/FullScreen.scss'
 import IconButton from '../Utils/Button';
 import { DownloadFile } from '../Utils';
-import { CancelIcon, DownloadIcon } from 'lib/_images';
+import { CancelIcon, DownloadIcon } from '../../_images';
 interface IProps {
     connection: IConnections;
     file: {

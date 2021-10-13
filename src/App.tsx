@@ -27,7 +27,7 @@ const imgList = [
 const App = () => {
     // TODO: yeni yuklele doyanin silme islemindeki hatayi duzelt (Dropzone)
     // TODO: max upload dosya sayisini hallet
-    // TODO: Fulscreen icin tum ekran ayalarini duzelt-->DONE --> ikonlar gozukmuyor kontrol et
+    // TODO: Fulscreen icin tum ekran ayalarini duzelt-->DONE -->
     // TODO: Thumbnail icin kucuk olan resimleri fit yap
     // TODO: Modal Upload koponentini hazirla
     // TODO: DownloadFile icin multiple downloda izin ver
