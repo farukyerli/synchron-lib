@@ -100,16 +100,7 @@ const RowUploadForm = (props: IProps) => {
                     <div className={`columns column5  ${classes?.Column5 || ''}`}>
                         {rowItems?.Column5 || (
                             <>
-                                <IconButton
-                                    action={() => {
-                                        actions?.View && actions.View('')
-                                        setShowPreview('1')
-                                    }}
-                                    visible={(actions?.View
-                                        ? fileName !== ''
-                                        : false)}
-                                    component={<ViewIcon />}
-                                />
+
                                 <IconButton
                                     action={() => actions?.Edit && actions.Edit('')}
                                     title={text?.EditButton}
@@ -129,6 +120,16 @@ const RowUploadForm = (props: IProps) => {
                                         : false)}
                                     component={<DeleteIcon />}
 
+                                />
+                                <IconButton
+                                    action={() => {
+                                        actions?.View && actions.View('')
+                                        setShowPreview('1')
+                                    }}
+                                    visible={(actions?.View
+                                        ? fileName !== ''
+                                        : false)}
+                                    component={<ViewIcon />}
                                 />
                             </>
                         )}
