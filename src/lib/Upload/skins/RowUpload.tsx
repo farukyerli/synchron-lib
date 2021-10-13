@@ -3,7 +3,7 @@ import type { IConnections, IFile, IRowUploadProps, } from '../types';
 import '../../_styles/RowUpload.scss'
 import { PieLoading, UploadItem, DownloadFile, IconButton, SelectUploadFiles, LinearLoading } from '../Utils';
 import { FullScreen } from '../Previews'
-import { DeleteIcon, DownloadIcon, EditIcon, LoadingIcon, UploadIcon, ViewIcon, LoadingSpinners, ErrorIcon } from '../../_images'
+import { DeleteIcon, DownloadIcon, EditIcon, LoadingIcon, UploadIcon, ViewIcon, LoadingSpinners, CancelIcon } from '../../_images'
 
 interface IProps extends IRowUploadProps {
     connection: IConnections;
@@ -135,9 +135,9 @@ const RowUploadForm = (props: IProps) => {
                         )}
                         {uploading && <IconButton
                             action={() => setAbort(true)}
-                            className="fas fa-times abort"
+                            className=" abort"
                             title={text?.AbortButton}
-                            component={<ErrorIcon />}
+                            component={<CancelIcon />}
                         />
                         }
                     </div>
