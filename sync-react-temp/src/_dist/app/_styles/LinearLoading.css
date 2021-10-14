@@ -1,0 +1,13 @@
+.LinearLoading {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center; }
+  .LinearLoading .percent {
+    display: flex;
+    flex-wrap: nowrap; }
+  .LinearLoading .bar {
+    margin-left: 5px;
+    width: 50%;
+    background-color: #36b2ae;
+    height: 3px; }
