@@ -1,6 +1,0 @@
-.pie {
-  display: inline-block;
-  border-radius: 50%;
-  box-shadow: 0 0.075em 0.2em 0.05em rgba(0, 0, 0, 0.25);
-  /* fixes a minor clipping issue in Chrome */
-  background-origin: border-box; }
