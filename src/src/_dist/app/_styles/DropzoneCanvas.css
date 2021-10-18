@@ -1,0 +1,71 @@
+.synchron-dropzone-upload-canvas-container {
+  display: flex;
+  flex: 1;
+  text-align: center;
+  font-family: Roboto, "Public Sans", sans-serif;
+  position: relative; }
+  .synchron-dropzone-upload-canvas-container .upload-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: #f6f6f6;
+    border: 3px dashed #d2d2d2;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    min-height: 4rem; }
+    .synchron-dropzone-upload-canvas-container .upload-box .upload-text {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      /* identical to box height */
+      color: #7c7c7c;
+      text-align: center;
+      margin-left: 10px;
+      margin-right: 10px; }
+      .synchron-dropzone-upload-canvas-container .upload-box .upload-text.active {
+        color: #38b1d6; }
+  .synchron-dropzone-upload-canvas-container .OnDragOver {
+    background: rgba(56, 177, 214, 0.1);
+    border: 3px dashed #38b1d6; }
+  .synchron-dropzone-upload-canvas-container .FileInput {
+    display: none; }
+
+.synchron-dropzone-upload-container {
+  display: flex;
+  flex-direction: row; }
+
+.synchron-dropzone-upload-item-container {
+  border: 1px solid #dadada;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  margin-right: 5px; }
+  .synchron-dropzone-upload-item-container .preview {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center; }
+  .synchron-dropzone-upload-item-container .bottom-bar {
+    border-top: 1px solid #dadada;
+    height: 40px; }
+  .synchron-dropzone-upload-item-container .delete-button-container {
+    position: absolute;
+    display: flex;
+    align-self: flex-end;
+    margin-right: 7px;
+    margin-top: 7px; }
+    .synchron-dropzone-upload-item-container .delete-button-container .delete-button {
+      border: 1px solid #b9b5b5;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #d2d2d2; }
+      .synchron-dropzone-upload-item-container .delete-button-container .delete-button:hover {
+        cursor: pointer;
+        background-color: #b9b5b5; }
