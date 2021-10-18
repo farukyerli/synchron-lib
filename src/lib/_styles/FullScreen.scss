@@ -1,0 +1,85 @@
+.upload-component-full-screen-frame-cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.8);
+	text-align: center;
+
+	.large-cover {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex: 1;
+		justify-content: center;
+		align-items: center;
+
+		.remove-icon {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			cursor: pointer;
+			width: 20px;
+			color: #ffffff;
+		}
+
+		.download-container {
+			position: absolute;
+			display: flex;
+			top: 20px;
+			left: 20px;
+			width: 150px;
+			align-items: center;
+			border: #ffffff 1px solid;
+			border-radius: 8px;
+			padding: 10px;
+			color: #ffffff;
+			text-align: left;
+
+			&.download-icon {
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				cursor: pointer;
+				// font-size: large;
+				color: #ffffff;
+
+				svg {
+					width: 20px;
+					path {
+						fill: #ffffff;
+					}
+				}
+			}
+
+			span {
+				// border: #ff0000 10px solid;
+				margin-left: 20px;
+				width: 100px;
+				font-weight: bold;
+				font-size: 15px;
+				line-height: 18px;
+				align-items: center;
+			}
+			&:hover {
+				background-color: #c5b0b0;
+				cursor: pointer;
+			}
+		}
+
+		.large {
+			// border: #ffffff 1px solid;
+			&-truck {
+				border-radius: 4px;
+			}
+		}
+	}
+}
