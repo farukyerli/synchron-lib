@@ -1,0 +1,44 @@
+.row-upload-example-form {
+	// border: 1px solid #c5c5c5;
+	box-sizing: border-box;
+	border-radius: 7px;
+
+	.mycol1 {
+		section {
+			svg {
+				path {
+					// fill: blue;
+				}
+			}
+		}
+	}
+
+	.mycol5 {
+		section {
+			svg {
+				path {
+					// fill: blue;
+				}
+			}
+		}
+	}
+}
+.show-image-custom-container {
+	top: 40px;
+	padding-top: 40px;
+	.show-image-custom {
+		.large {
+			// width: 80%;
+			// width: 10%;
+		}
+		.loaded-image {
+			// width: 80%;
+			// width: 10%;
+		}
+
+		img {
+			width: 50%;
+			// width: 10%;
+		}
+	}
+}
